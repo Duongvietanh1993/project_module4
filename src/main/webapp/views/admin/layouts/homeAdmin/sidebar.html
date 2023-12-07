@@ -1,0 +1,120 @@
+<div class="iq-sidebar  sidebar-default  ">
+    <div class="iq-sidebar-logo d-flex align-items-end justify-content-between">
+        <a th:href="@{/../backend/index.html}" class="header-logo">
+            <img th:src="@{/images/logo.png}" class="img-fluid rounded-normal light-logo" alt="logo">
+            <img th:src="@{/images/logo-dark.png}" class="img-fluid rounded-normal d-none sidebar-light-img"
+                 alt="logo">
+            <span>Datum</span>
+        </a>
+        <div class="side-menu-bt-sidebar-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-light wrapper-menu" width="30" fill="none"
+                 viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </div>
+    </div>
+    <div class="data-scrollbar" data-scroll="1">
+        <nav class="iq-sidebar-menu">
+            <ul id="iq-sidebar-toggle" class="side-menu">
+                <li class="active sidebar-layout">
+                    <a th:href="@{/../backend/index.html}" class="svg-icon">
+                        <i class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                            </svg>
+                        </i>
+                        <span class="ml-2">Dashboard</span>
+                        <p class="mb-0 w-10 badge badge-pill badge-primary">6</p>
+                    </a>
+                </li>
+                <li class="px-3 pt-3 pb-2">
+                    <span class="text-uppercase small font-weight-bold">Pages</span>
+                </li>
+                <li class=" sidebar-layout">
+                    <a th:href="@{/../app/user-profile.html}" class="svg-icon">
+                        <i class="">
+                            <svg class="svg-icon" id="iq-user-1-1" xmlns="http://www.w3.org/2000/svg"
+                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </i><span class="ml-2">User Profile</span>
+                    </a>
+                </li>
+
+
+                <li class=" sidebar-layout">
+                    <a th:href="@{/../backend/pages-blank-page.html}" class="svg-icon">
+                        <i class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                            </svg>
+                        </i><span class="ml-2">Blank Page</span>
+                    </a>
+                </li>
+                <li class=" sidebar-layout">
+                    <a th:href="@{/../backend/pages-faq.html}" class="svg-icon">
+                        <i class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"/>
+                            </svg>
+                        </i><span class="ml-2">Faq</span>
+                    </a>
+                </li>
+
+                <li class=" sidebar-layout">
+                    <a th:href="@{/../backend/timeline.html}" class="svg-icon">
+                        <i class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </i><span class="ml-2">Timeline</span>
+                    </a>
+                </li>
+                <li class="px-3 pt-3 pb-2">
+                    <span class="text-uppercase small font-weight-bold">Components</span>
+                </li>
+
+
+                <li class="sidebar-layout">
+                    <a href="#app5" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
+                        <i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                        </i>
+                        <span class="ml-2">Table</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon iq-arrow-right arrow-active" width="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                    <ul id="app5" class="submenu collapse" data-parent="#iq-sidebar-toggle">
+
+                        <li class=" sidebar-layout">
+                            <a href="admin/category" class="svg-icon">
+                                <i class="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                                    </svg>
+                                </i>
+                                <span class="ml-2">Category</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="pt-5 pb-5"></div>
+    </div>
+</div>
