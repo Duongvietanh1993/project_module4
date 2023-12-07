@@ -38,39 +38,20 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Tiger Nixon</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
+                                    <tr th:each="item: ${list}">
+                                        <td th:text="${item.getCategoryId()}"></td>
+                                        <td th:text="${item.getCategoryName()}"></td>
+                                        <td th:text="${item.getCategoryDescription()}"></td>
+                                        <td>
+                                            <span class="label" th:classappend="${!item.isCategoryStatus ? 'label-danger':'label-success'}" th:text="${item.isCategoryStatus?'Active':'Block'}"></span>
+                                        </td>
 
                                         <td class="text-center">
                                             <button class="btn btn-primary">Sửa</button>
                                             <button class="btn btn-danger">Xóa</button>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>RT Nixon</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
 
-                                        <td class="text-center">
-                                            <button class="btn btn-primary">Sửa</button>
-                                            <button class="btn btn-danger">Xóa</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>BH Nixon</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-
-                                        <td class="text-center">
-                                            <button class="btn btn-primary">Sửa</button>
-                                            <button class="btn btn-danger">Xóa</button>
-                                        </td>
-                                    </tr>
 
                                     </tbody>
                                     <tfoot>
