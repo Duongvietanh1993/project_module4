@@ -2,7 +2,6 @@ package com.ra.model.entity;
 
 public class User {
     private int userId;
-    private String fullName;
     private String userName;
     private String userEmail;
     private String userPassword;
@@ -15,9 +14,8 @@ public class User {
     public User() {
     }
 
-    public User(int userId, String fullName, String userName, String userEmail, String userPassword, String userImage, String userPhone, String userAddress, boolean userStatus, boolean userRole) {
+    public User(int userId, String userName, String userEmail, String userPassword, String userImage, String userPhone, String userAddress, boolean userStatus, boolean userRole) {
         this.userId = userId;
-        this.fullName = fullName;
         this.userName = userName;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
@@ -36,13 +34,6 @@ public class User {
         this.userId = userId;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
 
     public String getUserName() {
         return userName;

@@ -1,12 +1,12 @@
 CREATE DATABASE project_module4;
 USE project_module4;
+
 CREATE TABLE user
 (
     id        INT PRIMARY KEY AUTO_INCREMENT,
-    full_name VARCHAR(255),
-    user_name VARCHAR(100) UNIQUE,
-    email     VARCHAR(255) UNIQUE,
-    password  VARCHAR(255) NOT NULL,
+    user_name VARCHAR(100)        NOT NULL,
+    email     VARCHAR(255) UNIQUE NOT NULL,
+    password  VARCHAR(255)        NOT NULL,
     image     VARCHAR(255),
     phone     VARCHAR(255),
     address   VARCHAR(255),
@@ -20,6 +20,36 @@ CREATE TABLE category
     name        VARCHAR(60)  NOT NULL,
     description VARCHAR(255) NOT NULL,
     status      BIT(1) DEFAULT 1
+);
+
+CREATE TABLE product
+(
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    name        VARCHAR(100) NOT NULL,
+    image       VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    price       FLOAT        NOT NULL,
+    quantity    INT          NOT NULL,
+    status      BIT(1) DEFAULT 1,
+    category_id INT          NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES category (id)
+);
+
+CREATE TABLE likes
+(
+    id_like         INT PRIMARY KEY AUTO_INCREMENT,
+    user_id    INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user (id),
+    product_id INT NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES product (id)
+);
+
+CREATE TABLE images
+(
+    id         INT PRIMARY KEY AUTO_INCREMENT,
+    image      VARCHAR(255),
+    product_id INT NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES product (id)
 );
 
 /*category*/
@@ -90,7 +120,6 @@ END;
 DELIMITER //
 CREATE PROCEDURE PROC_UPDATE_USER(
     IN id_update INT,
-    IN new_full_name INT,
     IN new_user_name VARCHAR(100),
     IN new_email VARCHAR(255),
     IN new_password VARCHAR(255),
@@ -102,8 +131,7 @@ CREATE PROCEDURE PROC_UPDATE_USER(
 )
 BEGIN
     UPDATE user
-    SET full_name = new_full_name,
-        user_name = new_user_name,
+    SET user_name = new_user_name,
         email     = new_email,
         password  = new_password,
         image     = new_image,
@@ -133,5 +161,12 @@ DELIMITER //
 CREATE PROCEDURE PROC_UPDATE_ROLE_USER(IN new_id INT, IN new_role BIT(1))
 BEGIN
     UPDATE user SET role = new_role WHERE id = new_id;
+END;
+//
+
+DELIMITER //
+CREATE PROCEDURE PROC_FIND_USER_BY_EMAIL(IN new_email INT)
+BEGIN
+    SELECT * FROM user WHERE email = new_email;
 END;
 //
