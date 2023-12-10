@@ -1,6 +1,6 @@
 <div class="iq-sidebar  sidebar-default  ">
     <div class="iq-sidebar-logo d-flex align-items-end justify-content-between">
-        <a th:href="@{/../backend/index.html}" class="header-logo">
+        <a th:href="@{/admin}" class="header-logo">
             <img th:src="@{/images/logo.png}" class="img-fluid rounded-normal light-logo" alt="logo">
             <img th:src="@{/images/logo-dark.png}" class="img-fluid rounded-normal d-none sidebar-light-img"
                  alt="logo">
@@ -17,7 +17,7 @@
         <nav class="iq-sidebar-menu">
             <ul id="iq-sidebar-toggle" class="side-menu">
                 <li class="active sidebar-layout">
-                    <a th:href="@{/../backend/index.html}" class="svg-icon">
+                    <a th:href="@{/admin}" class="svg-icon">
                         <i class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor">
@@ -33,7 +33,7 @@
                     <span class="text-uppercase small font-weight-bold">Pages</span>
                 </li>
                 <li class=" sidebar-layout">
-                    <a th:href="@{/../app/user-profile.html}" class="svg-icon">
+                    <a th:href="@{/admin}" class="svg-icon">
                         <i class="">
                             <svg class="svg-icon" id="iq-user-1-1" xmlns="http://www.w3.org/2000/svg"
                                  fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -46,7 +46,7 @@
 
 
                 <li class=" sidebar-layout">
-                    <a th:href="@{/../backend/pages-blank-page.html}" class="svg-icon">
+                    <a th:href="@{/admin}" class="svg-icon">
                         <i class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor">
@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li class=" sidebar-layout">
-                    <a th:href="@{/../backend/pages-faq.html}" class="svg-icon">
+                    <a th:href="@{/admin}" class="svg-icon">
                         <i class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor">
@@ -69,7 +69,7 @@
                 </li>
 
                 <li class=" sidebar-layout">
-                    <a th:href="@{/../backend/timeline.html}" class="svg-icon">
+                    <a th:href="@{/admin}" class="svg-icon">
                         <i class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor">
@@ -116,6 +116,26 @@
                                     </svg>
                                 </i>
                                 <span class="ml-2">Quản Lý Danh Mục</span>
+                            </a>
+                        </li>
+                        <li class=" sidebar-layout">
+                            <a th:href="@{/admin/product}" class="svg-icon">
+                                <i class="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                                    </svg>
+                                </i>
+                                <span class="ml-2">Quản Lý Sản Phẩm</span>
+                            </a>
+                        </li>
+                        <li class=" sidebar-layout">
+                            <a th:href="@{/admin/orders}" class="svg-icon">
+                                <i class="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                                    </svg>
+                                </i>
+                                <span class="ml-2">Quản Lý Đơn Hàng</span>
                             </a>
                         </li>
 

@@ -30,55 +30,50 @@
                                 <table id="datatable-1" class="table data-table table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>Mã Danh Mục</th>
-                                        <th>Tên Danh Mục</th>
-                                        <th>Ghi Chú</th>
+                                        <th style="width: 150px">Mã Sản Phẩm</th>
+                                        <th>Tên Sản Phẩm</th>
+                                        <th>Ảnh Sản Phẩm</th>
+                                        <th>Thông Tin</th>
+                                        <th>Giá Sản Phẩm</th>
+                                        <th>Tồn Kho</th>
+                                        <th>Danh mục</th>
                                         <th>Trạng Thái</th>
                                         <th style="width: 150px;" class="text-right"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Tiger Nixon</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
+                                    <tr th:each="item: ${productList}">
+                                        <td th:text="${item.getProductId()}"></td>
+                                        <td th:text="${item.getProductName()}"></td>
+                                        <td ></td>
+                                        <td th:text="${item.getProductDescription()}"></td>
+                                        <td th:text="${item.getProductPrice()}"></td>
+                                        <td th:text="${item.getProductStock()}"></td>
+                                        <td th:text="${item.getCategory().getCategoryName()}"></td>
+                                        <td>
+                                            <span class="label"
+                                                  th:classappend="${item.isProductStatus() ? 'badge text-green':'badge text-warning'}"
+                                                  th:text="${item.isProductStatus()?'Mở':'Khóa'}"></span>
+                                        </td>
 
                                         <td class="text-center">
                                             <button class="btn btn-primary">Sửa</button>
                                             <button class="btn btn-danger">Xóa</button>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>RT Nixon</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
 
-                                        <td class="text-center">
-                                            <button class="btn btn-primary">Sửa</button>
-                                            <button class="btn btn-danger">Xóa</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>BH Nixon</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-
-                                        <td class="text-center">
-                                            <button class="btn btn-primary">Sửa</button>
-                                            <button class="btn btn-danger">Xóa</button>
-                                        </td>
-                                    </tr>
 
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
+                                        <th style="width: 100px">Mã Sản Phẩm</th>
+                                        <th>Tên Sản Phẩm</th>
+                                        <th>Ảnh Sản Phẩm</th>
+                                        <th>Thông Tin</th>
+                                        <th>Giá Sản Phẩm</th>
+                                        <th>Tồn Kho</th>
+                                        <th>Danh mục</th>
+                                        <th>Trạng Thái</th>
 
                                         <th class="text-right"></th>
                                     </tr>

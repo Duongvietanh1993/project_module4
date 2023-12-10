@@ -18,7 +18,7 @@ public class CategoryController {
     @RequestMapping("category")
     public String table(Model model) {
         List<Category> list = categoryService.findAll();
-        model.addAttribute("list", list);
+        model.addAttribute("categoryList", list);
         return "admin/category/tables";
     }
 

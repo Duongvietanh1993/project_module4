@@ -30,20 +30,20 @@
                                 <table id="datatable-1" class="table data-table table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>Mã Danh Mục</th>
+                                        <th style="width: 150px">Mã Danh Mục</th>
                                         <th>Tên Danh Mục</th>
                                         <th>Ghi Chú</th>
                                         <th>Trạng Thái</th>
-                                        <th style="width: 150px;" class="text-right"></th>
+                                        <th style="width: 150px" class="text-right"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="item: ${listCategory}">
+                                    <tr th:each="item: ${categoryList}">
                                         <td th:text="${item.getCategoryId()}"></td>
                                         <td th:text="${item.getCategoryName()}"></td>
                                         <td th:text="${item.getCategoryDescription()}"></td>
                                         <td>
-                                            <span class="label" th:classappend="${item.isCategoryStatus ? 'badge bg-info text-dark':'badge bg-warning text-dark'}" th:text="${item.isCategoryStatus?'Active':'Block'}"></span>
+                                            <span class="label " th:classappend="${item.isCategoryStatus ? 'badge text-green':'badge text-warning'}" th:text="${item.isCategoryStatus?'Active':'Block'}"></span>
                                         </td>
 
                                         <td class="text-center">

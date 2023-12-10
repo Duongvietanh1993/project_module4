@@ -2993,7 +2993,7 @@ select.form-control[multiple], select.form-control[size], textarea.form-control 
 .custom-control {
     position: relative;
     display: block;
-    min-height: 24;
+    min-height: 24rem;
     padding-left: 1.5rem
 }
 
@@ -10669,7 +10669,7 @@ a.text-dark:focus, a.text-dark:hover {
 }
 
 .text-hide {
-    font: 0/0 a;
+    /*font: 0/0 a;*/
     color: transparent;
     text-shadow: none;
     background-color: transparent;
@@ -12170,7 +12170,7 @@ body.sidebar-main .iq-top-navbar {
 }
 
 .dropdown-menu a.media:hover .heading, .dropdown-menu a.media:hover p {
-    color: !important
+    /*color: !important*/
 }
 
 .dropdown-menu-dark .h1, .dropdown-menu-dark .h2, .dropdown-menu-dark .h3, .dropdown-menu-dark .h4, .dropdown-menu-dark .h5, .dropdown-menu-dark .h6, .dropdown-menu-dark a {
@@ -16626,20 +16626,20 @@ a.bg-skyblue-light:focus, a.bg-skyblue-light:hover, button.bg-skyblue-light:focu
 
 @media (min-width: 576px) {
     .text-xs-chirag {
-        font-size: 12 !important
+        font-size: 12rem !important
     }
 }
 
 .text-sm {
-    font-size: 14 !important
+    font-size: 14rem !important
 }
 
 .text-lg {
-    font-size: 20 !important
+    font-size: 20rem !important
 }
 
 .text-xl {
-    font-size: 12 !important
+    font-size: 12rem !important
 }
 
 .line-height-100 {
@@ -17794,7 +17794,7 @@ a.text-secondary:focus, a.text-secondary:hover {
     font-size: 12px;
     padding: 10px;
     border-bottom: 1px solid #f7f7f7;
-    color: gray
+    color: grey;
 }
 
 .choices__button {
