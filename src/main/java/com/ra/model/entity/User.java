@@ -14,17 +14,6 @@ public class User {
     public User() {
     }
 
-    public User(int userId, String userName, String userEmail, String userPassword, String userImage, String userPhone, String userAddress, boolean userStatus, boolean userRole) {
-        this.userId = userId;
-        this.userName = userName;
-        this.userEmail = userEmail;
-        this.userPassword = userPassword;
-        this.userImage = userImage;
-        this.userPhone = userPhone;
-        this.userAddress = userAddress;
-        this.userStatus = userStatus;
-        this.userRole = userRole;
-    }
 
     public int getUserId() {
         return userId;

@@ -24,4 +24,14 @@ public class UserServiceIMPL implements UserService{
     public User findById(Integer integer) {
         return userDAO.findById(integer);
     }
+
+    @Override
+    public User findByEmail(String email) {
+        return userDAO.findByEmail(email);
+    }
+
+    @Override
+    public User checkLogin(String email, String password) {
+        return userDAO.checkLogin(email,password);
+    }
 }

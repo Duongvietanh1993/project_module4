@@ -12,8 +12,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 @Repository
-public class UserDAOimpl implements UserDAO{
+public class UserDAOimpl implements UserDAO {
     @Override
     public List<User> findAll() {
         Connection connection = null;
@@ -52,7 +53,7 @@ public class UserDAOimpl implements UserDAO{
         int check;
         try {
             if (user.getUserId() == 0) {
-                CallableStatement callableStatement = connection.prepareCall("{CALL PROC_CREATE_USER(?,?)}");
+                CallableStatement callableStatement = connection.prepareCall("{CALL PROC_CREATE_USER(?,?,?)}");
                 callableStatement.setString(1, user.getUserName());
                 callableStatement.setString(2, user.getUserEmail());
                 callableStatement.setString(3, user.getUserPassword());
@@ -107,5 +108,42 @@ public class UserDAOimpl implements UserDAO{
             ConnectionDatabase.closeConnection(connection);
         }
         return user;
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        Connection connection = null;
+        connection = ConnectionDatabase.openConnection();
+        User user = new User();
+        try {
+            CallableStatement callableStatement = connection.prepareCall("CALL PROC_FIND_USER_BY_EMAIL(?)");
+            callableStatement.setString(1, email);
+            ResultSet resultSet = callableStatement.executeQuery();
+            while (resultSet.next()) {
+                user.setUserId(resultSet.getInt("id"));
+                user.setUserName(resultSet.getString("user_name"));
+                user.setUserEmail(resultSet.getString("email"));
+                user.setUserPassword(resultSet.getString("password"));
+                user.setUserImage(resultSet.getString("image"));
+                user.setUserPhone(resultSet.getString("phone"));
+                user.setUserAddress(resultSet.getString("address"));
+                user.setUserStatus(resultSet.getBoolean("status"));
+                user.setUserRole(resultSet.getBoolean("role"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            ConnectionDatabase.closeConnection(connection);
+        }
+        return user;
+    }
+
+    @Override
+    public User checkLogin(String email, String password) {
+        User user = findByEmail(email);
+        if (user != null && BCrypt.checkpw(password, user.getUserPassword())) {
+            return user;
+        }
+        return null;
     }
 }

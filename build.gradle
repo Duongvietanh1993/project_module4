@@ -36,6 +36,11 @@ dependencies {
 
     implementation "org.mindrot:jbcrypt:0.4"
 
+    // https://mvnrepository.com/artifact/javax.validation/validation-api
+    implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-core
+    implementation group: 'org.hibernate', name: 'hibernate-core', version: '6.2.0.Final', ext: 'pom'
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
