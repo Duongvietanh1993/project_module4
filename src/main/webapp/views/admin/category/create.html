@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--head-->
+<th:block th:insert="admin/layouts/homeAdmin/head.html"></th:block>
+
+
+<body class="  ">
+<!-- loader Start -->
+<div id="loading">
+    <div id="loading-center">
+    </div>
+</div>
+<!-- loader END -->
+<!-- Wrapper Start -->
+<div class="wrapper">
+    <!--sidebar-->
+    <th:block th:insert="admin/layouts/homeAdmin/sidebar.html"></th:block>
+
+    <!--navbar-->
+    <th:block th:insert="admin/layouts/homeAdmin/navbar.html"></th:block>
+
+    <!--tables-->
+    <div class="content-page">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+
+                                <form method="post" th:action="@{/admin/create}" class="needs-validation" novalidate th:object="${category}" >
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="validationCustom01">Tên Danh Mục: </label>
+                                            <input type="text" th:field="*{categoryName}" class="form-control" id="validationCustom01" required>
+                                            <div class="invalid-feedback">
+                                                Tên danh mục không được để trống !
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <label for="validationCustom02">Ghi Chú: </label>
+                                            <input type="text" th:field="*{categoryDescription}" class="form-control" id="validationCustom02" required>
+                                            <div class="invalid-feedback">
+                                                Ghi chú không được để trống !
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button class="btn btn-primary" type="submit">Submit form</button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--tables end-->
+</div>
+<!-- Wrapper End-->
+<!--footer-->
+<th:block th:insert="admin/layouts/homeAdmin/footer.html"></th:block>
+
+<!--Script-->
+<th:block th:insert="admin/layouts/homeAdmin/script.html"></th:block>
+
+</body>
+</html>

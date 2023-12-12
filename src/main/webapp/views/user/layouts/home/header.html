@@ -27,11 +27,10 @@
             <div class="header-right">
                 <nav class="main-nav main-nav-2">
                     <ul class="menu">
-                        <li><a th:href="@{/#}">Hot Deals</a></li>
-                        <li><a th:href="@{/#}">Look book</a></li>
-                        <li><a th:href="@{/contact-us.html}">Contact</a></li>
-                        <li><a th:href="@{/blog-classic.html}">Blog</a></li>
-                        <li><a th:href="@{/https://d-themes.com/buynow/riodehtml}">Buy Riode!</a></li>
+                        <li><a th:href="@{/}">Hot Deals</a></li>
+                        <li><a th:href="@{/}">Look book</a></li>
+                        <li><a th:href="@{/}">Contact</a></li>
+                        <li><a th:href="@{/}">Blog</a></li>
                     </ul>
                 </nav>
 
@@ -48,9 +47,33 @@
                     </form>
                 </div>
 
-                <a class="login" th:href="@{/login}" data-toggle="login-modal" title="login">
-                    <i class="d-icon-user"></i>
-                </a>
+                <div class="login-container">
+                    <a class="login" th:href="@{/login}" data-toggle="login-modal" title="login">
+                        <i class="d-icon-user" th:unless="${session.user != null}"></i>
+                    </a>
+                    <nav class="main-nav" th:if="${session.user != null}">
+                        <ul class="menu">
+                            <li class="active">
+                                <a class="text-black" th:text="${session.user.userName}"></a>
+                                <ul>
+                                    <li><a href="contact-us.html">Contact Us</a></li>
+                                    <li><a th:href="@{/logout}">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!--<div class="dropdown-menu" aria-labelledby="dropdownId">
+                    <span th:if="${session.user ==null}">
+                    <a class="dropdown-item" href="login" >Login</a>
+                    <a class="dropdown-item" href="#">Register</a>
+                     </span>
+                    <a class="dropdown-item" href="logout" th:unless="${session.user ==null}">Logout</a>
+
+                </div>-->
+
+
+
 
                 <div class="dropdown wishlist wishlist-dropdown off-canvas">
                     <a th:href="@{/wishlist.html}" class="wishlist-toggle" title="wishlist">
@@ -142,7 +165,8 @@ Wishlist</span></a>
                             <div class="product product-cart mt-4">
                                 <figure class="product-media">
                                     <a th:href="@{/#}">
-                                        <img th:src="@{/images/cart/product-1.jpg}" alt="product" width="90" height="90"/>
+                                        <img th:src="@{/images/cart/product-1.jpg}" alt="product" width="90"
+                                             height="90"/>
                                     </a>
                                     <button class="btn btn-link btn-close">
                                         <i class="fas fa-times"></i><span class="sr-only">Close</span>
@@ -161,7 +185,8 @@ Wishlist</span></a>
                             <div class="product product-cart">
                                 <figure class="product-media">
                                     <a th:href="@{/#}">
-                                        <img th:src="@{/images/cart/product-2.jpg}" alt="product" width="90" height="90"/>
+                                        <img th:src="@{/images/cart/product-2.jpg}" alt="product" width="90"
+                                             height="90"/>
                                     </a>
                                     <button class="btn btn-link btn-close">
                                         <i class="fas fa-times"></i><span class="sr-only">Close</span>

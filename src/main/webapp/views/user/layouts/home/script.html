@@ -6,3 +6,35 @@
 <script th:src="@{/vendor/imagesloaded/imagesloaded.pkgd.min.js}"></script>
 <script th:src="@{/vendor/isotope/isotope.pkgd.min.js}"></script>
 <script th:src="@{/js/main.min.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+<script>
+    // Kiểm tra URL có chứa tham số error=true hay không
+    const urlParams = new URLSearchParams(window.location.search);
+    const error = urlParams.get('error');
+    const logout = urlParams.get('logout');
+
+    // Nếu có lỗi, hiển thị popup thông báo lỗi
+    if (error === 'true') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Đăng nhập thất bại',
+            text: 'Vui lòng kiểm tra lại thông tin đăng nhập.'
+        });
+    } else {
+        // Nếu không có lỗi, hiển thị popup thông báo thành công
+        Swal.fire({
+            icon: 'success',
+            title: 'Đăng nhập thành công',
+            text: 'Chào mừng bạn đã đăng nhập thành công!'
+        });
+    }
+
+    // Nếu có tham số logout=true, hiển thị popup thông báo đăng xuất thành công
+    if (logout === 'true') {
+        Swal.fire({
+            icon: 'success',
+            title: 'Đăng xuất thành công',
+            text: 'Bạn đã đăng xuất thành công!'
+        });
+    }
+</script>
