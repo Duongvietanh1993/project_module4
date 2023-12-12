@@ -2,7 +2,89 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!--head-->
 <th:block th:insert="admin/layouts/homeAdmin/head.html"></th:block>
+<style>
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        margin-top: 50px;
+        margin-bottom: 600px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: flex;
+        align-items: flex-start;
+    }
 
+    .form-container label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .form-container input[type="text"],
+    .form-container textarea {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .form-container input[type="file"] {
+        display: none;
+    }
+
+    .form-container .custom-file-upload {
+        display: inline-block;
+        padding: 6px 12px;
+        cursor: pointer;
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 5px;
+    }
+
+    .form-container .custom-file-upload:hover {
+        background-color: #45a049;
+    }
+
+    .form-container .form-fields {
+        flex: 1;
+    }
+
+    .form-container .form-fields .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-container .form-fields .form-group label {
+        display: inline-block;
+        width: 100px;
+    }
+
+    .form-container button[type="submit"] {
+        margin-top: 15px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .form-container button[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    .form-container .form-preview {
+        margin-left: 20px;
+        max-width: 300px;
+    }
+
+    .form-container .form-preview img {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
 
 <body class="  ">
 <!-- loader Start -->
@@ -28,27 +110,40 @@
                         <div class="card-body">
                             <div class="table-responsive">
 
-                                <form method="post" th:action="@{/admin/create}" class="needs-validation" novalidate th:object="${category}" >
-                                    <div class="form-row">
-                                        <div class="col-md-6 mb-3">
-                                            <label for="validationCustom01">Tên Danh Mục: </label>
-                                            <input type="text" th:field="*{categoryName}" class="form-control" id="validationCustom01" required>
-                                            <div class="invalid-feedback">
-                                                Tên danh mục không được để trống !
+                                <div class="form-container">
+                                    <div class="form-fields">
+                                        <h2>Add Category</h2>
+                                        <form th:action="@{/admin/create}" method="post" th:object="${category}" class="needs-validation" novalidate>
+                                            <div class="form-group">
+                                                <label for="validationCustom01">Tên Danh Mục:</label>
+                                                <input type="text" th:field="*{categoryName}" class="form-control" id="validationCustom01" required>
+                                                <div class="invalid-feedback">
+                                                    Tên danh mục không được để trống!
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="col-md-6 mb-3">
-                                            <label for="validationCustom02">Ghi Chú: </label>
-                                            <input type="text" th:field="*{categoryDescription}" class="form-control" id="validationCustom02" required>
-                                            <div class="invalid-feedback">
-                                                Ghi chú không được để trống !
+                                            <div class="form-group">
+                                                <label for="validationTextarea">Ghi Chú:</label>
+                                                <textarea th:field="*{categoryDescription}" class="form-control" id="validationTextarea" placeholder="Required example textarea" required/>
+                                                <div class="invalid-feedback">
+                                                    Vui lòng nhập nội dung vào trường này.
+                                                </div>
                                             </div>
-                                        </div>
+
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="image" accept="image/*" required>
+                                                <label class="custom-file-label" for="image">Choose file...</label>
+                                                <div class="invalid-feedback">Thông báo lỗi tùy chỉnh cho tệp không hợp lệ</div>
+                                            </div>
+
+                                            <button type="submit">Thêm danh mục</button>
+                                        </form>
                                     </div>
-
-                                    <button class="btn btn-primary" type="submit">Submit form</button>
-                                </form>
+                                    <div class="form-preview">
+                                        <h3>Preview Image</h3>
+                                        <img id="preview-image" src="#" alt="Preview Image">
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -58,6 +153,7 @@
             </div>
         </div>
     </div>
+
     <!--tables end-->
 </div>
 <!-- Wrapper End-->
@@ -66,6 +162,27 @@
 
 <!--Script-->
 <th:block th:insert="admin/layouts/homeAdmin/script.html"></th:block>
+
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const inputImage = document.getElementById('image');
+        const previewImage = document.getElementById('preview-image');
+
+        inputImage.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                previewImage.src = e.target.result;
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        });
+    });
+</script>
+
 
 </body>
 </html>
