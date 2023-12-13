@@ -2,12 +2,11 @@ package com.ra.controller.user;
 
 import com.ra.model.dto.user.UserRegisterDTO;
 import com.ra.model.dto.user.response.UserResponesDTO;
-import com.ra.model.entity.User;
+import com.ra.model.entity.admin.User;
 import com.ra.model.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 

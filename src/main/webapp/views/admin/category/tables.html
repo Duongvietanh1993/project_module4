@@ -27,8 +27,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <span class="table-add float-right mb-3 ml-5">
-                                    <button class="btn btn-sm bg-success">
+                                <span class="table-add float-left mt-1 mr-5">
+                                    <button class="btn bg-success" style="padding: 5px 10px">
                                         <a style="color:white" th:href="@{/admin/create}">Add New</a>
                                     </button>
                                 </span>
@@ -37,6 +37,7 @@
                                     <tr>
                                         <th style="width: 150px">Mã Danh Mục</th>
                                         <th>Tên Danh Mục</th>
+                                        <th style="width: 150px">Ảnh</th>
                                         <th>Ghi Chú</th>
                                         <th>Trạng Thái</th>
                                         <th style="width: 150px" class="text-right"></th>
@@ -46,6 +47,10 @@
                                     <tr th:each="item: ${categoryList}">
                                         <td th:text="${item.getCategoryId()}"></td>
                                         <td th:text="${item.getCategoryName()}"></td>
+                                        <td>
+                                            <img style="max-width: 100px"
+                                                    th:src="${item.getCategoryImage()}">
+                                        </td>
                                         <td th:text="${item.getCategoryDescription()}"></td>
                                         <td>
                                             <span class="label "
@@ -54,8 +59,7 @@
                                         </td>
 
                                         <td class="text-center">
-                                            <button class="btn btn-primary">Sửa</button>
-                                            <button class="btn btn-danger">Xóa</button>
+                                            <a type="button" class="btn btn-primary" th:href="@{/admin/update/id(id=${item.getCategoryId})}">Sửa</a>
                                         </td>
                                     </tr>
 
@@ -65,6 +69,7 @@
                                     <tr>
                                         <th>Mã Danh Mục</th>
                                         <th>Tên Danh Mục</th>
+                                        <th>Ảnh</th>
                                         <th>Ghi Chú</th>
                                         <th>Trạng Thái</th>
 

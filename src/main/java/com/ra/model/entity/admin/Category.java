@@ -1,17 +1,19 @@
-package com.ra.model.entity;
+package com.ra.model.entity.admin;
 
 public class Category {
     private int categoryId;
     private String categoryName;
+    private String categoryImage;
     private String categoryDescription;
     private boolean categoryStatus;
 
     public Category() {
     }
 
-    public Category(int categoryId, String categoryName, String categoryDescription, boolean categoryStatus) {
+    public Category(int categoryId, String categoryName, String categoryImage, String categoryDescription, boolean categoryStatus) {
         this.categoryId = categoryId;
         this.categoryName = categoryName;
+        this.categoryImage = categoryImage;
         this.categoryDescription = categoryDescription;
         this.categoryStatus = categoryStatus;
     }
@@ -30,6 +32,14 @@ public class Category {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public String getCategoryImage() {
+        return categoryImage;
+    }
+
+    public void setCategoryImage(String categoryImage) {
+        this.categoryImage = categoryImage;
     }
 
     public String getCategoryDescription() {

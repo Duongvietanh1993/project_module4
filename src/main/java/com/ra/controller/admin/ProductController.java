@@ -1,6 +1,6 @@
 package com.ra.controller.admin;
 
-import com.ra.model.entity.Product;
+import com.ra.model.entity.admin.Product;
 import com.ra.model.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

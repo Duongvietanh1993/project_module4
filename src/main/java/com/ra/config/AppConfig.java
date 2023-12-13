@@ -1,11 +1,13 @@
 package com.ra.config;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -19,7 +21,14 @@ import org.thymeleaf.templatemode.TemplateMode;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.ra")
+@PropertySource("classpath:config.properties")
 public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
+    @Value("${pathProduct}")
+    private String pathProduct;
+    @Value("${pathCategory}")
+    private String pathCategory;
+    @Value("${pathUser}")
+    private String pathUser;
     private ApplicationContext applicationContext;
 
     @Bean
@@ -50,7 +59,7 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
     }
 
     @Bean
-    CommonsMultipartResolver multipartResolver(){
+    CommonsMultipartResolver multipartResolver() {
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
         multipartResolver.setMaxUploadSize(5000000);
         return multipartResolver;
@@ -71,8 +80,16 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
                         "/vendor/**",
                         "/extra-libs/**",
                         "/libs/**",
-                        "/video/**")
-                .addResourceLocations("classpath:assets/user/css/",
+                        "/video/**",
+                        "/upload/category/**",
+                        "/upload/product/**",
+                        "/upload/user/**")
+                .addResourceLocations(
+                        "file:" + pathProduct,
+                        "file:" + pathCategory,
+                        "file:" + pathUser,
+
+                        "classpath:assets/user/css/",
                         "classpath:assets/user/fonts/",
                         "classpath:assets/user/images/",
                         "classpath:assets/user/js/",
@@ -89,6 +106,6 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-       registry.addInterceptor((new AuthInterceptor())).addPathPatterns("/admin/**");
+        registry.addInterceptor((new AuthInterceptor())).addPathPatterns("/admin/**");
     }
 }

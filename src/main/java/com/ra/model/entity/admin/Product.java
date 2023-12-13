@@ -1,8 +1,9 @@
-package com.ra.model.entity;
+package com.ra.model.entity.admin;
 
 public class Product {
     private int productId;
     private String productName;
+    private String imageUrl;
     private String productDescription;
     private Float productPrice;
     private int productStock;
@@ -12,9 +13,10 @@ public class Product {
     public Product() {
     }
 
-    public Product(int productId, String productName, String productDescription, Float productPrice, int productStock, boolean productStatus, Category category) {
+    public Product(int productId, String productName, String imageUrl, String productDescription, Float productPrice, int productStock, boolean productStatus, Category category) {
         this.productId = productId;
         this.productName = productName;
+        this.imageUrl = imageUrl;
         this.productDescription = productDescription;
         this.productPrice = productPrice;
         this.productStock = productStock;
@@ -36,6 +38,14 @@ public class Product {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getProductDescription() {

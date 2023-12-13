@@ -18,6 +18,7 @@ CREATE TABLE category
 (
     id          INT PRIMARY KEY AUTO_INCREMENT,
     name        VARCHAR(60)  NOT NULL,
+    image       VARCHAR(255),
     description VARCHAR(255) NOT NULL,
     status      BIT(1) DEFAULT 1
 );
@@ -26,7 +27,8 @@ CREATE TABLE product
 (
     id          INT PRIMARY KEY AUTO_INCREMENT,
     name        VARCHAR(100) NOT NULL,
-    description VARCHAR(255) NOT NULL,
+    url_image   VARCHAR(255),
+    description TEXT NOT NULL,
     price       FLOAT        NOT NULL,
     stock       INT          NOT NULL,
     status      BIT(1) DEFAULT 1,
@@ -62,9 +64,10 @@ END;
 DELIMITER //
 CREATE PROCEDURE PROC_CREATE_CATEGORY(
     IN new_name VARCHAR(60),
+    IN new_image VARCHAR(255),
     IN new_description VARCHAR(255))
 BEGIN
-    INSERT INTO category (name, description) VALUES (new_name, new_description);
+    INSERT INTO category (name, image, description) VALUES (new_name, new_image, new_description);
 END;
 //
 
@@ -72,12 +75,14 @@ DELIMITER //
 CREATE PROCEDURE PROC_UPDATE_CATEGORY(
     IN id_update INT,
     IN new_name VARCHAR(100),
+    IN new_image VARCHAR(255),
     IN new_description VARCHAR(255),
     IN new_status BIT(1)
 )
 BEGIN
     UPDATE category
     SET name        = new_name,
+        image       = new_image,
         status      = new_status,
         description = new_description
     WHERE id = id_update;
@@ -182,15 +187,16 @@ END;
 DELIMITER //
 CREATE PROCEDURE PROC_CREATE_PRODUCT(
     IN new_name VARCHAR(100),
-    IN new_description VARCHAR(255),
+    IN new_url_image VARCHAR(255),
+    IN new_description TEXT,
     IN new_price FLOAT,
     IN new_stock INT,
     IN new_status BIT(1),
     IN new_category_id INT
 )
 BEGIN
-    INSERT INTO product (name, description, price, stock, status, category_id)
-    VALUES (new_name, new_description, new_price, new_stock, new_status, new_category_id);
+    INSERT INTO product (name, url_image, description, price, stock, status, category_id)
+    VALUES (new_name, new_url_image, new_description, new_price, new_stock, new_status, new_category_id);
 END;
 //
 
@@ -198,7 +204,8 @@ DELIMITER //
 CREATE PROCEDURE PROC_UPDATE_PRODUCT(
     IN id_update INT,
     IN new_name VARCHAR(100),
-    IN new_description VARCHAR(255),
+    IN new_url_image VARCHAR(255),
+    IN new_description TEXT,
     IN new_price FLOAT,
     IN new_stock INT,
     IN new_status BIT(1),
@@ -207,11 +214,12 @@ CREATE PROCEDURE PROC_UPDATE_PRODUCT(
 BEGIN
     UPDATE product
     SET name        = new_name,
+        url_image   = new_url_image,
         description = new_description,
         price       = new_price,
         stock       = new_stock,
         status      = new_status,
-        category_id= new_category_id
+        category_id = new_category_id
     WHERE id = id_update;
 END;
 //

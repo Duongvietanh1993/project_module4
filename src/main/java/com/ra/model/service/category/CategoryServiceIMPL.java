@@ -1,7 +1,7 @@
 package com.ra.model.service.category;
 
 import com.ra.model.dao.category.CategoryDAO;
-import com.ra.model.entity.Category;
+import com.ra.model.entity.admin.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

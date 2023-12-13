@@ -1,4 +1,4 @@
-package com.ra.model.entity;
+package com.ra.model.entity.admin;
 
 public class User {
     private int userId;

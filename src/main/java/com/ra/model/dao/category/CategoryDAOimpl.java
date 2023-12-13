@@ -1,6 +1,6 @@
 package com.ra.model.dao.category;
 
-import com.ra.model.entity.Category;
+import com.ra.model.entity.admin.Category;
 import com.ra.util.ConnectionDatabase;
 import org.springframework.stereotype.Repository;
 
@@ -26,6 +26,7 @@ public class CategoryDAOimpl implements CategoryDAO{
                 Category category = new Category();
                 category.setCategoryId(resultSet.getInt("id"));
                 category.setCategoryName(resultSet.getString("name"));
+                category.setCategoryImage(resultSet.getString("image"));
                 category.setCategoryDescription(resultSet.getString("description"));
                 category.setCategoryStatus(resultSet.getBoolean("status"));
                 categoryList.add(category);
@@ -46,16 +47,18 @@ public class CategoryDAOimpl implements CategoryDAO{
         int check;
         try {
             if (category.getCategoryId() == 0) {
-                CallableStatement callableStatement = connection.prepareCall("{CALL PROC_CREATE_CATEGORY(?,?)}");
+                CallableStatement callableStatement = connection.prepareCall("{CALL PROC_CREATE_CATEGORY(?,?,?)}");
                 callableStatement.setString(1, category.getCategoryName());
-                callableStatement.setString(2, category.getCategoryDescription());
+                callableStatement.setString(2, category.getCategoryImage());
+                callableStatement.setString(3, category.getCategoryDescription());
                 check = callableStatement.executeUpdate();
             } else {
-                CallableStatement callableStatement = connection.prepareCall("{CALL PROC_UPDATE_CATEGORY(?,?,?,?)}");
+                CallableStatement callableStatement = connection.prepareCall("{CALL PROC_UPDATE_CATEGORY(?,?,?,?,?)}");
                 callableStatement.setInt(1, category.getCategoryId());
                 callableStatement.setString(2, category.getCategoryName());
-                callableStatement.setString(3,category.getCategoryDescription());
-                callableStatement.setBoolean(4, category.isCategoryStatus());
+                callableStatement.setString(3, category.getCategoryImage());
+                callableStatement.setString(4,category.getCategoryDescription());
+                callableStatement.setBoolean(5, category.isCategoryStatus());
                 check = callableStatement.executeUpdate();
             }
             if (check > 0) {
@@ -81,6 +84,7 @@ public class CategoryDAOimpl implements CategoryDAO{
             while (resultSet.next()) {
                 category.setCategoryId(resultSet.getInt("id"));
                 category.setCategoryName(resultSet.getString("name"));
+                category.setCategoryImage(resultSet.getString("image"));
                 category.setCategoryDescription(resultSet.getString("description"));
                 category.setCategoryStatus(resultSet.getBoolean("status"));
             }

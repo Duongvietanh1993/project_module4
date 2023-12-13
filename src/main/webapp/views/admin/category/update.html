@@ -122,8 +122,9 @@
                                 <div class="form-container">
                                     <div class="form-fields">
                                         <h2>Thêm Mới Danh Mục</h2>
-                                        <form th:action="@{/admin/create}" method="post" th:object="${category}"
+                                        <form th:action="@{/admin/update}" method="post" th:object="${category}"
                                               enctype="multipart/form-data" class="needs-validation" novalidate>
+                                            <input type="hidden" th:field="*{categoryId}">
                                             <div class="form-group" style="margin-top: 10px">
                                                 <label for="validationCustom01">Tên Danh Mục:</label>
                                                 <input type="text" th:field="*{categoryName}" class="form-control"

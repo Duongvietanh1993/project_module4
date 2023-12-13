@@ -1,7 +1,6 @@
 package com.ra.model.dao.user;
 
-import com.ra.model.entity.Category;
-import com.ra.model.entity.User;
+import com.ra.model.entity.admin.User;
 import com.ra.util.ConnectionDatabase;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Repository;

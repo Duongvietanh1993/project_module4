@@ -3,7 +3,7 @@ package com.ra.model.service.user;
 import com.ra.model.dao.user.UserDAO;
 import com.ra.model.dto.user.UserRegisterDTO;
 import com.ra.model.dto.user.response.UserResponesDTO;
-import com.ra.model.entity.User;
+import com.ra.model.entity.admin.User;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

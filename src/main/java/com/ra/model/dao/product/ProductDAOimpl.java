@@ -1,7 +1,7 @@
 package com.ra.model.dao.product;
 
 import com.ra.model.dao.category.CategoryDAO;
-import com.ra.model.entity.Product;
+import com.ra.model.entity.admin.Product;
 import com.ra.util.ConnectionDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -29,6 +29,7 @@ public class ProductDAOimpl implements ProductDAO{
                 Product product = new Product();
                 product.setProductId(resultSet.getInt("id"));
                 product.setProductName(resultSet.getString("name"));
+                product.setImageUrl(resultSet.getString("url_image"));
                 product.setProductDescription(resultSet.getString("description"));
                 product.setProductPrice(resultSet.getFloat("price"));
                 product.setProductStock(resultSet.getInt("stock"));
@@ -51,23 +52,25 @@ public class ProductDAOimpl implements ProductDAO{
         try {
             connection = ConnectionDatabase.openConnection();
             if (product.getProductId() == 0) {
-                CallableStatement callableStatement = connection.prepareCall("{CALL PROC_CREATE_PRODUCT(?,?,?,?,?,?)}");
+                CallableStatement callableStatement = connection.prepareCall("{CALL PROC_CREATE_PRODUCT(?,?,?,?,?,?,?)}");
                 callableStatement.setString(1, product.getProductName());
-                callableStatement.setString(2, product.getProductDescription());
-                callableStatement.setFloat(3,product.getProductPrice());
-                callableStatement.setInt(4,product.getProductStock());
-                callableStatement.setBoolean(5, product.isProductStatus());
-                callableStatement.setInt(6, product.getCategory().getCategoryId());
-                check = callableStatement.executeUpdate();
-            } else {
-                CallableStatement callableStatement = connection.prepareCall("{CALL PROC_UPDATE_PRODUCT(?,?,?,?,?,?,?)}");
-                callableStatement.setInt(1, product.getProductId());
-                callableStatement.setString(2, product.getProductName());
+                callableStatement.setString(2, product.getImageUrl());
                 callableStatement.setString(3, product.getProductDescription());
                 callableStatement.setFloat(4,product.getProductPrice());
                 callableStatement.setInt(5,product.getProductStock());
                 callableStatement.setBoolean(6, product.isProductStatus());
                 callableStatement.setInt(7, product.getCategory().getCategoryId());
+                check = callableStatement.executeUpdate();
+            } else {
+                CallableStatement callableStatement = connection.prepareCall("{CALL PROC_UPDATE_PRODUCT(?,?,?,?,?,?,?,?)}");
+                callableStatement.setInt(1, product.getProductId());
+                callableStatement.setString(2, product.getProductName());
+                callableStatement.setString(3, product.getImageUrl());
+                callableStatement.setString(4, product.getProductDescription());
+                callableStatement.setFloat(5,product.getProductPrice());
+                callableStatement.setInt(6,product.getProductStock());
+                callableStatement.setBoolean(7, product.isProductStatus());
+                callableStatement.setInt(8, product.getCategory().getCategoryId());
                 check = callableStatement.executeUpdate();
             }
             if (check > 0) {
@@ -94,6 +97,7 @@ public class ProductDAOimpl implements ProductDAO{
             while (resultSet.next()) {
                 product.setProductId(resultSet.getInt("id"));
                 product.setProductName(resultSet.getString("name"));
+                product.setImageUrl(resultSet.getString("url_image"));
                 product.setProductDescription(resultSet.getString("description"));
                 product.setProductPrice(resultSet.getFloat("price"));
                 product.setProductStock(resultSet.getInt("stock"));
