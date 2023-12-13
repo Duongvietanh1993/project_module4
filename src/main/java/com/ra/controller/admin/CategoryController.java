@@ -27,22 +27,36 @@ public class CategoryController {
     public String table(Model model) {
         List<Category> list = categoryService.findAll();
         model.addAttribute("categoryList", list);
-        return "admin/category/tables";
+        return "admin/category/index_category";
     }
 
-    @GetMapping("/create")
+    @GetMapping("/create-category")
     public String create(Model model) {
         Category category = new Category();
         model.addAttribute("category", category);
-        return "admin/category/create";
+        return "admin/category/create_category";
     }
 
-    @PostMapping("/create")
-    public String handleCreate(@RequestParam("imageProduct") MultipartFile file,@ModelAttribute("category") Category category) {
+    @PostMapping("/create-category")
+    public String handleCreate(@RequestParam("imageCategory") MultipartFile file,
+                               @ModelAttribute("category") Category category) {
+        if (file.isEmpty()) {
+            // Xử lý khi không có tệp tin được chọn
+            // Ví dụ: Hiển thị thông báo lỗi hoặc chuyển hướng đến trang lỗi
+            return "error-page";
+        }
+
         String fileName = file.getOriginalFilename();
         File destination = new File(pathCategory + fileName);
 
         try {
+            // Kiểm tra sự tồn tại của tệp tin đích trước khi ghi tệp tin mới
+            if (destination.exists()) {
+                // Xử lý khi tệp tin đích đã tồn tại
+                // Ví dụ: Hiển thị thông báo lỗi hoặc chuyển hướng đến trang lỗi
+                return "error-page";
+            }
+
             file.transferTo(destination);
             category.setCategoryImage("http://localhost:8080/upload/category/" + fileName);
             categoryService.saveOrUpdate(category);
@@ -52,18 +66,31 @@ public class CategoryController {
         return "redirect:/admin/category";
     }
 
-    @GetMapping("/update/{id}")
+    @GetMapping("/update-category/{id}")
     public String update(@PathVariable("id")Integer id,Model model){
         Category category=categoryService.findById(id);
         model.addAttribute("category", category);
-        return "admin/category/update";
+        return "admin/category/update_category";
     }
-    @PostMapping("/update")
+    @PostMapping("/update-category")
     public String handleUpdate(@RequestParam("imageProduct") MultipartFile file, @ModelAttribute("category") Category category) {
+        if (file.isEmpty()) {
+            // Xử lý khi không có tệp tin được chọn
+            // Ví dụ: Hiển thị thông báo lỗi hoặc chuyển hướng đến trang lỗi
+            return "error-page";
+        }
+
         String fileName = file.getOriginalFilename();
         File destination = new File(pathCategory + fileName);
 
         try {
+            // Kiểm tra sự tồn tại của tệp tin đích trước khi ghi tệp tin mới
+            if (destination.exists()) {
+                // Xử lý khi tệp tin đích đã tồn tại
+                // Ví dụ: Hiển thị thông báo lỗi hoặc chuyển hướng đến trang lỗi
+                return "error-page";
+            }
+
             file.transferTo(destination);
             category.setCategoryImage("http://localhost:8080/upload/category/" + fileName);
             categoryService.saveOrUpdate(category);

@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--head-->
+<th:block th:insert="admin/layouts/homeAdmin/head.html"></th:block>
+<style>
+    .form-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        margin-top: 50px;
+        margin-bottom: 600px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: flex;
+        align-items: flex-start;
+        box-shadow: 0px 5px 10px #0c2556;
+    }
+
+    .form-container label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .form-container input[type="text"],
+    .form-container textarea {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .form-container input[type="file"] {
+        display: none;
+    }
+
+    .form-container .custom-file-upload {
+        display: inline-block;
+        padding: 6px 12px;
+        cursor: pointer;
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 5px;
+    }
+
+    .form-container .custom-file-upload:hover {
+        background-color: #45a049;
+    }
+
+    .form-container .form-fields {
+        flex: 1;
+    }
+
+    .form-container .form-fields .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-container .form-fields .form-group label {
+        display: inline-block;
+        width: 200px;
+        margin-top: 5px;
+    }
+
+    .form-container button[type="submit"] {
+        margin-top: 15px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .form-container button[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    .form-container .form-preview {
+        margin-left: 20px;
+        max-width: 300px;
+    }
+
+    .form-container .form-preview img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    #preview-image {
+        margin-top: 30px;
+        border: 1px solid rgba(12, 37, 86, 0.51);
+        border-radius: 10px;
+        box-shadow: 0px 2px 5px #0c2556;
+    }
+</style>
+
+<body class="  ">
+<!-- loader Start -->
+<div id="loading">
+    <div id="loading-center">
+    </div>
+</div>
+<!-- loader END -->
+<!-- Wrapper Start -->
+<div class="wrapper">
+    <!--sidebar-->
+    <th:block th:insert="admin/layouts/homeAdmin/sidebar.html"></th:block>
+
+    <!--navbar-->
+    <th:block th:insert="admin/layouts/homeAdmin/navbar.html"></th:block>
+
+    <!--tables-->
+    <div class="content-page">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+
+                                <div class="form-container">
+                                    <div class="form-fields">
+                                        <h2>Thêm Mới Danh Mục</h2>
+                                        <form th:action="@{/admin/update-category}" method="post" th:object="${category}"
+                                              enctype="multipart/form-data" class="needs-validation" novalidate>
+                                            <input type="hidden" th:field="*{categoryId}">
+                                            <div class="form-group" style="margin-top: 10px">
+                                                <label for="validationCustom01">Tên Danh Mục:</label>
+                                                <input type="text"
+                                                       th:field="*{categoryName}"
+                                                       class="form-control"
+                                                       id="validationCustom01"
+                                                       required>
+                                                <div class="invalid-feedback">
+                                                    Tên danh mục không được để trống!
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="validationTextarea">Ghi Chú:</label>
+                                                <textarea th:field="*{categoryDescription}"
+                                                          class="form-control"
+                                                          id="validationTextarea"
+                                                          placeholder="Required example textarea"
+                                                          required>
+                                                </textarea>
+                                                <div class="invalid-feedback">
+                                                    Vui lòng nhập nội dung vào trường này.
+                                                </div>
+                                            </div>
+
+                                            <label for="image">Hình Minh Họa: </label>
+                                            <div class="custom-file" >
+                                                <input type="file"
+                                                       class="custom-file-input"
+                                                       id="image"
+                                                       name="imageCategory"
+                                                       accept="image/*"
+                                                       required
+                                                       th:value="${category.categoryImage}">
+                                                <label class="custom-file-label" for="image">Choose file...</label>
+                                                <div class="invalid-feedback mt-4">Thông báo lỗi tùy chỉnh cho tệp không hợp
+                                                    lệ
+                                                </div>
+                                            </div>
+
+                                            <button style="margin-top: 40px" type="submit">Thêm danh mục</button>
+                                        </form>
+                                    </div>
+                                    <div class="form-preview">
+                                        <h4 style="margin-top: 10px">Hình Minh Họa</h4>
+                                        <img id="preview-image" src="#" alt="Preview Image">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--tables end-->
+</div>
+<!-- Wrapper End-->
+<!--footer-->
+<th:block th:insert="admin/layouts/homeAdmin/footer.html"></th:block>
+
+<!--Script-->
+<th:block th:insert="admin/layouts/homeAdmin/script.html"></th:block>
+
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const inputImage = document.getElementById('image');
+        const previewImage = document.getElementById('preview-image');
+
+        inputImage.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                previewImage.src = e.target.result;
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                // Nếu không có tệp được chọn, hiển thị hình ảnh xem trước từ giá trị mặc định
+                previewImage.src = '<đường_dẫn_đến_hình_ảnh_cũ>';
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>

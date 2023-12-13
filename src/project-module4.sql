@@ -17,7 +17,7 @@ CREATE TABLE user
 CREATE TABLE category
 (
     id          INT PRIMARY KEY AUTO_INCREMENT,
-    name        VARCHAR(60)  NOT NULL,
+    name        VARCHAR(60) UNIQUE NOT NULL,
     image       VARCHAR(255),
     description VARCHAR(255) NOT NULL,
     status      BIT(1) DEFAULT 1
@@ -26,7 +26,7 @@ CREATE TABLE category
 CREATE TABLE product
 (
     id          INT PRIMARY KEY AUTO_INCREMENT,
-    name        VARCHAR(100) NOT NULL,
+    name        VARCHAR(100) UNIQUE NOT NULL,
     url_image   VARCHAR(255),
     description TEXT NOT NULL,
     price       FLOAT        NOT NULL,

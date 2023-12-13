@@ -122,9 +122,8 @@
                                 <div class="form-container">
                                     <div class="form-fields">
                                         <h2>Thêm Mới Danh Mục</h2>
-                                        <form th:action="@{/admin/update}" method="post" th:object="${category}"
+                                        <form th:action="@{/admin/create-category}" method="post" th:object="${category}"
                                               enctype="multipart/form-data" class="needs-validation" novalidate>
-                                            <input type="hidden" th:field="*{categoryId}">
                                             <div class="form-group" style="margin-top: 10px">
                                                 <label for="validationCustom01">Tên Danh Mục:</label>
                                                 <input type="text" th:field="*{categoryName}" class="form-control"
@@ -138,18 +137,18 @@
                                                 <label for="validationTextarea">Ghi Chú:</label>
                                                 <textarea th:field="*{categoryDescription}" class="form-control"
                                                           id="validationTextarea"
-                                                          placeholder="Required example textarea" required/>
+                                                          placeholder="Required example textarea" required>
+                                                </textarea>
                                                 <div class="invalid-feedback">
                                                     Vui lòng nhập nội dung vào trường này.
                                                 </div>
                                             </div>
-
-                                            <div class="custom-file" style="margin-top: 20px">
-                                                <label  for="image">Hình Minh Họa: </label>
+                                            <label for="image">Hình Minh Họa: </label>
+                                            <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="image"
-                                                       th:name="imageProduct" accept="image/*" required>
+                                                       th:name="imageCategory" accept="image/*" required>
                                                 <label class="custom-file-label" for="image">Choose file...</label>
-                                                <div class="invalid-feedback">Thông báo lỗi tùy chỉnh cho tệp không hợp
+                                                <div class="invalid-feedback mt-4">Thông báo lỗi tùy chỉnh cho tệp không hợp
                                                     lệ
                                                 </div>
                                             </div>
