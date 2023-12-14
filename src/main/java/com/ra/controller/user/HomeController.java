@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -25,9 +26,17 @@ public class HomeController {
     public String index(Model model){
         List<Category> categoryList = categoryService.findAll();
         List<Product> productList = productService.findAll();
+        List<Product> productList1 = productService.findAll();
+        List<Product> productList2 = productService.findAll();
         session.setAttribute("category", categoryList);
         Collections.shuffle(productList);
         model.addAttribute("productList", productList);
+
+        Collections.shuffle(productList1);
+        model.addAttribute("productList1", productList1);
+
+        Collections.shuffle(productList2);
+        model.addAttribute("productList2", productList2);
         return "user/home";
     }
 }

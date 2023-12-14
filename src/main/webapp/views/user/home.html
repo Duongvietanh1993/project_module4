@@ -277,37 +277,194 @@
                             <div class="tab-pane active" id="featured">
 
                                 <div class="row gutter-sm">
-
-                                    <div class="col-6 col-md-3 order-md-first"
-                                         th:each="item, iterStat : ${productList}"
-                                         th:if="${iterStat.count} &lt;= 8">
-                                        <div class="product text-center appear-animate" data-animation-options="{
-                                                     'name': 'fadeInRightShorter',
-                                                        'delay': '.3s'
-                                                          }">
-                                            <figure class="product-media">
-                                                <a href="demo30-product.html">
-                                                    <img th:src="${item.imageUrl}" alt="products" width="600"
-                                                         height="675">
-                                                </a>
-                                                <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-cart" data-toggle="modal"
-                                                       data-target="#addCartModal"
-                                                       title="Add to cart"><i class="d-icon-bag"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-wishlist"
-                                                       title="Add to wishlist"><i
-                                                            class="d-icon-heart"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-quickview"
-                                                       title="Quick View"><i
-                                                            class="d-icon-search"></i></a>
+                                    <!---->
+                                    <div class="row gutter-sm">
+                                        <div class="col-md-6" th:with="lastIndex=${#lists.size(productList1) - 1}">
+                                            <div class="product text-center product-lg appear-animate"
+                                                 data-animation-options="{
+                                                'name': 'fadeIn',
+                                                'delay': '.5s'}"
+                                                 th:if="${productList1[lastIndex]}">
+                                                <figure class="product-media">
+                                                    <a th:href="@{demo30-product.html}">
+                                                        <img th:src="${productList1[lastIndex].imageUrl}" alt="products"
+                                                             width="600" height="675">
+                                                    </a>
+                                                    <div class="product-label-group">
+                                                        <label class="product-label label-sale">27% off</label>
+                                                    </div>
+                                                    <div class="product-action-vertical">
+                                                        <a href="#" class="btn-product-icon btn-cart"
+                                                           data-toggle="modal"
+                                                           data-target="#addCartModal" title="Add to cart"><i
+                                                                class="d-icon-bag"></i></a>
+                                                        <a href="#" class="btn-product-icon btn-wishlist"
+                                                           title="Add to wishlist"><i class="d-icon-heart"></i></a>
+                                                        <a href="#" class="btn-product-icon btn-quickview"
+                                                           title="Quick View"><i class="d-icon-search"></i></a>
+                                                    </div>
+                                                </figure>
+                                                <div class="product-details">
+                                                    <h3 class="product-name">
+                                                        <a href="demo30-product.html"
+                                                           th:text="${productList1[lastIndex].productName}"></a>
+                                                    </h3>
+                                                    <div class="product-price">
+                                                        <ins class="new-price"
+                                                             th:text="${(productList1[lastIndex].productPrice)-productList1[lastIndex].productPrice*0.27}"></ins>
+                                                        <del class="old-price"
+                                                             th:text="${productList1[lastIndex].productPrice}"></del>
+                                                    </div>
                                                 </div>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="demo30-product.html" th:text="${item.productName}"></a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span class="price" th:text="${item.productPrice}"></span>
+                                            </div>
+                                        </div>
+                                        <!---->
+                                        <div class="col-6 col-md-3 order-md-first">
+                                            <div class="product text-center appear-animate" data-animation-options="{
+                                                'name': 'fadeInRightShorter',
+                                                'delay': '.3s'
+                                            }"
+                                                 th:with="lastIndex=${#lists.size(productList1) - 2}"
+                                            >
+                                                <div th:if="${productList1[lastIndex]}">
+                                                    <figure class="product-media">
+                                                        <a href="demo30-product.html">
+                                                            <img th:src="${productList1[lastIndex].imageUrl}"
+                                                                 alt="products"
+                                                                 width="600" height="675">
+                                                        </a>
+                                                        <div class="product-action-vertical">
+                                                            <a href="#" class="btn-product-icon btn-cart"
+                                                               data-toggle="modal"
+                                                               data-target="#addCartModal" title="Add to cart"><i
+                                                                    class="d-icon-bag"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                               title="Add to wishlist"><i class="d-icon-heart"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                               title="Quick View"><i class="d-icon-search"></i></a>
+                                                        </div>
+                                                    </figure>
+                                                    <div class="product-details">
+                                                        <h3 class="product-name">
+                                                            <a href="demo30-product.html"
+                                                               th:text="${productList1[lastIndex].productName}"></a>
+                                                        </h3>
+                                                        <div class="product-price">
+                                                            <span class="price"
+                                                                  th:text="${productList1[lastIndex].productPrice}"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="product text-center appear-animate" data-animation-options="{
+                                                'name': 'fadeInRightShorter',
+                                                'delay': '.4s'
+                                            }"
+                                                 th:with="lastIndex=${#lists.size(productList1) - 3}">
+                                                <div th:if="${productList1[lastIndex]}">
+                                                    <figure class="product-media">
+                                                        <a href="demo30-product.html">
+                                                            <img th:src="${productList1[lastIndex].imageUrl}"
+                                                                 alt="products"
+                                                                 width="600" height="675">
+                                                        </a>
+                                                        <div class="product-label-group">
+                                                            <label class="product-label label-new">new</label>
+                                                        </div>
+                                                        <div class="product-action-vertical">
+                                                            <a href="#" class="btn-product-icon btn-cart"
+                                                               data-toggle="modal"
+                                                               data-target="#addCartModal" title="Add to cart"><i
+                                                                    class="d-icon-bag"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                               title="Add to wishlist"><i class="d-icon-heart"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                               title="Quick View"><i class="d-icon-search"></i></a>
+                                                        </div>
+                                                    </figure>
+                                                    <div class="product-details">
+                                                        <h3 class="product-name">
+                                                            <a href="demo30-product.html"
+                                                               th:text="${productList1[lastIndex].productName}"></a>
+                                                        </h3>
+                                                        <div class="product-price">
+                                                            <span class="price"
+                                                                  th:text="${productList1[lastIndex].productPrice}"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-3">
+                                            <div class="product text-center appear-animate" data-animation-options="{
+                                                'name': 'fadeInLeftShorter',
+                                                'delay': '.3s'
+                                            }"
+                                                 th:with="lastIndex=${#lists.size(productList1) - 4}">
+                                                <div th:if="${productList1[lastIndex]}">
+                                                    <figure class="product-media">
+                                                        <a href="demo30-product.html">
+                                                            <img th:src="${productList1[lastIndex].imageUrl}"
+                                                                 alt="products"
+                                                                 width="600" height="675">
+                                                        </a>
+                                                        <div class="product-action-vertical">
+                                                            <a href="#" class="btn-product-icon btn-cart"
+                                                               data-toggle="modal"
+                                                               data-target="#addCartModal" title="Add to cart"><i
+                                                                    class="d-icon-bag"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                               title="Add to wishlist"><i class="d-icon-heart"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                               title="Quick View"><i class="d-icon-search"></i></a>
+                                                        </div>
+                                                    </figure>
+                                                    <div class="product-details">
+                                                        <h3 class="product-name">
+                                                            <a href="demo30-product.html"
+                                                               th:text="${productList1[lastIndex].productName}"></a>
+                                                        </h3>
+                                                        <div class="product-price">
+                                                            <span class="price"
+                                                                  th:text="${productList1[lastIndex].productPrice}"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product text-center appear-animate" data-animation-options="{
+                                                'name': 'fadeInLeftShorter',
+                                                'delay': '.4s'
+                                            }"
+                                                 th:with="lastIndex=${#lists.size(productList1) - 5}">
+                                                <div th:if="${productList1[lastIndex]}">
+                                                    <figure class="product-media">
+                                                        <a href="demo30-product.html">
+                                                            <img th:src="${productList1[lastIndex].imageUrl}" alt="products"
+                                                                 width="600" height="675">
+                                                        </a>
+                                                        <div class="product-label-group">
+                                                            <label class="product-label label-new">new</label>
+                                                        </div>
+                                                        <div class="product-action-vertical">
+                                                            <a href="#" class="btn-product-icon btn-cart"
+                                                               data-toggle="modal"
+                                                               data-target="#addCartModal" title="Add to cart"><i
+                                                                    class="d-icon-bag"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                               title="Add to wishlist"><i class="d-icon-heart"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                               title="Quick View"><i class="d-icon-search"></i></a>
+                                                        </div>
+                                                    </figure>
+                                                    <div class="product-details">
+                                                        <h3 class="product-name">
+                                                            <a href="demo30-product.html"  th:text="${productList1[lastIndex].productName}"></a>
+                                                        </h3>
+                                                        <div class="product-price">
+                                                            <span class="price" th:text="${productList1[lastIndex].productPrice}"></span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -319,311 +476,400 @@
                             </div>
                             <div class="tab-pane" id="on-sale">
                                 <div class="row gutter-sm">
-                                    <div class="col-md-6">
-                                        <div class="product text-center product-lg">
-                                            <figure class="product-media">
-                                                <a href="demo30-product.html">
-                                                    <img src="images/demos/demo30/products/14.jpg" alt="products"
-                                                         width="600" height="675">
-                                                </a>
-                                                <div class="product-label-group">
-                                                    <label class="product-label label-sale">27% off</label>
+                                    <!---->
+                                    <div class="row gutter-sm">
+                                        <div class="col-md-6" th:with="lastIndex=${#lists.size(productList2) - 1}">
+                                            <div class="product text-center product-lg appear-animate"
+                                                 data-animation-options="{
+                                                'name': 'fadeIn',
+                                                'delay': '.5s'}"
+                                                 th:if="${productList2[lastIndex]}">
+                                                <figure class="product-media">
+                                                    <a th:href="@{demo30-product.html}">
+                                                        <img th:src="${productList2[lastIndex].imageUrl}" alt="products"
+                                                             width="600" height="675">
+                                                    </a>
+                                                    <div class="product-label-group">
+                                                        <label class="product-label label-sale">27% off</label>
+                                                    </div>
+                                                    <div class="product-action-vertical">
+                                                        <a href="#" class="btn-product-icon btn-cart"
+                                                           data-toggle="modal"
+                                                           data-target="#addCartModal" title="Add to cart"><i
+                                                                class="d-icon-bag"></i></a>
+                                                        <a href="#" class="btn-product-icon btn-wishlist"
+                                                           title="Add to wishlist"><i class="d-icon-heart"></i></a>
+                                                        <a href="#" class="btn-product-icon btn-quickview"
+                                                           title="Quick View"><i class="d-icon-search"></i></a>
+                                                    </div>
+                                                </figure>
+                                                <div class="product-details">
+                                                    <h3 class="product-name">
+                                                        <a href="demo30-product.html"
+                                                           th:text="${productList2[lastIndex].productName}"></a>
+                                                    </h3>
+                                                    <div class="product-price">
+                                                        <ins class="new-price"
+                                                             th:text="${(productList2[lastIndex].productPrice)-productList2[lastIndex].productPrice*0.27}"></ins>
+                                                        <del class="old-price"
+                                                             th:text="${productList2[lastIndex].productPrice}"></del>
+                                                    </div>
                                                 </div>
-                                                <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-cart" data-toggle="modal"
-                                                       data-target="#addCartModal" title="Add to cart"><i
-                                                            class="d-icon-bag"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-wishlist"
-                                                       title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-quickview"
-                                                       title="Quick View"><i class="d-icon-search"></i></a>
+                                            </div>
+                                        </div>
+                                        <!---->
+                                        <div class="col-6 col-md-3 order-md-first">
+                                            <div class="product text-center appear-animate" data-animation-options="{
+                                                'name': 'fadeInRightShorter',
+                                                'delay': '.3s'
+                                            }"
+                                                 th:with="lastIndex=${#lists.size(productList2) - 2}"
+                                            >
+                                                <div th:if="${productList2[lastIndex]}">
+                                                    <figure class="product-media">
+                                                        <a href="demo30-product.html">
+                                                            <img th:src="${productList2[lastIndex].imageUrl}"
+                                                                 alt="products"
+                                                                 width="600" height="675">
+                                                        </a>
+                                                        <div class="product-action-vertical">
+                                                            <a href="#" class="btn-product-icon btn-cart"
+                                                               data-toggle="modal"
+                                                               data-target="#addCartModal" title="Add to cart"><i
+                                                                    class="d-icon-bag"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                               title="Add to wishlist"><i class="d-icon-heart"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                               title="Quick View"><i class="d-icon-search"></i></a>
+                                                        </div>
+                                                    </figure>
+                                                    <div class="product-details">
+                                                        <h3 class="product-name">
+                                                            <a href="demo30-product.html"
+                                                               th:text="${productList2[lastIndex].productName}"></a>
+                                                        </h3>
+                                                        <div class="product-price">
+                                                            <span class="price"
+                                                                  th:text="${productList2[lastIndex].productPrice}"></span>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="demo30-product.html">Galaxy Table 10 inchi</a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <ins class="new-price">$199.99</ins>
-                                                    <del class="old-price">$210.00</del>
+                                            </div>
+
+                                            <div class="product text-center appear-animate" data-animation-options="{
+                                                'name': 'fadeInRightShorter',
+                                                'delay': '.4s'
+                                            }"
+                                                 th:with="lastIndex=${#lists.size(productList2) - 3}">
+                                                <div th:if="${productList2[lastIndex]}">
+                                                    <figure class="product-media">
+                                                        <a href="demo30-product.html">
+                                                            <img th:src="${productList2[lastIndex].imageUrl}"
+                                                                 alt="products"
+                                                                 width="600" height="675">
+                                                        </a>
+                                                        <div class="product-label-group">
+                                                            <label class="product-label label-new">new</label>
+                                                        </div>
+                                                        <div class="product-action-vertical">
+                                                            <a href="#" class="btn-product-icon btn-cart"
+                                                               data-toggle="modal"
+                                                               data-target="#addCartModal" title="Add to cart"><i
+                                                                    class="d-icon-bag"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                               title="Add to wishlist"><i class="d-icon-heart"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                               title="Quick View"><i class="d-icon-search"></i></a>
+                                                        </div>
+                                                    </figure>
+                                                    <div class="product-details">
+                                                        <h3 class="product-name">
+                                                            <a href="demo30-product.html"
+                                                               th:text="${productList2[lastIndex].productName}"></a>
+                                                        </h3>
+                                                        <div class="product-price">
+                                                            <span class="price"
+                                                                  th:text="${productList2[lastIndex].productPrice}"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-3">
+                                            <div class="product text-center appear-animate" data-animation-options="{
+                                                'name': 'fadeInLeftShorter',
+                                                'delay': '.3s'
+                                            }"
+                                                 th:with="lastIndex=${#lists.size(productList2) - 4}">
+                                                <div th:if="${productList2[lastIndex]}">
+                                                    <figure class="product-media">
+                                                        <a href="demo30-product.html">
+                                                            <img th:src="${productList2[lastIndex].imageUrl}"
+                                                                 alt="products"
+                                                                 width="600" height="675">
+                                                        </a>
+                                                        <div class="product-action-vertical">
+                                                            <a href="#" class="btn-product-icon btn-cart"
+                                                               data-toggle="modal"
+                                                               data-target="#addCartModal" title="Add to cart"><i
+                                                                    class="d-icon-bag"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                               title="Add to wishlist"><i class="d-icon-heart"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                               title="Quick View"><i class="d-icon-search"></i></a>
+                                                        </div>
+                                                    </figure>
+                                                    <div class="product-details">
+                                                        <h3 class="product-name">
+                                                            <a href="demo30-product.html"
+                                                               th:text="${productList2[lastIndex].productName}"></a>
+                                                        </h3>
+                                                        <div class="product-price">
+                                                            <span class="price"
+                                                                  th:text="${productList2[lastIndex].productPrice}"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product text-center appear-animate" data-animation-options="{
+                                                'name': 'fadeInLeftShorter',
+                                                'delay': '.4s'
+                                            }"
+                                                 th:with="lastIndex=${#lists.size(productList2) - 5}">
+                                                <div th:if="${productList2[lastIndex]}">
+                                                    <figure class="product-media">
+                                                        <a href="demo30-product.html">
+                                                            <img th:src="${productList2[lastIndex].imageUrl}" alt="products"
+                                                                 width="600" height="675">
+                                                        </a>
+                                                        <div class="product-label-group">
+                                                            <label class="product-label label-new">new</label>
+                                                        </div>
+                                                        <div class="product-action-vertical">
+                                                            <a href="#" class="btn-product-icon btn-cart"
+                                                               data-toggle="modal"
+                                                               data-target="#addCartModal" title="Add to cart"><i
+                                                                    class="d-icon-bag"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                               title="Add to wishlist"><i class="d-icon-heart"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                               title="Quick View"><i class="d-icon-search"></i></a>
+                                                        </div>
+                                                    </figure>
+                                                    <div class="product-details">
+                                                        <h3 class="product-name">
+                                                            <a href="demo30-product.html"  th:text="${productList2[lastIndex].productName}"></a>
+                                                        </h3>
+                                                        <div class="product-price">
+                                                            <span class="price" th:text="${productList2[lastIndex].productPrice}"></span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-6 col-md-3 order-md-first">
-                                        <div class="product text-center">
-                                            <figure class="product-media">
-                                                <a href="demo30-product.html">
-                                                    <img src="images/demos/demo30/products/6.jpg" alt="products"
-                                                         width="600" height="675">
-                                                </a>
-                                                <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-cart" data-toggle="modal"
-                                                       data-target="#addCartModal" title="Add to cart"><i
-                                                            class="d-icon-bag"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-wishlist"
-                                                       title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-quickview"
-                                                       title="Quick View"><i class="d-icon-search"></i></a>
-                                                </div>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="demo30-product.html">HeadPhone</a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span class="price">$19.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product text-center">
-                                            <figure class="product-media">
-                                                <a href="demo30-product.html">
-                                                    <img src="images/demos/demo30/products/7.jpg" alt="products"
-                                                         width="600" height="675">
-                                                </a>
-                                                <div class="product-label-group">
-                                                    <label class="product-label label-new">new</label>
-                                                </div>
-                                                <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-cart" data-toggle="modal"
-                                                       data-target="#addCartModal" title="Add to cart"><i
-                                                            class="d-icon-bag"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-wishlist"
-                                                       title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-quickview"
-                                                       title="Quick View"><i class="d-icon-search"></i></a>
-                                                </div>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="demo30-product.html">XBox Gaming Pad</a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span class="price">$34.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="product text-center">
-                                            <figure class="product-media">
-                                                <a href="demo30-product.html">
-                                                    <img src="images/demos/demo30/products/8.jpg" alt="products"
-                                                         width="600" height="675">
-                                                </a>
-                                                <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-cart" data-toggle="modal"
-                                                       data-target="#addCartModal" title="Add to cart"><i
-                                                            class="d-icon-bag"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-wishlist"
-                                                       title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-quickview"
-                                                       title="Quick View"><i class="d-icon-search"></i></a>
-                                                </div>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="demo30-product.html">Canon 1.4x Lens</a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span class="price">$58.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product text-center">
-                                            <figure class="product-media">
-                                                <a href="demo30-product.html">
-                                                    <img src="images/demos/demo30/products/9.jpg" alt="products"
-                                                         width="600" height="675">
-                                                </a>
-                                                <div class="product-label-group">
-                                                    <label class="product-label label-new">new</label>
-                                                </div>
-                                                <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-cart" data-toggle="modal"
-                                                       data-target="#addCartModal" title="Add to cart"><i
-                                                            class="d-icon-bag"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-wishlist"
-                                                       title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-quickview"
-                                                       title="Quick View"><i class="d-icon-search"></i></a>
-                                                </div>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="demo30-product.html">Sony 1.4x Lens</a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span class="price">$19.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                             <div class="tab-pane" id="best-sellers">
                                 <div class="row gutter-sm">
-                                    <div class="col-md-6">
-                                        <div class="product text-center product-lg appear-animate"
-                                             data-animation-options="{
+                                    <!---->
+                                    <div class="row gutter-sm">
+                                        <div class="col-md-6" th:with="lastIndex=${#lists.size(productList) - 1}">
+                                            <div class="product text-center product-lg appear-animate"
+                                                 data-animation-options="{
                                                 'name': 'fadeIn',
-                                                'delay': '.5s'
-                                            }">
-                                            <figure class="product-media">
-                                                <a href="demo30-product.html">
-                                                    <img src="images/demos/demo30/products/3.jpg" alt="products"
-                                                         width="600" height="675">
-                                                </a>
-                                                <div class="product-label-group">
-                                                    <label class="product-label label-sale">27% off</label>
-                                                </div>
-                                                <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-cart" data-toggle="modal"
-                                                       data-target="#addCartModal" title="Add to cart"><i
-                                                            class="d-icon-bag"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-wishlist"
-                                                       title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-quickview"
-                                                       title="Quick View"><i class="d-icon-search"></i></a>
-                                                </div>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="demo30-product.html">Kinova Smart Phone 7 inchi</a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <ins class="new-price">$199.99</ins>
-                                                    <del class="old-price">$210.00</del>
+                                                'delay': '.5s'}"
+                                                 th:if="${productList[lastIndex]}">
+                                                <figure class="product-media">
+                                                    <a th:href="@{demo30-product.html}">
+                                                        <img th:src="${productList[lastIndex].imageUrl}" alt="products"
+                                                             width="600" height="675">
+                                                    </a>
+                                                    <div class="product-label-group">
+                                                        <label class="product-label label-sale">27% off</label>
+                                                    </div>
+                                                    <div class="product-action-vertical">
+                                                        <a href="#" class="btn-product-icon btn-cart"
+                                                           data-toggle="modal"
+                                                           data-target="#addCartModal" title="Add to cart"><i
+                                                                class="d-icon-bag"></i></a>
+                                                        <a href="#" class="btn-product-icon btn-wishlist"
+                                                           title="Add to wishlist"><i class="d-icon-heart"></i></a>
+                                                        <a href="#" class="btn-product-icon btn-quickview"
+                                                           title="Quick View"><i class="d-icon-search"></i></a>
+                                                    </div>
+                                                </figure>
+                                                <div class="product-details">
+                                                    <h3 class="product-name">
+                                                        <a href="demo30-product.html"
+                                                           th:text="${productList[lastIndex].productName}"></a>
+                                                    </h3>
+                                                    <div class="product-price">
+                                                        <ins class="new-price"
+                                                             th:text="${(productList[lastIndex].productPrice)-productList[lastIndex].productPrice*0.27}"></ins>
+                                                        <del class="old-price"
+                                                             th:text="${productList[lastIndex].productPrice}"></del>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-6 col-md-3 order-md-first">
-                                        <div class="product text-center appear-animate" data-animation-options="{
+                                        <!---->
+                                        <div class="col-6 col-md-3 order-md-first">
+                                            <div class="product text-center appear-animate" data-animation-options="{
                                                 'name': 'fadeInRightShorter',
                                                 'delay': '.3s'
-                                            }">
-                                            <figure class="product-media">
-                                                <a href="demo30-product.html">
-                                                    <img src="images/demos/demo30/products/1.jpg" alt="products"
-                                                         width="600" height="675">
-                                                </a>
-                                                <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-cart" data-toggle="modal"
-                                                       data-target="#addCartModal" title="Add to cart"><i
-                                                            class="d-icon-bag"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-wishlist"
-                                                       title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-quickview"
-                                                       title="Quick View"><i class="d-icon-search"></i></a>
-                                                </div>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="demo30-product.html">XBox Gaming Pad</a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span class="price">$19.00</span>
+                                            }"
+                                                 th:with="lastIndex=${#lists.size(productList) - 2}"
+                                            >
+                                                <div th:if="${productList[lastIndex]}">
+                                                    <figure class="product-media">
+                                                        <a href="demo30-product.html">
+                                                            <img th:src="${productList[lastIndex].imageUrl}"
+                                                                 alt="products"
+                                                                 width="600" height="675">
+                                                        </a>
+                                                        <div class="product-action-vertical">
+                                                            <a href="#" class="btn-product-icon btn-cart"
+                                                               data-toggle="modal"
+                                                               data-target="#addCartModal" title="Add to cart"><i
+                                                                    class="d-icon-bag"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                               title="Add to wishlist"><i class="d-icon-heart"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                               title="Quick View"><i class="d-icon-search"></i></a>
+                                                        </div>
+                                                    </figure>
+                                                    <div class="product-details">
+                                                        <h3 class="product-name">
+                                                            <a href="demo30-product.html"
+                                                               th:text="${productList[lastIndex].productName}"></a>
+                                                        </h3>
+                                                        <div class="product-price">
+                                                            <span class="price"
+                                                                  th:text="${productList[lastIndex].productPrice}"></span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="product text-center appear-animate" data-animation-options="{
+
+                                            <div class="product text-center appear-animate" data-animation-options="{
                                                 'name': 'fadeInRightShorter',
                                                 'delay': '.4s'
-                                            }">
-                                            <figure class="product-media">
-                                                <a href="demo30-product.html">
-                                                    <img src="images/demos/demo30/products/2.jpg" alt="products"
-                                                         width="600" height="675">
-                                                </a>
-                                                <div class="product-label-group">
-                                                    <label class="product-label label-new">new</label>
-                                                </div>
-                                                <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-cart" data-toggle="modal"
-                                                       data-target="#addCartModal" title="Add to cart"><i
-                                                            class="d-icon-bag"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-wishlist"
-                                                       title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-quickview"
-                                                       title="Quick View"><i class="d-icon-search"></i></a>
-                                                </div>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="demo30-product.html">IP Camera</a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span class="price">$34.00</span>
+                                            }"
+                                                 th:with="lastIndex=${#lists.size(productList) - 3}">
+                                                <div th:if="${productList[lastIndex]}">
+                                                    <figure class="product-media">
+                                                        <a href="demo30-product.html">
+                                                            <img th:src="${productList[lastIndex].imageUrl}"
+                                                                 alt="products"
+                                                                 width="600" height="675">
+                                                        </a>
+                                                        <div class="product-label-group">
+                                                            <label class="product-label label-new">new</label>
+                                                        </div>
+                                                        <div class="product-action-vertical">
+                                                            <a href="#" class="btn-product-icon btn-cart"
+                                                               data-toggle="modal"
+                                                               data-target="#addCartModal" title="Add to cart"><i
+                                                                    class="d-icon-bag"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                               title="Add to wishlist"><i class="d-icon-heart"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                               title="Quick View"><i class="d-icon-search"></i></a>
+                                                        </div>
+                                                    </figure>
+                                                    <div class="product-details">
+                                                        <h3 class="product-name">
+                                                            <a href="demo30-product.html"
+                                                               th:text="${productList[lastIndex].productName}"></a>
+                                                        </h3>
+                                                        <div class="product-price">
+                                                            <span class="price"
+                                                                  th:text="${productList[lastIndex].productPrice}"></span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="product text-center appear-animate" data-animation-options="{
+                                        <div class="col-6 col-md-3">
+                                            <div class="product text-center appear-animate" data-animation-options="{
                                                 'name': 'fadeInLeftShorter',
                                                 'delay': '.3s'
-                                            }">
-                                            <figure class="product-media">
-                                                <a href="demo30-product.html">
-                                                    <img src="images/demos/demo30/products/4.jpg" alt="products"
-                                                         width="600" height="675">
-                                                </a>
-                                                <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-cart" data-toggle="modal"
-                                                       data-target="#addCartModal" title="Add to cart"><i
-                                                            class="d-icon-bag"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-wishlist"
-                                                       title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-quickview"
-                                                       title="Quick View"><i class="d-icon-search"></i></a>
-                                                </div>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="demo30-product.html">IP Camera 16x</a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span class="price">$58.00</span>
+                                            }"
+                                                 th:with="lastIndex=${#lists.size(productList) - 4}">
+                                                <div th:if="${productList[lastIndex]}">
+                                                    <figure class="product-media">
+                                                        <a href="demo30-product.html">
+                                                            <img th:src="${productList[lastIndex].imageUrl}"
+                                                                 alt="products"
+                                                                 width="600" height="675">
+                                                        </a>
+                                                        <div class="product-action-vertical">
+                                                            <a href="#" class="btn-product-icon btn-cart"
+                                                               data-toggle="modal"
+                                                               data-target="#addCartModal" title="Add to cart"><i
+                                                                    class="d-icon-bag"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                               title="Add to wishlist"><i class="d-icon-heart"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                               title="Quick View"><i class="d-icon-search"></i></a>
+                                                        </div>
+                                                    </figure>
+                                                    <div class="product-details">
+                                                        <h3 class="product-name">
+                                                            <a href="demo30-product.html"
+                                                               th:text="${productList[lastIndex].productName}"></a>
+                                                        </h3>
+                                                        <div class="product-price">
+                                                            <span class="price"
+                                                                  th:text="${productList[lastIndex].productPrice}"></span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="product text-center appear-animate" data-animation-options="{
+                                            <div class="product text-center appear-animate" data-animation-options="{
                                                 'name': 'fadeInLeftShorter',
                                                 'delay': '.4s'
-                                            }">
-                                            <figure class="product-media">
-                                                <a href="demo30-product.html">
-                                                    <img src="images/demos/demo30/products/5.jpg" alt="products"
-                                                         width="600" height="675">
-                                                </a>
-                                                <div class="product-label-group">
-                                                    <label class="product-label label-new">new</label>
-                                                </div>
-                                                <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-cart" data-toggle="modal"
-                                                       data-target="#addCartModal" title="Add to cart"><i
-                                                            class="d-icon-bag"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-wishlist"
-                                                       title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                    <a href="#" class="btn-product-icon btn-quickview"
-                                                       title="Quick View"><i class="d-icon-search"></i></a>
-                                                </div>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="demo30-product.html">Bluetooth Headphone</a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span class="price">$19.00</span>
+                                            }"
+                                                 th:with="lastIndex=${#lists.size(productList) - 5}">
+                                                <div th:if="${productList[lastIndex]}">
+                                                    <figure class="product-media">
+                                                        <a href="demo30-product.html">
+                                                            <img th:src="${productList[lastIndex].imageUrl}" alt="products"
+                                                                 width="600" height="675">
+                                                        </a>
+                                                        <div class="product-label-group">
+                                                            <label class="product-label label-new">new</label>
+                                                        </div>
+                                                        <div class="product-action-vertical">
+                                                            <a href="#" class="btn-product-icon btn-cart"
+                                                               data-toggle="modal"
+                                                               data-target="#addCartModal" title="Add to cart"><i
+                                                                    class="d-icon-bag"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                                               title="Add to wishlist"><i class="d-icon-heart"></i></a>
+                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                               title="Quick View"><i class="d-icon-search"></i></a>
+                                                        </div>
+                                                    </figure>
+                                                    <div class="product-details">
+                                                        <h3 class="product-name">
+                                                            <a href="demo30-product.html"  th:text="${productList[lastIndex].productName}"></a>
+                                                        </h3>
+                                                        <div class="product-price">
+                                                            <span class="price" th:text="${productList[lastIndex].productPrice}"></span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </section>
 
@@ -808,6 +1054,55 @@
 <th:block th:insert="user/layouts/home/toggle.html"></th:block>
 <!--script-->
 <th:block th:insert="user/layouts/home/script.html"></th:block>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+<script>
+    // Kiểm tra URL có chứa tham số error=true hay không
+    const urlParams = new URLSearchParams(window.location.search);
+    const error = urlParams.get('error');
+    const logout = urlParams.get('logout');
+    const regis = urlParams.get('regis');
+    const login = urlParams.get('login');
+
+    // Nếu có lỗi, hiển thị popup thông báo lỗi
+    if (error === 'true') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Đăng nhập thất bại',
+            text: 'Vui lòng kiểm tra lại thông tin đăng nhập.'
+        });
+    } else {
+        // Nếu không có lỗi, hiển thị popup thông báo thành công
+        Swal.fire({
+            icon: 'success',
+            title: 'Đăng nhập thành công',
+            text: 'Chào mừng bạn đã đăng nhập thành công!'
+        });
+    }
+
+    // Nếu có tham số logout=true, hiển thị popup thông báo đăng xuất thành công
+    if (logout === 'true') {
+        Swal.fire({
+            icon: 'success',
+            title: 'Đăng xuất thành công',
+            text: 'Bạn đã đăng xuất thành công!'
+        });
+    }
+    if (regis === 'true') {
+        Swal.fire({
+            icon: 'success',
+            title: 'Đăng ký thành công',
+            text: 'Chào mừng bạn đã đăng ký thành công!'
+        });
+    }
+    if (login === 'true') {
+        Swal.fire({
+            icon: 'success',
+            title: 'Đăng ký thành công',
+            text: 'Chào mừng bạn đã đăng ký thành công!'
+        });
+    }
+
+</script>
 </body>
 
 <!-- Mirrored from d-themes.com/html/riode/demo30.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Dec 2023 03:53:16 GMT -->
