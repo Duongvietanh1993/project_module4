@@ -12,6 +12,8 @@
     const urlParams = new URLSearchParams(window.location.search);
     const error = urlParams.get('error');
     const logout = urlParams.get('logout');
+    const regis = urlParams.get('regis');
+    const login = urlParams.get('login');
 
     // Nếu có lỗi, hiển thị popup thông báo lỗi
     if (error === 'true') {
@@ -37,4 +39,19 @@
             text: 'Bạn đã đăng xuất thành công!'
         });
     }
+    if (regis === 'true') {
+        Swal.fire({
+            icon: 'success',
+            title: 'Đăng ký thành công',
+            text: 'Chào mừng bạn đã đăng ký thành công!'
+        });
+    }
+    if (login === 'true') {
+        Swal.fire({
+            icon: 'success',
+            title: 'Đăng ký thành công',
+            text: 'Chào mừng bạn đã đăng ký thành công!'
+        });
+    }
+
 </script>

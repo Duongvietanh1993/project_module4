@@ -62,4 +62,31 @@ public class ProductController {
         }
         return "redirect:/admin/product";
     }
+    @GetMapping("/update-product/{id}")
+    public String update(@PathVariable("id") Integer id,Model model){
+        List<Category> categoryList = categoryService.findAll();
+        Product product = productService.findById(id);
+        model.addAttribute("category",categoryList);
+        model.addAttribute("product", product);
+        return "admin/product/update_product";
+    }
+
+    @PostMapping("/update-product")
+    public String handleUpdate(@RequestParam("imageProduct") MultipartFile file,
+                               @ModelAttribute("product") Product product){
+        String fileName = file.getOriginalFilename();
+        File destination = new File(pathProduct + fileName);
+
+        try {
+            if (!fileName.isEmpty()){
+                file.transferTo(destination);
+                product.setImageUrl("http://localhost:8080/upload/product/"+fileName);
+            }
+            productService.saveOrUpdate(product);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return "redirect:/admin/product";
+    }
 }

@@ -8,11 +8,10 @@
 
                 <nav class="main-nav main-nav-1">
                     <ul class="menu">
-                        <li><a th:href="@{/demo30-shop.html}">Electronic</a></li>
-                        <li><a th:href="@{/demo30-shop.html}">Computer</a></li>
-                        <li><a th:href="@{/demo30-shop.html}">TV & Watches</a></li>
-                        <li><a th:href="@{/demo30-shop.html}">Smart Home</a></li>
-                        <li><a th:href="@{/demo30-shop.html}">Appliances</a></li>
+                        <li th:each="category : ${session.category}" >
+                            <a th:text="${category.categoryName}" th:href="@{/}"></a>
+                        </li>
+
                     </ul>
                 </nav>
             </div>
@@ -57,7 +56,7 @@
                                 <a class="text-black" th:text="${session.user.userName}"></a>
                                 <ul>
                                     <li><a href="contact-us.html">Contact Us</a></li>
-                                    <li><a th:href="@{/logout}">Logout</a></li>
+                                    <li><a th:href="@{/logout-user}">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>

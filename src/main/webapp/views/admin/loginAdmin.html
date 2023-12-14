@@ -12,7 +12,10 @@
     <link rel="shortcut icon" href="images/favicon.ico" />
 
     <link rel="stylesheet" href="css/backend-plugin.min.css">
-    <link rel="stylesheet" href="css/backend.css?v=1.0.0">  </head>
+    <link rel="stylesheet" href="css/backend.css?v=1.0.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+</head>
+
 <body class=" ">
 <!-- loader Start -->
 <div id="loading">
@@ -109,5 +112,30 @@
 
 
 <!-- app JavaScript -->
-<script src="js/app.js"></script>  </body>
+<script src="js/app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+<script>
+    // Kiểm tra URL có chứa tham số error=true hay không
+    const urlParams = new URLSearchParams(window.location.search);
+    const logout = urlParams.get('logout');
+    const login = urlParams.get('login');
+
+
+     if (logout === 'true') {
+        Swal.fire({
+            icon: 'success',
+            title: 'Đăng xuất thành công',
+            text: 'Bạn đã đăng xuất thành công!'
+        });
+    } else if (login != 'true'){
+        Swal.fire({
+            icon: 'error',
+            title: 'Đăng nhập thất bại',
+            text: 'Vui lòng kiểm tra lại thông tin đăng nhập.'
+        });
+    }
+
+
+</script>
+</body>
 </html>

@@ -65,8 +65,7 @@
                                         </td>
 
                                         <td class="text-center">
-                                            <button class="btn btn-primary">Sửa</button>
-                                            <button class="btn btn-danger">Xóa</button>
+                                            <a type="button" class="btn btn-primary" th:href="@{/admin/update-product/{id}(id=${item.getProductId()})}">Sửa</a>
                                         </td>
                                     </tr>
 

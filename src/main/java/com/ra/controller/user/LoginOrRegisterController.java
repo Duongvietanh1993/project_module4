@@ -37,10 +37,9 @@ public class LoginOrRegisterController {
             return "redirect:/?error=true";
         }
     }
-    @GetMapping("/logout")
-    public String handleLogout(HttpSession session, RedirectAttributes redirectAttributes) {
+    @GetMapping("/logout-user")
+    public String handleLogout(HttpSession session) {
         session.removeAttribute("user");
-        redirectAttributes.addFlashAttribute("logoutMessage", "Đăng xuất thành công!");
         return "redirect:/?logout=true";
     }
 
@@ -54,7 +53,7 @@ public class LoginOrRegisterController {
     @PostMapping("/register")
     public String handleRegister(@Valid @ModelAttribute("user") UserRegisterDTO user) {
             if (userService.register(user)) {
-                return "redirect:/";
+                return "redirect:/?regis=true";
             }
         return "redirect:/register";
     }
@@ -71,10 +70,16 @@ public class LoginOrRegisterController {
         if (authent != null) {
             if (!authent.isUserRole()) {
                 session.setAttribute("admin", authent);
-                return "redirect:/admin/";
+                return "redirect:/admin/?login=true";
             }
         }
         return "redirect:/login-admin";
+    }
+
+    @GetMapping("/logout-admin")
+    public String handleLogoutAdmin(HttpSession session) {
+        session.removeAttribute("admin");
+        return "redirect:/login-admin?logout=true";
     }
 
 }

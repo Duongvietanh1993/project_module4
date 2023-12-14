@@ -73,26 +73,19 @@ public class CategoryController {
         return "admin/category/update_category";
     }
     @PostMapping("/update-category")
-    public String handleUpdate(@RequestParam("imageProduct") MultipartFile file, @ModelAttribute("category") Category category) {
-        if (file.isEmpty()) {
-            // Xử lý khi không có tệp tin được chọn
-            // Ví dụ: Hiển thị thông báo lỗi hoặc chuyển hướng đến trang lỗi
-            return "error-page";
-        }
+    public String handleUpdate(@RequestParam("imageCategory") MultipartFile file,
+                               @ModelAttribute("category") Category category) {
+
 
         String fileName = file.getOriginalFilename();
         File destination = new File(pathCategory + fileName);
 
         try {
-            // Kiểm tra sự tồn tại của tệp tin đích trước khi ghi tệp tin mới
-            if (destination.exists()) {
-                // Xử lý khi tệp tin đích đã tồn tại
-                // Ví dụ: Hiển thị thông báo lỗi hoặc chuyển hướng đến trang lỗi
-                return "error-page";
-            }
+           if (!fileName.isEmpty()){
+               file.transferTo(destination);
+               category.setCategoryImage("http://localhost:8080/upload/category/" + fileName);
+           }
 
-            file.transferTo(destination);
-            category.setCategoryImage("http://localhost:8080/upload/category/" + fileName);
             categoryService.saveOrUpdate(category);
         } catch (IOException e) {
             throw new RuntimeException(e);
