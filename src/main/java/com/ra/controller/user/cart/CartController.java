@@ -1,6 +1,7 @@
 package com.ra.controller.user.cart;
 
 import com.ra.model.entity.admin.Product;
+import com.ra.model.entity.admin.User;
 import com.ra.model.entity.user.CartItem;
 import com.ra.model.service.product.ProductService;
 import com.ra.model.service.user.CartService;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -29,8 +31,8 @@ public class CartController {
         return "user/cart/cart";
     }
 
-    @PostMapping("/create")
-    public String create(@RequestParam("quanlity") Integer quantity, @RequestParam("productId") Integer productId){
+    @PostMapping("/addCart")
+    public String create(@RequestParam("quantity") Integer quantity, @RequestParam("productId") Integer productId) {
         CartItem cartItem = new CartItem();
         Product product = productService.findById(productId);
         cartItem.setQuantity(quantity);
@@ -39,4 +41,12 @@ public class CartController {
         return "redirect:/cart";
     }
 
+//    @GetMapping("/checkout")
+//    public String checkout(HttpSession session) {
+//        if (session.getAttribute("user") == null) {
+//            return "redirect:/cart?action=checkout";
+//        }
+//        User user = (User) session.getAttribute("user");
+//        return "user/checkout/checkout";
+//    }
 }

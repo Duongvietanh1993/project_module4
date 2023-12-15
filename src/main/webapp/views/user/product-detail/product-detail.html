@@ -1,238 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Riode - Ultimate eCommerce Template</title>
-    <meta name="keywords" content="HTML5 Template"/>
-    <meta name="description" content="Riode - eCommerce Template">
-    <meta name="author" content="D-THEMES">
+<!--head-->
+<th:block th:insert="user/layouts/detail/head.html"></th:block>
 
-    <link rel="icon" type="image/png" href="images/icons/favicon.png">
-    <script>
-        WebFontConfig = {
-            google: {families: ['Poppins:400,500,600,700,800']}
-        };
-        (function (d) {
-            var wf = d.createElement('script'), s = d.scripts[0];
-            wf.src = 'js/webfont.js';
-            wf.async = true;
-            s.parentNode.insertBefore(wf, s);
-        })(document);
-    </script>
-    <link rel="stylesheet" type="text/css" href="vendor/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.min.css">
-
-    <link rel="stylesheet" type="text/css" href="vendor/magnific-popup/magnific-popup.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/owl-carousel/owl.carousel.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/photoswipe/photoswipe.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/photoswipe/default-skin/default-skin.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/sticky-icon/stickyicon.css">
-
-    <link rel="stylesheet" type="text/css" href="css/demo30.min.css">
-</head>
 <body>
 <div class="page-wrapper">
-    <header class="header header-border">
-        <div class="header-middle sticky-header fix-top sticky-content has-center">
-            <div class="container-fluid">
-                <div class="header-left">
-                    <a href="#" class="mobile-menu-toggle">
-                        <i class="d-icon-bars2"></i>
-                    </a>
-
-                    <nav class="main-nav main-nav-1">
-                        <ul class="menu">
-                            <li><a href="demo30-shop.html">Electronic</a></li>
-                            <li><a href="demo30-shop.html">Computer</a></li>
-                            <li><a href="demo30-shop.html">TV & Home Theater</a></li>
-                            <li><a href="demo30-shop.html">Smart Home</a></li>
-                            <li><a href="demo30-shop.html">Appliances</a></li>
-                        </ul>
-                    </nav>
-                </div>
-
-                <div class="header-center">
-                    <a href="demo30.html" class="logo mr-0">
-                        <img src="images/demos/demo30/logo.png" alt="logo" width="154" height="43"/>
-                    </a>
-
-                </div>
-
-                <div class="header-right">
-                    <nav class="main-nav main-nav-2">
-                        <ul class="menu">
-                            <li><a href="#">Hot Deals</a></li>
-                            <li><a href="#">Look book</a></li>
-                            <li><a href="contact-us.html">Contact</a></li>
-                            <li><a href="blog-classic.html">Blog</a></li>
-                            <li><a href="https://d-themes.com/buynow/riodehtml">Buy Riode!</a></li>
-                        </ul>
-                    </nav>
-
-                    <div class="header-search hs-toggle">
-                        <a href="#" class="search-toggle">
-                            <i class="d-icon-search"></i>
-                        </a>
-                        <form action="#" class="input-wrapper">
-                            <input type="text" class="form-control" name="search" autocomplete="off"
-                                   placeholder="Search your keyword..." required/>
-                            <button class="btn btn-search" type="submit">
-                                <i class="d-icon-search"></i>
-                            </button>
-                        </form>
-                    </div>
-
-                    <a class="login" href="ajax/login.html" data-toggle="login-modal">
-                        <i class="d-icon-user"></i>
-                    </a>
-
-                    <div class="dropdown wishlist wishlist-dropdown off-canvas">
-                        <a href="wishlist.html" class="wishlist-toggle">
-                            <i class="d-icon-heart"></i>
-                        </a>
-                        <div class="canvas-overlay"></div>
-
-                        <div class="dropdown-box scrollable">
-                            <div class="canvas-header">
-                                <h4 class="canvas-title">wishlist</h4>
-                                <a href="#" class="btn btn-dark btn-link btn-icon-right btn-close">close<i
-                                        class="d-icon-arrow-right"></i><span class="sr-only">wishlist</span></a>
-                            </div>
-                            <div class="products scrollable">
-                                <div class="product product-wishlist">
-                                    <figure class="product-media">
-                                        <a href="product.html">
-                                            <img src="images/wishlist/product-1.jpg" width="100" height="100"
-                                                 alt="product"/>
-                                        </a>
-                                        <button class="btn btn-link btn-close">
-                                            <i class="fas fa-times"></i><span class="sr-only">Close</span>
-                                        </button>
-                                    </figure>
-                                    <div class="product-detail">
-                                        <a href="product.html" class="product-name">Girl's Dark Bag</a>
-                                        <div class="price-box">
-                                            <span class="product-price">$84.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="product product-wishlist">
-                                    <figure class="product-media">
-                                        <a href="product.html">
-                                            <img src="images/wishlist/product-2.jpg" width="100" height="100"
-                                                 alt="product"/>
-                                        </a>
-                                        <button class="btn btn-link btn-close">
-                                            <i class="fas fa-times"></i><span class="sr-only">Close</span>
-                                        </button>
-                                    </figure>
-                                    <div class="product-detail">
-                                        <a href="product.html" class="product-name">Women's Fashional Comforter
-                                        </a>
-                                        <div class="price-box">
-                                            <span class="product-price">$84.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="product product-wishlist">
-                                    <figure class="product-media">
-                                        <a href="product.html">
-                                            <img src="images/wishlist/product-3.jpg" width="100" height="100"
-                                                 alt="product"/>
-                                        </a>
-                                        <button class="btn btn-link btn-close">
-                                            <i class="fas fa-times"></i><span class="sr-only">Close</span>
-                                        </button>
-                                    </figure>
-                                    <div class="product-detail">
-                                        <a href="product.html" class="product-name">Wide Knickerbockers</a>
-                                        <div class="price-box">
-                                            <span class="product-price">$84.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <a href="wishlist.html" class="btn btn-dark wishlist-btn mt-4"><span>Go To
-Wishlist</span></a>
-
-                        </div>
-
-                    </div>
-
-                    <div class="dropdown cart-dropdown type2">
-                        <a href="#" class="cart-toggle">
-                            <i class="d-icon-bag"><span class="cart-count">3</span></i>
-                        </a>
-
-                        <div class="dropdown-box">
-                            <div class="product product-cart-header">
-                                <span class="product-cart-counts">2 items</span>
-                                <span><a href="../layouts/cart/cart.html">View cart</a></span>
-                            </div>
-                            <div class="products scrollable">
-                                <div class="product product-cart mt-4">
-                                    <figure class="product-media">
-                                        <a href="#">
-                                            <img src="images/cart/product-1.jpg" alt="product" width="90" height="90"/>
-                                        </a>
-                                        <button class="btn btn-link btn-close">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </figure>
-                                    <div class="product-detail">
-                                        <a href="product.html" class="product-name">Fashion Summer
-                                            Dress</a>
-                                        <div class="price-box">
-                                            <span class="product-quantity">1</span>
-                                            <span class="product-price">$129.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="product product-cart">
-                                    <figure class="product-media">
-                                        <a href="#">
-                                            <img src="images/cart/product-2.jpg" alt="product" width="90" height="90"/>
-                                        </a>
-                                        <button class="btn btn-link btn-close">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </figure>
-                                    <div class="product-detail">
-                                        <a href="product.html" class="product-name">Mackintosh Poket Backpack</a>
-                                        <div class="price-box">
-                                            <span class="product-quantity">1</span>
-                                            <span class="product-price">$98.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="cart-total">
-                                <label>Subtotal:</label>
-                                <span class="price">$42.00</span>
-                            </div>
-
-                            <div class="cart-action">
-                                <a href="checkout.html" class="btn btn-dark"><span>Checkout</span></a>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </header>
+    <!--header-->
+    <th:block th:insert="user/layouts/home/header.html"></th:block>
 
     <main class="main single-product">
         <div class="page-content mb-10">
@@ -460,65 +236,28 @@ Wishlist</span></a>
                             </div>
                         </div>
                     </aside>
+
                     <div class="col-lg-9 col-xxl-10">
                         <div class="product product-single row mb-4">
                             <div class="col-md-6">
                                 <div class="product-gallery product-gallery-sticky">
                                     <div class="product-single-carousel owl-carousel owl-theme owl-nav-inner row cols-1">
                                         <figure class="product-image">
-                                            <img src="images/demos/demo30/product/product-1-580x652.jpg"
+                                            <img th:src="${detail.imageUrl}"
                                                  data-zoom-image="images/demos/demo30/product/product-1-800x900.jpg"
                                                  alt="FTPS Coffee Maker" width="900" height="900">`
                                         </figure>
-                                        <figure class="product-image">
-                                            <img src="images/demos/demo30/product/product-2-580x652.jpg"
-                                                 data-zoom-image="images/demos/demo30/product/product-2-800x900.jpg"
-                                                 alt="FTPS Coffee Maker" width="900" height="900">
-                                        </figure>
-                                        <figure class="product-image">
-                                            <img src="images/demos/demo30/product/product-3-580x652.jpg"
-                                                 data-zoom-image="images/demos/demo30/product/product-3-800x900.jpg"
-                                                 alt="FTPS Coffee Maker" width="900" height="900">
-                                        </figure>
-                                        <figure class="product-image">
-                                            <img src="images/demos/demo30/product/product-4-580x652.jpg"
-                                                 data-zoom-image="images/demos/demo30/product/product-4-800x900.jpg"
-                                                 alt="FTPS Coffee Maker" width="900" height="900">
-                                        </figure>
-                                    </div>
-                                    <div class="product-thumbs-wrap">
-                                        <div class="product-thumbs">
-                                            <div class="product-thumb active">
-                                                <img src="images/demos/demo30/product/product-1-109x122.jpg"
-                                                     alt="product thumbnail" width="109" height="122">
-                                            </div>
-                                            <div class="product-thumb">
-                                                <img src="images/demos/demo30/product/product-2-109x122.jpg"
-                                                     alt="product thumbnail" width="109" height="122">
-                                            </div>
-                                            <div class="product-thumb">
-                                                <img src="images/demos/demo30/product/product-3-109x122.jpg"
-                                                     alt="product thumbnail" width="109" height="122">
-                                            </div>
-                                            <div class="product-thumb">
-                                                <img src="images/demos/demo30/product/product-4-109x122.jpg"
-                                                     alt="product thumbnail" width="109" height="122">
-                                            </div>
-                                        </div>
-                                        <button class="thumb-up disabled"><i class="fas fa-chevron-left"></i></button>
-                                        <button class="thumb-down disabled"><i class="fas fa-chevron-right"></i>
-                                        </button>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="product-details">
-                                    <h1 class="product-name">FTPS Coffee Maker</h1>
+                                    <h1 class="product-name" th:text="${detail.productName}"></h1>
                                     <div class="product-meta">
                                         SKU: <span class="product-sku">12345670</span>
                                         BRAND: <span class="product-brand">The Northland</span>
                                     </div>
-                                    <div class="product-price">$139.00</div>
+                                    <div class="product-price" th:text="${#numbers.formatDecimal(detail.productPrice, 0, 'COMMA', 0, 'POINT')+ ' VND'}"></div>
                                     <div class="ratings-container">
                                         <div class="ratings-full">
                                             <span class="ratings" style="width:80%"></span>
@@ -527,10 +266,7 @@ Wishlist</span></a>
                                         <a href="#product-tab-reviews" class="link-to-tab rating-reviews">( 6
                                             reviews )</a>
                                     </div>
-                                    <p class="product-short-desc mb-5">Sed egestas, ante et vulputate volutpat, eros
-                                        pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro
-                                        ate vol faucibus adipiscing. Sed lectus te.<br>
-                                        et vulputate aucibus adipiscing. Sed lectus. us adipiscing. Sed lectus. </p>
+                                    <p class="product-short-desc mb-5" th:text="${detail.productDescription}"></p>
                                     <div class="product-form product-color">
                                         <label>Color:</label>
                                         <div class="product-variations">
@@ -554,7 +290,7 @@ Wishlist</span></a>
                                                 <a class="size" href="#">XL</a>
                                                 <a class="size" href="#">2XL</a>
                                             </div>
-                                            <a href="#" class="size-guide"><i class="d-icon-ruler"></i>Size
+                                            <a href="#" class="size-guide"> Size
                                                 Guide</a>
                                             <a href="#" class="product-variation-clean">Clean All</a>
                                         </div>
@@ -565,17 +301,22 @@ Wishlist</span></a>
                                     <hr class="product-divider">
                                     <div class="product-form product-qty">
                                         <label>QTY:</label>
+<!---->
+                                        <form method="post" action="addCart">
                                         <div class="product-form-group">
+                                            <input type="hidden" th:value="${detail.productId}" name="productId">
                                             <div class="input-group">
                                                 <button class="quantity-minus d-icon-minus"></button>
-                                                <input class="quantity form-control" type="number" min="1"
+                                                <input name="quantity" class="quantity form-control" type="number" min="1"
                                                        max="1000000">
                                                 <button class="quantity-plus d-icon-plus"></button>
                                             </div>
-                                            <button class="btn-product btn-cart"><i class="d-icon-bag"></i>Add
+
+                                            <button type="submit" class="btn btn-primary" style="padding: 0.8em!important"><i class="d-icon-bag mb-1 mr-1"></i>Add
                                                 To Cart
                                             </button>
                                         </div>
+                                        </form>
                                     </div>
                                     <hr class="product-divider mb-3">
                                     <div class="product-footer">
@@ -594,110 +335,7 @@ Wishlist</span></a>
                                         </div>
                                     </div>
                                     <div class="accordion accordion-simple mb-4">
-                                        <div class="card border-no card-description">
-                                            <div class="card-header">
-                                                <a href="#collapse1-1" class="collapse">Description</a>
-                                            </div>
-                                            <div id="collapse1-1" class="card-body expanded">
-                                                <div class="row mt-6">
-                                                    <div class="col-12">
-                                                        <h5 class="description-title mb-4 font-weight-semi-bold ls-m">
-                                                            Features</h5>
-                                                        <p class="mb-2">
-                                                            Praesent id enim sit amet.Tdio vulputate eleifend in in
-                                                            tortor.
-                                                            ellus massa. siti iMassa ristique sit amet condim vel,
-                                                            facilisis
-                                                            quimequistiqutiqu amet condim Dilisis Facilisis quis
-                                                            sapien. Praesent id
-                                                            enim sit amet.
-                                                        </p>
-                                                        <ul class="mb-8">
-                                                            <li>Praesent id enim sit amet.Tdio vulputate</li>
-                                                            <li>Eleifend in in tortor. ellus massa.Dristique sitii
-                                                            </li>
-                                                            <li>Massa ristique sit amet condim vel</li>
-                                                            <li>Dilisis Facilisis quis sapien. Praesent id enim sit
-                                                                amet
-                                                            </li>
-                                                        </ul>
-                                                        <h5 class="description-title mb-3 font-weight-semi-bold ls-m">
-                                                            Specifications
-                                                        </h5>
-                                                        <table class="table">
-                                                            <tbody>
-                                                            <tr>
-                                                                <th class="font-weight-semi-bold text-dark pl-0">
-                                                                    Material
-                                                                </th>
-                                                                <td class="pl-4">Praesent id enim sit amet.Tdio
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th class="font-weight-semi-bold text-dark pl-0">
-                                                                    Claimed Size
-                                                                </th>
-                                                                <td class="pl-4">Praesent id enim sit</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th class="font-weight-semi-bold text-dark pl-0">
-                                                                    Recommended Use
-                                                                </th>
-                                                                <td class="pl-4">Praesent id enim sit amet.Tdio
-                                                                    vulputate eleifend
-                                                                    in in tortor. ellus massa. siti
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th class="font-weight-semi-bold text-dark border-no pl-0">
-                                                                    Manufacturer
-                                                                </th>
-                                                                <td class="border-no pl-4">Praesent id enim</td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <h5 class="description-title font-weight-semi-bold ls-m mb-5">
-                                                            Video Description
-                                                        </h5>
-                                                        <figure class="p-relative d-inline-block mb-2">
-                                                            <img src="images/product/product.jpg" width="559"
-                                                                 height="370" alt="Product"/>
-                                                            <a class="btn-play btn-iframe"
-                                                               href="video/memory-of-a-woman.mp4">
-                                                                <i class="d-icon-play-solid"></i>
-                                                            </a>
-                                                        </figure>
-                                                        <div class="icon-box-wrap d-flex flex-wrap">
-                                                            <div class="icon-box icon-box-side icon-border pt-2 pb-2 mb-4 mr-10">
-                                                                <div class="icon-box-icon">
-                                                                    <i class="d-icon-lock"></i>
-                                                                </div>
-                                                                <div class="icon-box-content">
-                                                                    <h4 class="icon-box-title lh-1 pt-1 ls-s text-normal">
-                                                                        2 year
-                                                                        warranty</h4>
-                                                                    <p>Guarantee with no doubt</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="divider d-xl-show mr-10"></div>
-                                                            <div class="icon-box icon-box-side icon-border pt-2 pb-2 mb-4">
-                                                                <div class="icon-box-icon">
-                                                                    <i class="d-icon-truck"></i>
-                                                                </div>
-                                                                <div class="icon-box-content">
-                                                                    <h4 class="icon-box-title lh-1 pt-1 ls-s text-normal">
-                                                                        Free shipping
-                                                                    </h4>
-                                                                    <p>On orders over $50.00</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                         <div class="card card-additional">
                                             <div class="card-header">
                                                 <a href="#collapse1-2" class="expand">Additional information</a>
@@ -716,67 +354,7 @@ Wishlist</span></a>
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="card card-sizeguide">
-                                            <div class="card-header">
-                                                <a href="#collapse1-3" class="expand">Size Guide</a>
-                                            </div>
-                                            <div class="card-body collapsed" id="collapse1-3">
-                                                <figure class="size-image mt-4 mb-4">
-                                                    <img src="images/product/size_guide.png" alt="Size Guide Image"
-                                                         width="217" height="398">
-                                                </figure>
-                                                <figure class="size-table mt-4 mb-4">
-                                                    <table>
-                                                        <thead>
-                                                        <tr>
-                                                            <th>SIZE</th>
-                                                            <th>CHEST(IN.)</th>
-                                                            <th>WEIST(IN.)</th>
-                                                            <th>HIPS(IN.)</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <th>XS</th>
-                                                            <td>34-36</td>
-                                                            <td>27-29</td>
-                                                            <td>34.5-36.5</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>S</th>
-                                                            <td>36-38</td>
-                                                            <td>29-31</td>
-                                                            <td>36.5-38.5</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>M</th>
-                                                            <td>38-40</td>
-                                                            <td>31-33</td>
-                                                            <td>38.5-40.5</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>L</th>
-                                                            <td>40-42</td>
-                                                            <td>33-36</td>
-                                                            <td>40.5-43.5</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>XL</th>
-                                                            <td>42-45</td>
-                                                            <td>36-40</td>
-                                                            <td>43.5-47.5</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>XXL</th>
-                                                            <td>45-48</td>
-                                                            <td>40-44</td>
-                                                            <td>47.5-51.5</td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </figure>
-                                            </div>
-                                        </div>
+
                                         <div class="card card-reviews">
                                             <div class="card-header">
                                                 <a href="#collapse1-4" class="expand">Reviews (2)</a>
@@ -1139,6 +717,7 @@ Doe</span> on
                                 </div>
                             </div>
                         </div>
+
                         <section class="product-wrapper related-products">
                             <h2 class="title mb-4">Related Products
                             </h2>
@@ -1288,7 +867,9 @@ Doe</span> on
                                 </div>
                             </div>
                         </section>
+
                     </div>
+
                 </div>
             </div>
         </div>
@@ -1408,37 +989,6 @@ Doe</span> on
 
 </div>
 
-<div class="sticky-footer sticky-content fix-bottom">
-    <a href="demo30.html" class="sticky-link">
-        <i class="d-icon-home"></i>
-        <span>Home</span>
-    </a>
-    <a href="demo30-shop.html" class="sticky-link">
-        <i class="d-icon-volume"></i>
-        <span>Categories</span>
-    </a>
-    <a href="wishlist.html" class="sticky-link">
-        <i class="d-icon-heart"></i>
-        <span>Wishlist</span>
-    </a>
-    <a href="account.html" class="sticky-link">
-        <i class="d-icon-user"></i>
-        <span>Account</span>
-    </a>
-    <div class="header-search hs-toggle dir-up">
-        <a href="#" class="search-toggle sticky-link">
-            <i class="d-icon-search"></i>
-            <span>Search</span>
-        </a>
-        <form action="#" class="input-wrapper">
-            <input type="text" class="form-control" name="search" autocomplete="off"
-                   placeholder="Search your keyword..." required/>
-            <button class="btn btn-search" type="submit">
-                <i class="d-icon-search"></i>
-            </button>
-        </form>
-    </div>
-</div>
 
 <a id="scroll-top" href="#top" title="Top" role="button" class="scroll-top"><i class="d-icon-arrow-up"></i></a>
 
@@ -1476,310 +1026,9 @@ Doe</span> on
     </div>
 </div>
 
-<div class="mobile-menu-wrapper">
-    <div class="mobile-menu-overlay">
-    </div>
 
-    <a class="mobile-menu-close" href="#"><i class="d-icon-times"></i></a>
-
-    <div class="mobile-menu-container scrollable">
-        <form action="#" class="input-wrapper mb-6">
-            <input type="text" class="form-control" name="search" autocomplete="off"
-                   placeholder="Search your keyword..." required/>
-            <button class="btn btn-search" type="submit">
-                <i class="d-icon-search"></i>
-            </button>
-        </form>
-
-        <ul class="mobile-menu mmenu-anim">
-            <li>
-                <a href="demo30.html">Home</a>
-            </li>
-            <li>
-                <a href="demo30-shop.html">Categories</a>
-                <ul>
-                    <li>
-                        <a href="#">
-                            Variations 1
-                        </a>
-                        <ul>
-                            <li><a href="shop-classic-filter.html">Classic Filter</a></li>
-                            <li><a href="shop-left-toggle-sidebar.html">Left Toggle Filter</a></li>
-                            <li><a href="shop-right-toggle-sidebar.html">Right Toggle Sidebar</a></li>
-                            <li><a href="shop-horizontal-filter.html">Horizontal Filter </a>
-                            </li>
-                            <li><a href="shop-navigation-filter.html">Navigation Filter</a></li>
-                            <li><a href="shop-off-canvas-filter.html">Off-Canvas Filter </a></li>
-                            <li><a href="shop-top-banner.html">Top Banner</a></li>
-                            <li><a href="shop-inner-top-banner.html">Inner Top Banner</a></li>
-                            <li><a href="shop-with-bottom-block.html">With Bottom Block</a></li>
-                            <li><a href="shop-category-in-page-header.html">Category In Page Header</a>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Variations 2
-                        </a>
-                        <ul>
-                            <li><a href="shop-grid-3cols.html">3 Columns Mode</a></li>
-                            <li><a href="shop-grid-4cols.html">4 Columns Mode</a></li>
-                            <li><a href="shop-grid-5cols.html">5 Columns Mode</a></li>
-                            <li><a href="shop-grid-6cols.html">6 Columns Mode</a></li>
-                            <li><a href="shop-grid-7cols.html">7 Columns Mode</a></li>
-                            <li><a href="shop-grid-8cols.html">8 Columns Mode</a></li>
-                            <li><a href="shop-list-mode.html">List Mode</a></li>
-                            <li><a href="shop-pagination.html">Pagination</a></li>
-                            <li><a href="shop-infinite-ajaxscroll.html">Infinite Ajaxscroll </a></li>
-                            <li><a href="shop-loadmore-button.html">Loadmore Button</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Variations 3
-                        </a>
-                        <ul>
-                            <li><a href="shop-category-grid-shop.html">Category Grid Shop</a></li>
-                            <li><a href="shop-category%2bproducts.html">Category + Products</a></li>
-                            <li><a href="shop-default-1.html">Shop Default 1 </a>
-                            </li>
-                            <li><a href="shop-default-2.html">Shop Default 2</a></li>
-                            <li><a href="shop-default-3.html">Shop Default 3</a></li>
-                            <li><a href="shop-default-4.html">Shop Default 4</a></li>
-                            <li><a href="shop-default-5.html">Shop Default 5</a></li>
-                            <li><a href="shop-default-6.html">Shop Default 6</a></li>
-                            <li><a href="shop-default-7.html">Shop Default 7</a></li>
-                            <li><a href="shop-default-8.html">Shop Default 8</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li class="active">
-                <a href="demo30-product.html">Products</a>
-                <ul>
-                    <li>
-                        <a href="#">Product Pages</a>
-                        <ul>
-                            <li><a href="product-simple.html">Simple Product</a></li>
-                            <li><a href="product-featured.html">Featured &amp; On Sale</a></li>
-                            <li><a href="product.html">Variable Product</a></li>
-                            <li><a href="product-variable-swatch.html">Variation Swatch
-                                Product</a></li>
-                            <li><a href="product-grouped.html">Grouped Product </a></li>
-                            <li><a href="product-external.html">External Product</a></li>
-                            <li><a href="product-in-stock.html">In Stock Product</a></li>
-                            <li><a href="product-out-stock.html">Out of Stock Product</a></li>
-                            <li><a href="product-upsell.html">Upsell Products</a></li>
-                            <li><a href="product-cross-sell.html">Cross Sell Products</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Product Layouts</a>
-                        <ul>
-                            <li><a href="product-vertical.html">Vertical Thumb</a></li>
-                            <li><a href="product-horizontal.html">Horizontal Thumb</a></li>
-                            <li><a href="product-gallery.html">Gallery Type</a></li>
-                            <li><a href="product-grid.html">Grid Images</a></li>
-                            <li><a href="product-masonry.html">Masonry Images</a></li>
-                            <li><a href="product-sticky.html">Sticky Info</a></li>
-                            <li><a href="product-sticky-both.html">Left & Right Sticky</a></li>
-                            <li><a href="product-left-sidebar.html">With Left Sidebar</a></li>
-                            <li><a href="product-right-sidebar.html">With Right Sidebar</a></li>
-                            <li><a href="product-full.html">Full Width Layout </a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Product Features</a>
-                        <ul>
-                            <li><a href="product-sale.html">Sale Countdown</a></li>
-                            <li><a href="product-hurryup.html">Hurry Up Notification </a></li>
-                            <li><a href="product-attribute-guide.html">Attribute Guide </a></li>
-                            <li><a href="product-sticky-cart.html">Add Cart Sticky</a></li>
-                            <li><a href="product-thumbnail-label.html">Labels on Thumbnail</a>
-                            </li>
-                            <li><a href="product-more-description.html">More Description
-                                Tabs</a></li>
-                            <li><a href="product-accordion-data.html">Data In Accordion</a></li>
-                            <li><a href="product-tabinside.html">Data Inside</a></li>
-                            <li><a href="product-video.html">Video Thumbnail </a>
-                            </li>
-                            <li><a href="product-360-degree.html">360 Degree Thumbnail </a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Pages</a>
-                <ul>
-                    <li><a href="about-us.html">About</a></li>
-                    <li><a href="contact-us.html">Contact Us</a></li>
-                    <li><a href="account.html">Login</a></li>
-                    <li><a href="faq.html">FAQs</a></li>
-                    <li><a href="error-404.html">Error 404</a>
-                        <ul>
-                            <li><a href="error-404.html">Error 404-1</a></li>
-                            <li><a href="error-404-1.html">Error 404-2</a></li>
-                            <li><a href="error-404-2.html">Error 404-3</a></li>
-                            <li><a href="error-404-3.html">Error 404-4</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="coming-soon.html">Coming Soon</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="blog-classic.html">Blog</a>
-                <ul>
-                    <li><a href="blog-classic.html">Classic</a></li>
-                    <li><a href="blog-listing.html">Listing</a></li>
-                    <li>
-                        <a href="#">Grid</a>
-                        <ul>
-                            <li><a href="blog-grid-2col.html">Grid 2 columns</a></li>
-                            <li><a href="blog-grid-3col.html">Grid 3 columns</a></li>
-                            <li><a href="blog-grid-4col.html">Grid 4 columns</a></li>
-                            <li><a href="blog-grid-sidebar.html">Grid sidebar</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Masonry</a>
-                        <ul>
-                            <li><a href="blog-masonry-2col.html">Masonry 2 columns</a></li>
-                            <li><a href="blog-masonry-3col.html">Masonry 3 columns</a></li>
-                            <li><a href="blog-masonry-4col.html">Masonry 4 columns</a></li>
-                            <li><a href="blog-masonry-sidebar.html">Masonry sidebar</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Mask</a>
-                        <ul>
-                            <li><a href="blog-mask-grid.html">Blog mask grid</a></li>
-                            <li><a href="blog-mask-masonry.html">Blog mask masonry</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="post-single.html">Single Post</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="element.html">Elements</a>
-                <ul>
-                    <li>
-                        <a href="#">Elements 1</a>
-                        <ul>
-                            <li><a href="element-accordions.html">Accordions</a></li>
-                            <li><a href="element-alerts.html">Alert &amp; Notification</a></li>
-                            <li><a href="element-banner-effect.html">Banner Effect
-                            </a></li>
-                            <li><a href="element-banner.html">Banner
-                            </a></li>
-                            <li><a href="element-blog-posts.html">Blog Posts</a></li>
-                            <li><a href="element-breadcrumb.html">Breadcrumb
-                            </a></li>
-                            <li><a href="element-buttons.html">Buttons</a></li>
-                            <li><a href="element-cta.html">Call to Action</a></li>
-                            <li><a href="element-countdown.html">Countdown
-                            </a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Elements 2</a>
-                        <ul>
-                            <li><a href="element-counter.html">Counter </a></li>
-                            <li><a href="element-creative-grid.html">Creative Grid
-                            </a></li>
-                            <li><a href="element-animation.html">Entrance Effect
-                            </a></li>
-                            <li><a href="element-floating.html">Floating
-                            </a></li>
-                            <li><a href="element-hotspot.html">Hotspot
-                            </a></li>
-                            <li><a href="element-icon-boxes.html">Icon Boxes</a></li>
-                            <li><a href="element-icons.html">Icons</a></li>
-                            <li><a href="element-image-box.html">Image box
-                            </a></li>
-                            <li><a href="element-instagrams.html">Instagrams</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Elements 3</a>
-                        <ul>
-                            <li><a href="element-categories.html">Product Category</a></li>
-                            <li><a href="element-products.html">Products</a></li>
-                            <li><a href="element-product-banner.html">Products + Banner
-                            </a></li>
-                            <li><a href="element-product-grid.html">Products + Grid
-                            </a></li>
-                            <li><a href="element-product-single.html">Product Single
-                            </a>
-                            </li>
-                            <li><a href="element-product-tab.html">Products + Tab
-                            </a></li>
-                            <li><a href="element-single-product.html">Single Product
-                            </a></li>
-                            <li><a href="element-slider.html">Slider
-                            </a></li>
-                            <li><a href="element-social-link.html">Social Icons </a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Elements 4</a>
-                        <ul>
-                            <li><a href="element-subcategory.html">Subcategory
-                            </a></li>
-                            <li><a href="element-svg-floating.html">Svg Floating
-                            </a></li>
-                            <li><a href="element-tabs.html">Tabs</a></li>
-                            <li><a href="element-testimonials.html">Testimonials
-                            </a></li>
-                            <li><a href="element-titles.html">Title</a></li>
-                            <li><a href="element-typography.html">Typography</a></li>
-                            <li><a href="element-vendor.html">Vendor
-                            </a></li>
-                            <li><a href="element-video.html">Video
-                            </a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li><a href="https://d-themes.com/buynow/riodehtml">Buy Riode!</a></li>
-        </ul>
-
-    </div>
-</div>
-
-<div class="sticky-icons-wrapper">
-    <div class="sticky-icon-links">
-        <ul>
-            <li><a href="#" class="demo-toggle"><i class="fas fa-home"></i><span>Demos</span></a></li>
-            <li><a href="documentation.html"><i class="fas fa-info-circle"></i><span>Documentation</span></a>
-            </li>
-            <li><a href="https://themeforest.net/downloads/"><i class="fas fa-star"></i><span>Reviews</span></a>
-            </li>
-            <li><a href="https://d-themes.com/buynow/riodehtml"><i class="fas fa-shopping-cart"></i><span>Buy
-now!</span></a></li>
-        </ul>
-    </div>
-    <div class="demos-list">
-        <div class="demos-overlay"></div>
-        <a class="demos-close" href="#"><i class="close-icon"></i></a>
-        <div class="demos-content scrollable scrollable-light">
-            <h3 class="demos-title">Demos</h3>
-            <div class="demos">
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/sticky/sticky.min.js"></script>
-<script src="vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-<script src="vendor/owl-carousel/owl.carousel.min.js"></script>
-<script src="vendor/elevatezoom/jquery.elevatezoom.min.js"></script>
-<script src="vendor/photoswipe/photoswipe.min.js"></script>
-<script src="vendor/photoswipe/photoswipe-ui-default.min.js"></script>
-
-<script src="js/main.min.js"></script>
+<!--script-->
+<th:block th:insert="user/layouts/detail/script.html"></th:block>
 </body>
 
 <!-- Mirrored from d-themes.com/html/riode/demo30-product.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Dec 2023 04:10:54 GMT -->

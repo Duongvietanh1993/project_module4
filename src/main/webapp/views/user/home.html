@@ -300,7 +300,7 @@
                                                                 class="d-icon-bag"></i></a>
                                                         <a href="#" class="btn-product-icon btn-wishlist"
                                                            title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                        <a href="#" class="btn-product-icon btn-quickview"
+                                                        <a th:href="@{/product-detail/{id}(id=${productList1[lastIndex].productId})}" class="btn-product-icon"
                                                            title="Quick View"><i class="d-icon-search"></i></a>
                                                     </div>
                                                 </figure>
@@ -311,9 +311,9 @@
                                                     </h3>
                                                     <div class="product-price">
                                                         <ins class="new-price"
-                                                             th:text="${(productList1[lastIndex].productPrice)-productList1[lastIndex].productPrice*0.27}"></ins>
+                                                             th:text="${#numbers.formatDecimal(((productList1[lastIndex].productPrice)-productList1[lastIndex].productPrice*0.27), 0, 'COMMA', 0, 'POINT')+ ' VND'}"></ins>
                                                         <del class="old-price"
-                                                             th:text="${productList1[lastIndex].productPrice}"></del>
+                                                             th:text="${#numbers.formatDecimal(productList1[lastIndex].productPrice, 0, 'COMMA', 0, 'POINT')+ ' VND'}"></del>
                                                     </div>
                                                 </div>
                                             </div>
@@ -340,7 +340,7 @@
                                                                     class="d-icon-bag"></i></a>
                                                             <a href="#" class="btn-product-icon btn-wishlist"
                                                                title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                            <a th:href="@{/product-detail/{id}(id=${productList1[lastIndex].productId})}" class="btn-product-icon"
                                                                title="Quick View"><i class="d-icon-search"></i></a>
                                                         </div>
                                                     </figure>
@@ -351,7 +351,7 @@
                                                         </h3>
                                                         <div class="product-price">
                                                             <span class="price"
-                                                                  th:text="${productList1[lastIndex].productPrice}"></span>
+                                                                  th:text="${#numbers.formatDecimal(productList1[lastIndex].productPrice, 0, 'COMMA', 0, 'POINT') + ' VND'}"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -379,7 +379,7 @@
                                                                     class="d-icon-bag"></i></a>
                                                             <a href="#" class="btn-product-icon btn-wishlist"
                                                                title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                            <a th:href="@{/product-detail/{id}(id=${productList1[lastIndex].productId})}" class="btn-product-icon"
                                                                title="Quick View"><i class="d-icon-search"></i></a>
                                                         </div>
                                                     </figure>
@@ -390,7 +390,7 @@
                                                         </h3>
                                                         <div class="product-price">
                                                             <span class="price"
-                                                                  th:text="${productList1[lastIndex].productPrice}"></span>
+                                                                  th:text="${#numbers.formatDecimal(productList1[lastIndex].productPrice, 0, 'COMMA', 0, 'POINT') + ' VND'}"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -416,7 +416,7 @@
                                                                     class="d-icon-bag"></i></a>
                                                             <a href="#" class="btn-product-icon btn-wishlist"
                                                                title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                            <a th:href="@{/product-detail/{id}(id=${productList1[lastIndex].productId})}" class="btn-product-icon"
                                                                title="Quick View"><i class="d-icon-search"></i></a>
                                                         </div>
                                                     </figure>
@@ -427,7 +427,7 @@
                                                         </h3>
                                                         <div class="product-price">
                                                             <span class="price"
-                                                                  th:text="${productList1[lastIndex].productPrice}"></span>
+                                                                  th:text="${#numbers.formatDecimal(productList1[lastIndex].productPrice, 0, 'COMMA', 0, 'POINT') + ' VND'}"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -453,7 +453,7 @@
                                                                     class="d-icon-bag"></i></a>
                                                             <a href="#" class="btn-product-icon btn-wishlist"
                                                                title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                            <a th:href="@{/product-detail/{id}(id=${productList1[lastIndex].productId})}" class="btn-product-icon"
                                                                title="Quick View"><i class="d-icon-search"></i></a>
                                                         </div>
                                                     </figure>
@@ -462,7 +462,7 @@
                                                             <a href="demo30-product.html"  th:text="${productList1[lastIndex].productName}"></a>
                                                         </h3>
                                                         <div class="product-price">
-                                                            <span class="price" th:text="${productList1[lastIndex].productPrice}"></span>
+                                                            <span class="price" th:text="${#numbers.formatDecimal(productList1[lastIndex].productPrice, 0, 'COMMA', 0, 'POINT') + ' VND'}"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -499,7 +499,7 @@
                                                                 class="d-icon-bag"></i></a>
                                                         <a href="#" class="btn-product-icon btn-wishlist"
                                                            title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                        <a href="#" class="btn-product-icon btn-quickview"
+                                                        <a th:href="@{/product-detail/{id}(id=${productList2[lastIndex].productId})}" class="btn-product-icon"
                                                            title="Quick View"><i class="d-icon-search"></i></a>
                                                     </div>
                                                 </figure>
@@ -510,9 +510,9 @@
                                                     </h3>
                                                     <div class="product-price">
                                                         <ins class="new-price"
-                                                             th:text="${(productList2[lastIndex].productPrice)-productList2[lastIndex].productPrice*0.27}"></ins>
+                                                             th:text="${#numbers.formatDecimal(((productList2[lastIndex].productPrice)-productList2[lastIndex].productPrice*0.27), 0, 'COMMA', 0, 'POINT')+ ' VND'}"></ins>
                                                         <del class="old-price"
-                                                             th:text="${productList2[lastIndex].productPrice}"></del>
+                                                             th:text="${#numbers.formatDecimal(productList2[lastIndex].productPrice, 0, 'COMMA', 0, 'POINT') + ' VND'}"></del>
                                                     </div>
                                                 </div>
                                             </div>
@@ -539,7 +539,7 @@
                                                                     class="d-icon-bag"></i></a>
                                                             <a href="#" class="btn-product-icon btn-wishlist"
                                                                title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                            <a th:href="@{/product-detail/{id}(id=${productList2[lastIndex].productId})}" class="btn-product-icon"
                                                                title="Quick View"><i class="d-icon-search"></i></a>
                                                         </div>
                                                     </figure>
@@ -550,7 +550,7 @@
                                                         </h3>
                                                         <div class="product-price">
                                                             <span class="price"
-                                                                  th:text="${productList2[lastIndex].productPrice}"></span>
+                                                                  th:text="${#numbers.formatDecimal(productList2[lastIndex].productPrice, 0, 'COMMA', 0, 'POINT') + ' VND'}"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -578,7 +578,7 @@
                                                                     class="d-icon-bag"></i></a>
                                                             <a href="#" class="btn-product-icon btn-wishlist"
                                                                title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                            <a th:href="@{/product-detail/{id}(id=${productList2[lastIndex].productId})}" class="btn-product-icon"
                                                                title="Quick View"><i class="d-icon-search"></i></a>
                                                         </div>
                                                     </figure>
@@ -589,7 +589,7 @@
                                                         </h3>
                                                         <div class="product-price">
                                                             <span class="price"
-                                                                  th:text="${productList2[lastIndex].productPrice}"></span>
+                                                                  th:text="${#numbers.formatDecimal(productList2[lastIndex].productPrice, 0, 'COMMA', 0, 'POINT') + ' VND'}"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -615,7 +615,7 @@
                                                                     class="d-icon-bag"></i></a>
                                                             <a href="#" class="btn-product-icon btn-wishlist"
                                                                title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                            <a th:href="@{/product-detail/{id}(id=${productList2[lastIndex].productId})}" class="btn-product-icon"
                                                                title="Quick View"><i class="d-icon-search"></i></a>
                                                         </div>
                                                     </figure>
@@ -626,7 +626,7 @@
                                                         </h3>
                                                         <div class="product-price">
                                                             <span class="price"
-                                                                  th:text="${productList2[lastIndex].productPrice}"></span>
+                                                                  th:text="${#numbers.formatDecimal(productList2[lastIndex].productPrice, 0, 'COMMA', 0, 'POINT') + ' VND'}"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -652,7 +652,7 @@
                                                                     class="d-icon-bag"></i></a>
                                                             <a href="#" class="btn-product-icon btn-wishlist"
                                                                title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                            <a th:href="@{/product-detail/{id}(id=${productList2[lastIndex].productId})}" class="btn-product-icon"
                                                                title="Quick View"><i class="d-icon-search"></i></a>
                                                         </div>
                                                     </figure>
@@ -661,7 +661,7 @@
                                                             <a href="demo30-product.html"  th:text="${productList2[lastIndex].productName}"></a>
                                                         </h3>
                                                         <div class="product-price">
-                                                            <span class="price" th:text="${productList2[lastIndex].productPrice}"></span>
+                                                            <span class="price" th:text="${#numbers.formatDecimal(productList2[lastIndex].productPrice, 0, 'COMMA', 0, 'POINT') + ' VND'}"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -696,7 +696,7 @@
                                                                 class="d-icon-bag"></i></a>
                                                         <a href="#" class="btn-product-icon btn-wishlist"
                                                            title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                        <a href="#" class="btn-product-icon btn-quickview"
+                                                        <a th:href="@{/product-detail/{id}(id=${productList[lastIndex].productId})}" class="btn-product-icon"
                                                            title="Quick View"><i class="d-icon-search"></i></a>
                                                     </div>
                                                 </figure>
@@ -707,9 +707,9 @@
                                                     </h3>
                                                     <div class="product-price">
                                                         <ins class="new-price"
-                                                             th:text="${(productList[lastIndex].productPrice)-productList[lastIndex].productPrice*0.27}"></ins>
+                                                             th:text="${#numbers.formatDecimal(((productList[lastIndex].productPrice)-productList[lastIndex].productPrice*0.27), 0, 'COMMA', 0, 'POINT')+ ' VND'}"></ins>
                                                         <del class="old-price"
-                                                             th:text="${productList[lastIndex].productPrice}"></del>
+                                                             th:text="${#numbers.formatDecimal(productList[lastIndex].productPrice, 0, 'COMMA', 0, 'POINT') + ' VND'}"></del>
                                                     </div>
                                                 </div>
                                             </div>
@@ -736,7 +736,7 @@
                                                                     class="d-icon-bag"></i></a>
                                                             <a href="#" class="btn-product-icon btn-wishlist"
                                                                title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                            <a th:href="@{/product-detail/{id}(id=${productList[lastIndex].productId})}" class="btn-product-icon"
                                                                title="Quick View"><i class="d-icon-search"></i></a>
                                                         </div>
                                                     </figure>
@@ -747,7 +747,7 @@
                                                         </h3>
                                                         <div class="product-price">
                                                             <span class="price"
-                                                                  th:text="${productList[lastIndex].productPrice}"></span>
+                                                                  th:text="${#numbers.formatDecimal(productList[lastIndex].productPrice, 0, 'COMMA', 0, 'POINT') + ' VND'}"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -775,7 +775,7 @@
                                                                     class="d-icon-bag"></i></a>
                                                             <a href="#" class="btn-product-icon btn-wishlist"
                                                                title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                            <a th:href="@{/product-detail/{id}(id=${productList[lastIndex].productId})}" class="btn-product-icon"
                                                                title="Quick View"><i class="d-icon-search"></i></a>
                                                         </div>
                                                     </figure>
@@ -786,7 +786,7 @@
                                                         </h3>
                                                         <div class="product-price">
                                                             <span class="price"
-                                                                  th:text="${productList[lastIndex].productPrice}"></span>
+                                                                  th:text="${#numbers.formatDecimal(productList[lastIndex].productPrice, 0, 'COMMA', 0, 'POINT') + ' VND'}"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -812,7 +812,7 @@
                                                                     class="d-icon-bag"></i></a>
                                                             <a href="#" class="btn-product-icon btn-wishlist"
                                                                title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                            <a th:href="@{/product-detail/{id}(id=${productList[lastIndex].productId})}" class="btn-product-icon"
                                                                title="Quick View"><i class="d-icon-search"></i></a>
                                                         </div>
                                                     </figure>
@@ -823,7 +823,7 @@
                                                         </h3>
                                                         <div class="product-price">
                                                             <span class="price"
-                                                                  th:text="${productList[lastIndex].productPrice}"></span>
+                                                                  th:text="${#numbers.formatDecimal(productList[lastIndex].productPrice, 0, 'COMMA', 0, 'POINT') + ' VND'}"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -849,7 +849,7 @@
                                                                     class="d-icon-bag"></i></a>
                                                             <a href="#" class="btn-product-icon btn-wishlist"
                                                                title="Add to wishlist"><i class="d-icon-heart"></i></a>
-                                                            <a href="#" class="btn-product-icon btn-quickview"
+                                                            <a th:href="@{/product-detail/{id}(id=${productList[lastIndex].productId})}" class="btn-product-icon"
                                                                title="Quick View"><i class="d-icon-search"></i></a>
                                                         </div>
                                                     </figure>
@@ -858,7 +858,7 @@
                                                             <a href="demo30-product.html"  th:text="${productList[lastIndex].productName}"></a>
                                                         </h3>
                                                         <div class="product-price">
-                                                            <span class="price" th:text="${productList[lastIndex].productPrice}"></span>
+                                                            <span class="price" th:text="${#numbers.formatDecimal(productList[lastIndex].productPrice, 0, 'COMMA', 0, 'POINT') + ' VND'}"></span>
                                                         </div>
                                                     </div>
                                                 </div>

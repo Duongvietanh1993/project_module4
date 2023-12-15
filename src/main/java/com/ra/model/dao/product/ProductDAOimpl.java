@@ -1,6 +1,7 @@
 package com.ra.model.dao.product;
 
 import com.ra.model.dao.category.CategoryDAO;
+import com.ra.model.entity.admin.Category;
 import com.ra.model.entity.admin.Product;
 import com.ra.util.ConnectionDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,5 +109,34 @@ public class ProductDAOimpl implements ProductDAO{
             throw new RuntimeException(e);
         }
         return product;
+    }
+
+    @Override
+    public List<Product> findAllByCategoryId(int id) {
+        Connection connection = null;
+        List<Product> products = new ArrayList<>();
+        try {
+            connection = ConnectionDatabase.openConnection();
+            CallableStatement callableStatement = connection.prepareCall("{CALL PROC_SHOW_PRODUCT_BY_CATEGORY(?)}");
+            callableStatement.setInt(1,id);
+            ResultSet resultSet = callableStatement.executeQuery();
+            while (resultSet.next()) {
+                Product product = new Product();
+                product.setProductId(resultSet.getInt("id"));
+                product.setProductName(resultSet.getString("name"));
+                product.setImageUrl(resultSet.getString("url_image"));
+                product.setProductDescription(resultSet.getString("description"));
+                product.setProductPrice(resultSet.getFloat("price"));
+                product.setProductStock(resultSet.getInt("stock"));
+                product.setProductStatus(resultSet.getBoolean("status"));
+                product.setCategory(categoryDAO.findById(resultSet.getInt("category_id")));
+                products.add(product);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            ConnectionDatabase.closeConnection(connection);
+        }
+        return products;
     }
 }

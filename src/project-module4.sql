@@ -227,7 +227,7 @@ END;
 DELIMITER //
 CREATE PROCEDURE PROC_FIND_PRODUCT_BY_ID(IN new_id INT)
 BEGIN
-    SELECT *FROM product WHERE id = new_id;
+    SELECT * FROM product WHERE id = new_id;
 END;
 //
 
@@ -235,5 +235,12 @@ DELIMITER //
 CREATE PROCEDURE PROC_UPDATE_STATUS_PRODUCT(IN new_id INT, IN new_status BIT(1))
 BEGIN
     UPDATE product SET status = new_status WHERE id = new_id;
+END;
+//
+
+DELIMITER //
+CREATE PROCEDURE PROC_SHOW_PRODUCT_BY_CATEGORY(IN new_category_id INT)
+BEGIN
+    SELECT * FROM product WHERE category_id = new_category_id;
 END;
 //

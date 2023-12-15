@@ -16,7 +16,7 @@ public class CartService {
     List<CartItem> cartItems = new ArrayList<>();
 
     public List<CartItem> getCartItems() {
-        //kiêểm tra trong sesion có không thì lấy và gán vào cartItem không có thì không
+        //kiểm tra trong sesion có không thì lấy và gán vào cartItem không có thì không
         cartItems = httpSession.getAttribute("cart") != null ? (List<CartItem>) httpSession.getAttribute("cart") : new ArrayList<>();
 
 

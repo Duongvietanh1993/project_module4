@@ -24,4 +24,9 @@ public class ProductServiceIMPL implements ProductService{
     public Product findById(Integer integer) {
         return productDAO.findById(integer);
     }
+
+    @Override
+    public List<Product> findAllByCategoryId(int id) {
+        return productDAO.findAllByCategoryId(id);
+    }
 }

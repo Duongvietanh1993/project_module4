@@ -17,26 +17,29 @@ import javax.validation.Valid;
 @RequestMapping("/")
 public class LoginOrRegisterController {
     @Autowired
-    HttpSession session;
+    private HttpSession session;
     @Autowired
-    UserService userService;
+    private UserService userService;
+
     @GetMapping("/login")
-    public String login(Model model){
-        User user=new User();
-        model.addAttribute("user",user);
+    public String login(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
         return "user/login/login";
     }
+
     @PostMapping("/login")
     public String handleLogin(@ModelAttribute("user") User user) {
         UserResponesDTO authent = userService.checkLogin(user.getUserEmail(), user.getUserPassword());
 
-        if (authent != null && authent.isUserRole()==true) {
+        if (authent != null && authent.isUserRole() == true) {
             session.setAttribute("user", authent);
             return "redirect:/";
         } else {
             return "redirect:/?error=true";
         }
     }
+
     @GetMapping("/logout-user")
     public String handleLogout(HttpSession session) {
         session.removeAttribute("user");
@@ -44,17 +47,17 @@ public class LoginOrRegisterController {
     }
 
     @GetMapping("/register")
-    public String register(Model model){
+    public String register(Model model) {
         UserRegisterDTO user = new UserRegisterDTO();
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
         return "user/login/login";
     }
 
     @PostMapping("/register")
     public String handleRegister(@Valid @ModelAttribute("user") UserRegisterDTO user) {
-            if (userService.register(user)) {
-                return "redirect:/?regis=true";
-            }
+        if (userService.register(user)) {
+            return "redirect:/?regis=true";
+        }
         return "redirect:/register";
     }
 
