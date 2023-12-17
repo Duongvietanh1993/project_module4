@@ -1,17 +1,16 @@
 package com.ra.controller.user.cart;
 
+import com.ra.model.dto.user.response.UserResponesDTO;
 import com.ra.model.entity.admin.Product;
 import com.ra.model.entity.admin.User;
 import com.ra.model.entity.user.CartItem;
 import com.ra.model.service.product.ProductService;
 import com.ra.model.service.user.CartService;
+import com.ra.model.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -23,6 +22,10 @@ public class CartController {
     private CartService cartService;
     @Autowired
     private ProductService productService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private HttpSession session;
 
     @RequestMapping("/cart")
     public String index(Model model) {
@@ -41,12 +44,7 @@ public class CartController {
         return "redirect:/cart";
     }
 
-//    @GetMapping("/checkout")
-//    public String checkout(HttpSession session) {
-//        if (session.getAttribute("user") == null) {
-//            return "redirect:/cart?action=checkout";
-//        }
-//        User user = (User) session.getAttribute("user");
-//        return "user/checkout/checkout";
-//    }
+
+
+
 }

@@ -22,7 +22,8 @@ public class LoginOrRegisterController {
     private UserService userService;
 
     @GetMapping("/login")
-    public String login(Model model) {
+    public String login(Model model, @RequestHeader("referer") String referer) {
+        session.setAttribute("previousUrl", referer);
         User user = new User();
         model.addAttribute("user", user);
         return "user/login/login";
@@ -34,6 +35,11 @@ public class LoginOrRegisterController {
 
         if (authent != null && authent.isUserRole() == true) {
             session.setAttribute("user", authent);
+            String previousUrl = (String) session.getAttribute("previousUrl");
+            if (previousUrl != null) {
+                session.removeAttribute("previousUrl");
+                return "redirect:" + previousUrl;
+            }
             return "redirect:/";
         } else {
             return "redirect:/?error=true";
@@ -85,4 +91,11 @@ public class LoginOrRegisterController {
         return "redirect:/login-admin?logout=true";
     }
 
+    @GetMapping("/checkout")
+    public String checkout() {
+        if (session.getAttribute("user") == null) {
+            return "redirect:/cart";
+        }
+        return "user/checkout/checkout";
+    }
 }

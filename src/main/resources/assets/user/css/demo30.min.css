@@ -7546,8 +7546,14 @@ ul.blog-filters .nav-filter {
 .d-icon-minus:before {
     content: ""
 }
+.custom-minus-btn:before {
+    content: ""
+}
 
 .d-icon-plus:before {
+    content: ""
+}
+.custom-plus-btn:before {
     content: ""
 }
 
@@ -7919,6 +7925,10 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 
 .quantity {
+    -moz-appearance: textfield;
+    max-width: 48px
+}
+.quantity-input {
     -moz-appearance: textfield;
     max-width: 48px
 }

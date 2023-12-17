@@ -302,20 +302,19 @@
                                     <div class="product-form product-qty">
                                         <label>QTY:</label>
 <!---->
-                                        <form method="post" action="addCart">
-                                        <div class="product-form-group">
-                                            <input type="hidden" th:value="${detail.productId}" name="productId">
-                                            <div class="input-group">
-                                                <button class="quantity-minus d-icon-minus"></button>
-                                                <input name="quantity" class="quantity form-control" type="number" min="1"
-                                                       max="1000000">
-                                                <button class="quantity-plus d-icon-plus"></button>
-                                            </div>
+                                        <form id="add-to-cart-form" method="post" th:action="@{/addCart}">
+                                            <div class="product-form-group">
+                                                <input type="hidden" th:value="${detail.productId}" name="productId">
+                                                <div class="input-group">
 
-                                            <button type="submit" class="btn btn-primary" style="padding: 0.8em!important"><i class="d-icon-bag mb-1 mr-1"></i>Add
-                                                To Cart
-                                            </button>
-                                        </div>
+                                                    <input name="quantity" class="quantity form-control" type="number" min="1" max="1000000" value="1">
+
+                                                </div>
+
+                                                <button type="submit" class="btn btn-primary" style="padding: 0.8em!important" onclick="addToCart()">
+                                                    <i class="d-icon-bag mb-1 mr-1"></i>Add To Cart
+                                                </button>
+                                            </div>
                                         </form>
                                     </div>
                                     <hr class="product-divider mb-3">
@@ -1029,6 +1028,7 @@ Doe</span> on
 
 <!--script-->
 <th:block th:insert="user/layouts/detail/script.html"></th:block>
+
 </body>
 
 <!-- Mirrored from d-themes.com/html/riode/demo30-product.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Dec 2023 04:10:54 GMT -->

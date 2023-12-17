@@ -35,10 +35,26 @@ public class CartService {
         httpSession.setAttribute("cart", cartItems);
     }
 
-    public void update(Integer quantity, Integer product) {
+    public void update(Integer quantity, Integer productId) {
+        List<CartItem> cartItems = getCartItems();
+
+        for (CartItem item : cartItems) {
+            if (item.getProduct().getProductId() == productId) {
+                item.setQuantity(quantity);
+                break;
+            }
+        }
+
+        httpSession.setAttribute("cart", cartItems);
     }
 
-    public void delete() {
+
+    public void delete(Integer id) {
+        List<CartItem> cartItems = getCartItems();
+
+        cartItems.removeIf(item -> item.getProduct().getProductId() == id);
+
+        httpSession.setAttribute("cart", cartItems);
     }
 
     public CartItem findCartItemById(Product product) {

@@ -17,7 +17,7 @@
     <!-- Trang chủ -->
     <main class="main shop">
         <div class="page-header"
-             style="background-image: url('images/demos/demo30/page-header.jpg'); background-color: #3C63A4;"><img
+             style=" background-color: #3C63A4;"><img
                 src=""/>
             <h1 class="page-title">Riode Shop</h1>
             <ul class="breadcrumb">
@@ -74,9 +74,10 @@
                                              height="212">
                                     </a>
                                     <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-cart" data-toggle="modal"
-                                           data-target="#addCartModal" title="Add to cart"><i
-                                                class="d-icon-bag"></i></a>
+
+                                        <a th:href="@{/add-to-cart/{productId}(productId=${item.productId})}" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+                                            <i class="d-icon-bag"></i>
+                                        </a>
                                         <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
                                                 class="d-icon-heart"></i></a>
                                         <a th:href="@{/product-detail/{id}(id=${item.productId})}" class="btn-product-icon" title="Quick View"><i
