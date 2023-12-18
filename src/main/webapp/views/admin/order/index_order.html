@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--head-->
+<th:block th:insert="admin/layouts/homeAdmin/head.html"></th:block>
+
+
+<body class="  ">
+<!-- loader Start -->
+<div id="loading">
+    <div id="loading-center">
+    </div>
+</div>
+<!-- loader END -->
+<!-- Wrapper Start -->
+<div class="wrapper">
+    <!--sidebar-->
+    <th:block th:insert="admin/layouts/homeAdmin/sidebar.html"></th:block>
+
+    <!--navbar-->
+    <th:block th:insert="admin/layouts/homeAdmin/navbar.html"></th:block>
+
+    <!--tables-->
+    <div class="content-page">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+
+                                <table id="datatable-1" class="table data-table table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 150px">Mã Danh Mục</th>
+                                        <th>Tên Khách Hàng</th>
+                                        <th>Ngày Đặt</th>
+                                        <th>Số Điện Thoại</th>
+                                        <th>Địa Chỉ</th>
+                                        <th>Tổng Tiền</th>
+                                        <th>Trạng Thái</th>
+                                        <th style="width: 150px;" class="text-right"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="item: ${orderList}">
+                                        <td th:text="${item.getOrderId()}"></td>
+                                        <td th:text="${item.getUser().getUserName()}"></td>
+                                        <td th:text="${item.getOrderDate()}"></td>
+                                        <td th:text="${item.getPhone()}"></td>
+                                        <td th:text="${item.getAddress()}"></td>
+                                        <td th:text="${item.getTotal()}"></td>
+                                        <td>
+                                            <span class="label"
+                                                  th:text="${item.getStatus()=='PENDING'?'badge text-warning':
+                                                  (item.getStatus()=='CONFIRM' ?'áds':
+                                                  (item.getStatus()=='CONFIRM' ?'áds':'áda') )}"></span>
+                                        </td>
+
+                                        <td class="text-center">
+                                            <a type="button" class="btn btn-primary" >Sửa</a>
+                                        </td>
+                                    </tr>
+
+
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th style="width: 150px">Mã Danh Mục</th>
+                                        <th>Tên Khách Hàng</th>
+                                        <th>Ngày Đặt</th>
+                                        <th>Số Điện Thoại</th>
+                                        <th>Địa Chỉ</th>
+                                        <th>Tổng Tiền</th>
+                                        <th>Trạng Thái</th>
+
+                                        <th class="text-right"></th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--tables end-->
+</div>
+<!-- Wrapper End-->
+<!--footer-->
+<th:block th:insert="admin/layouts/homeAdmin/footer.html"></th:block>
+
+<!--Script-->
+<th:block th:insert="admin/layouts/homeAdmin/script.html"></th:block>
+
+</body>
+</html>

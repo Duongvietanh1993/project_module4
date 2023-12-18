@@ -19,7 +19,7 @@ CREATE TABLE category
     id          INT PRIMARY KEY AUTO_INCREMENT,
     name        VARCHAR(60) UNIQUE NOT NULL,
     image       VARCHAR(255),
-    description VARCHAR(255) NOT NULL,
+    description VARCHAR(255)       NOT NULL,
     status      BIT(1) DEFAULT 1
 );
 
@@ -28,11 +28,11 @@ CREATE TABLE product
     id          INT PRIMARY KEY AUTO_INCREMENT,
     name        VARCHAR(100) UNIQUE NOT NULL,
     url_image   VARCHAR(255),
-    description TEXT NOT NULL,
-    price       FLOAT        NOT NULL,
-    stock       INT          NOT NULL,
+    description TEXT                NOT NULL,
+    price       FLOAT               NOT NULL,
+    stock       INT                 NOT NULL,
     status      BIT(1) DEFAULT 1,
-    category_id INT          NOT NULL,
+    category_id INT                 NOT NULL,
     FOREIGN KEY (category_id) REFERENCES category (id)
 );
 
@@ -51,6 +51,27 @@ CREATE TABLE images
     image      VARCHAR(255),
     product_id INT NOT NULL,
     FOREIGN KEY (product_id) REFERENCES product (id)
+);
+
+CREATE TABLE orders (
+                        id           INT PRIMARY KEY AUTO_INCREMENT,
+                        user_id      INT NOT NULL,
+                        FOREIGN KEY (user_id) REFERENCES user (id),
+                        order_date   DATE DEFAULT(CURRENT_DATE),
+                        total        FLOAT,
+                        address      TEXT,
+                        phone        VARCHAR(20),
+                        order_status       ENUM('PENDING', 'CONFIRM', 'COMPLETED', 'CANCELLED') DEFAULT 'PENDING'
+);
+
+CREATE TABLE order_detail
+(
+    order_id   INT   NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders (id),
+    product_id INT   NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES product (id),
+    quanlity   INT   NOT NULL,
+    price      FLOAT NOT NULL
 );
 
 /*category*/
@@ -242,5 +263,52 @@ DELIMITER //
 CREATE PROCEDURE PROC_SHOW_PRODUCT_BY_CATEGORY(IN new_category_id INT)
 BEGIN
     SELECT * FROM product WHERE category_id = new_category_id;
+END;
+//
+
+/*order*/
+
+DELIMITER //
+CREATE PROCEDURE PROC_SHOW_ORDER()
+BEGIN
+    SELECT * FROM orders;
+END;
+//
+
+DELIMITER //
+CREATE PROCEDURE PROC_CREATE_ORDER(
+    IN new_user_id INT,
+    IN new_total FLOAT,
+    IN new_address TEXT,
+    IN new_phone VARCHAR(20),
+    OUT last_id INT
+
+)
+BEGIN
+    INSERT INTO orders (user_id, total, address, phone)
+    VALUES (new_user_id, new_total, new_address, new_phone);
+    SELECT LAST_INSERT_ID() INTO last_id;
+END;
+//
+
+/*orderDetail*/
+DELIMITER //
+CREATE PROCEDURE PROC_SHOW_ORDER_DETAIL()
+BEGIN
+    SELECT * FROM order_detail;
+END;
+//
+
+DELIMITER //
+CREATE PROCEDURE PROC_CREATE_ORDER_DETAIL(
+    IN new_order_id INT,
+    IN new_product_id INT,
+    IN new_quanlity INT,
+    IN new_price FLOAT
+)
+BEGIN
+    INSERT INTO order_detail (order_id, product_id, quanlity, price)
+    VALUES (new_order_id, new_product_id,new_quanlity,new_price);
+
 END;
 //

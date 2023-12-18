@@ -80,7 +80,6 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
                         "/vendor/**",
                         "/extra-libs/**",
                         "/libs/**",
-                        "/video/**",
                         "/upload/category/**",
                         "/upload/product/**",
                         "/upload/user/**")
@@ -95,7 +94,6 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
                         "classpath:assets/user/js/",
                         "classpath:assets/user/ajax/",
                         "classpath:assets/user/vendor/",
-                        "classpath:assets/user/video/",
 
                         "classpath:assets/admin/images/",
                         "classpath:assets/admin/vendor/",

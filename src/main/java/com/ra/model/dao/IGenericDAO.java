@@ -6,4 +6,5 @@ public interface IGenericDAO<T,ID> {
     List<T> findAll();
     boolean saveOrUpdate(T t);
     T findById(ID id);
+
 }

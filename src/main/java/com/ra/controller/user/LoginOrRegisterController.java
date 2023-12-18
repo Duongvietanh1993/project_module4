@@ -91,11 +91,5 @@ public class LoginOrRegisterController {
         return "redirect:/login-admin?logout=true";
     }
 
-    @GetMapping("/checkout")
-    public String checkout() {
-        if (session.getAttribute("user") == null) {
-            return "redirect:/cart";
-        }
-        return "user/checkout/checkout";
-    }
+
 }
