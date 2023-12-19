@@ -1,6 +1,7 @@
 package com.ra.controller.admin;
 
 import com.ra.model.entity.admin.Category;
+import com.ra.model.entity.admin.User;
 import com.ra.model.service.category.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -91,6 +92,19 @@ public class CategoryController {
             throw new RuntimeException(e);
         }
         return "redirect:/admin/category";
+    }
+    @RequestMapping("/category/{id}")
+    public String updateUserStatus(@PathVariable("id") Integer id,
+                                   @RequestParam("status")  Integer status,
+                                   Model model){
+        boolean newStatus = (status == 1);
+        boolean updated = categoryService.updateStatus(id, newStatus);
+        if (updated) {
+            List<Category> list = categoryService.findAll();
+            model.addAttribute("categoryList", list);
+            return "admin/user/tables";
+        }
+        return null;
     }
 
 }

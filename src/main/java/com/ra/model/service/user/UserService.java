@@ -9,4 +9,5 @@ public interface UserService extends IGenericService<User,Integer> {
     User findByEmail(String email);
     Boolean register(UserRegisterDTO user);
     UserResponesDTO checkLogin(String email , String password);
+    boolean updateStatus(Integer id, boolean newStatus);
 }

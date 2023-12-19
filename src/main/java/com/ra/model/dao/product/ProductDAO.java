@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface ProductDAO extends IGenericDAO<Product,Integer> {
     List<Product> findAllByCategoryId(int categoryId);
+    boolean updateStatus(Integer id, boolean newStatus);
 }

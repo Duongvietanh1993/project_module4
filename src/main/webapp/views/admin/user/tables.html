@@ -62,9 +62,17 @@
                                         </td>
 
                                         <td class="text-center">
+
                                             <a type="button"
-                                               class="btn btn-outline-warning rounded-pill btn-with-icon"
-                                               style="padding: 5px 10px">
+                                               class="btn btn-outline-primary rounded-pill btn-with-icon"
+                                               style="padding: 5px 10px"
+                                              th:href="@{'/admin/user/'+ ${item.getUserId()}+'?status=1'}">
+                                                Active
+                                            </a>
+                                            <a type="button"
+                                               class="btn btn-outline-danger rounded-pill btn-with-icon"
+                                               style="padding: 5px 10px"
+                                               th:href="@{'/admin/user/'+ ${item.getUserId()}+'?status=0'}">
                                                 Block
                                             </a>
                                         </td>

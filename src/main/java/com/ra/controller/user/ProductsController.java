@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -23,6 +24,12 @@ public class ProductsController {
         model.addAttribute("products", productList);
         return "user/products/products";
     }
-
+    @GetMapping("/product-all")
+    public String productList( Model model) {
+        List<Product> productList = productService.findAll();
+        Collections.shuffle(productList);
+        model.addAttribute("productAll", productList);
+        return "user/products/productAll";
+    }
 
 }

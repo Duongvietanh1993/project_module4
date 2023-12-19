@@ -2,6 +2,7 @@ package com.ra.controller.admin;
 
 import com.ra.model.entity.admin.Category;
 import com.ra.model.entity.admin.Product;
+import com.ra.model.entity.admin.User;
 import com.ra.model.service.category.CategoryService;
 import com.ra.model.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,5 +89,18 @@ public class ProductController {
             throw new RuntimeException(e);
         }
         return "redirect:/admin/product";
+    }
+    @RequestMapping("/product/{id}")
+    public String updateUserStatus(@PathVariable("id") Integer id,
+                                   @RequestParam("status")  Integer status,
+                                   Model model){
+        boolean newStatus = (status == 1);
+        boolean updated = productService.updateStatus(id, newStatus);
+        if (updated) {
+            List<Product> list = productService.findAll();
+            model.addAttribute("productList", list);
+            return "admin/product/index_product";
+        }
+        return null;
     }
 }

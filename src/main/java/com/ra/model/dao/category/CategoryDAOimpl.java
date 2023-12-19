@@ -95,4 +95,25 @@ public class CategoryDAOimpl implements CategoryDAO{
         }
         return category;
     }
+
+    @Override
+    public boolean updateStatus(Integer id, boolean newStatus) {
+        Connection connection = null;
+        int check;
+        try {
+            connection = ConnectionDatabase.openConnection();
+            CallableStatement callableStatement = connection.prepareCall("{CALL PROC_UPDATE_STATUS_CATEGORY(?, ?)}");
+            callableStatement.setInt(1, id);
+            callableStatement.setBoolean(2, newStatus);
+            check = callableStatement.executeUpdate();
+            if (check > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            ConnectionDatabase.closeConnection(connection);
+        }
+        return false;
+    }
 }

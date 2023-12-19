@@ -8,6 +8,9 @@
 
                 <nav class="main-nav main-nav-1">
                     <ul class="menu">
+                        <li>
+                            <a th:href="@{/product-all}"><span>Shop</span></a>
+                        </li>
                         <li th:each="item : ${session.category}" >
                             <a th:href="@{/product-list/{id}(id=${item.categoryId})}">
                                 <span th:text="${item.categoryName}"></span>

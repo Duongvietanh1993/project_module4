@@ -40,7 +40,7 @@
                                         <th style="width: 150px">Ảnh</th>
                                         <th>Ghi Chú</th>
                                         <th>Trạng Thái</th>
-                                        <th style="width: 150px" class="text-right"></th>
+                                        <th style="width: 200px" class="text-right"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -55,7 +55,7 @@
                                         <td>
                                             <span class="label "
                                                   th:classappend="${item.isCategoryStatus ? 'badge text-green':'badge text-warning'}"
-                                                  th:text="${item.isCategoryStatus?'Active':'Block'}"></span>
+                                                  th:text="${item.isCategoryStatus?'Mở':'Khóa'}"></span>
                                         </td>
 
                                         <td class="text-center">
@@ -67,9 +67,15 @@
                                             </a>
 
                                             <a type="button"
-                                               class="btn btn-outline-warning rounded-pill btn-with-icon"
+                                               class="btn btn-outline-primary rounded-pill btn-with-icon"
                                                style="padding: 5px 10px"
-                                               th:href="@{/admin/update-category/{id}(id=${item.getCategoryId()})}">
+                                               th:href="@{'/admin/category/'+ ${item.getCategoryId()}+'?status=1'}">
+                                                Active
+                                            </a>
+                                            <a type="button"
+                                               class="btn btn-outline-danger rounded-pill btn-with-icon"
+                                               style="padding: 5px 10px"
+                                               th:href="@{'/admin/category/'+ ${item.getCategoryId()}+'?status=0'}">
                                                 Block
                                             </a>
                                         </td>

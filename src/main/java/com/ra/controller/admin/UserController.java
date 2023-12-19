@@ -5,7 +5,7 @@ import com.ra.model.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -25,5 +25,17 @@ public class UserController {
         return "admin/user/tables";
     }
 
-
+    @RequestMapping("/user/{id}")
+    public String updateUserStatus(@PathVariable("id") Integer id,
+                                   @RequestParam("status")  Integer status,
+                                   Model model){
+        boolean newStatus = (status == 1);
+        boolean updated = userService.updateStatus(id, newStatus);
+        if (updated) {
+            List<User> list = userService.findAll();
+            model.addAttribute("listUser", list);
+            return "admin/user/tables";
+        }
+        return null;
+    }
 }

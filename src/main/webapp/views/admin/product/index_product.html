@@ -43,7 +43,7 @@
                                         <th>Tồn Kho</th>
                                         <th>Danh mục</th>
                                         <th>Trạng Thái</th>
-                                        <th style="width: 150px;" class="text-right"></th>
+                                        <th style="width: 200px;" class="text-right"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -70,6 +70,18 @@
                                                style="padding: 5px 10px"
                                                th:href="@{/admin/update-product/{id}(id=${item.getProductId()})}">
                                                 &#9881;
+                                            </a>
+                                            <a type="button"
+                                               class="btn btn-outline-primary rounded-pill btn-with-icon"
+                                               style="padding: 5px 10px"
+                                               th:href="@{'/admin/product/'+ ${item.getProductId()}+'?status=0'}">
+                                                Active
+                                            </a>
+                                            <a type="button"
+                                               class="btn btn-outline-danger rounded-pill btn-with-icon"
+                                               style="padding: 5px 10px"
+                                               th:href="@{'/admin/product/'+ ${item.getProductId()}+'?status=1'}">
+                                                Block
                                             </a>
                                         </td>
                                     </tr>

@@ -29,4 +29,9 @@ public class ProductServiceIMPL implements ProductService{
     public List<Product> findAllByCategoryId(int id) {
         return productDAO.findAllByCategoryId(id);
     }
+
+    @Override
+    public boolean updateStatus(Integer id, boolean newStatus) {
+        return productDAO.updateStatus(id, newStatus);
+    }
 }

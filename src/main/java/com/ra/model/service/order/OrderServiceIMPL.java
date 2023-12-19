@@ -5,7 +5,7 @@ import com.ra.model.dao.orderDetail.OrderDetailDAO;
 import com.ra.model.entity.admin.Order;
 import com.ra.model.entity.admin.OrderDetail;
 import com.ra.model.entity.user.CartItem;
-import com.ra.model.service.user.CartService;
+import com.ra.model.service.cart.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

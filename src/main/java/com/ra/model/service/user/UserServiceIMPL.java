@@ -68,4 +68,9 @@ public class UserServiceIMPL implements UserService {
         }
         return null;
     }
+
+    @Override
+    public boolean updateStatus(Integer id, boolean newStatus) {
+        return userDAO.updateStatus(id, newStatus);
+    }
 }

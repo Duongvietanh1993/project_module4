@@ -52,7 +52,7 @@
                                         <td>
                                             <span class="label"
                                                   th:classappend="${item.status == item.status.PENDING ? 'text-info bg-info-subtle' : (item.status == item.status.CONFIRM ? 'text-primary bg-primary-subtle' : 'text-danger bg-danger-subtle')}"
-                                                  th:text="${item.status == item.status.PENDING ? 'Pending' : (item.status == item.status.CONFIRM ? 'Confirm' : 'Cancel')}">
+                                                  th:text="${item.status == item.status.PENDING ? 'Chờ Xác Nhận' : (item.status == item.status.CONFIRM ? 'Xác Nhận' : 'Hủy Đơn')}">
 
                                             </span>
                                         </td>
@@ -70,14 +70,14 @@
                                                class="btn btn-outline-primary rounded-pill btn-with-icon"
                                                style="padding: 5px 10px"
                                                th:href="@{'/admin/order/' + ${item.orderId} + '?status=CONFIRM'}">
-                                                CONFIRM
+                                                &#9745;
                                             </a>
 
                                             <a type="button"
                                                class="btn btn-outline-danger rounded-pill btn-with-icon"
                                                style="padding: 5px 10px"
                                                th:href="@{'/admin/order/' + ${item.orderId} + '?status=CANCELLED'}">
-                                                CANCELLED
+                                                &#215;
                                             </a>
                                             <a><i class="fa-brands fa-meta"></i></a>
                                         </td>

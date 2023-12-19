@@ -24,4 +24,9 @@ public class CategoryServiceIMPL implements CategoryService{
     public Category findById(Integer id) {
         return categoryDAO.findById(id);
     }
+
+    @Override
+    public boolean updateStatus(Integer id, boolean newStatus) {
+        return categoryDAO.updateStatus(id, newStatus);
+    }
 }

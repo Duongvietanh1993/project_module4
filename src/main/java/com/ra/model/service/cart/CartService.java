@@ -1,4 +1,4 @@
-package com.ra.model.service.user;
+package com.ra.model.service.cart;
 
 import com.ra.model.entity.admin.Product;
 import com.ra.model.entity.user.CartItem;
