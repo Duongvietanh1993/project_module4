@@ -1,12 +1,10 @@
-package com.ra.model.dao.orderDetail;
+package com.ra.model.service.orderDetail;
 
-import com.ra.model.dao.IGenericDAO;
 import com.ra.model.entity.admin.OrderDetail;
-import com.ra.model.service.IGenericService;
 
 import java.util.List;
 
-public interface OrderDetailDAO {
+public interface OrderDetailService {
     boolean save(OrderDetail orderDetail);
     List<OrderDetail> findAllByIdOrder(int id);
 }

@@ -30,7 +30,7 @@ public class OrderServiceIMPL implements OrderService{
 
     @Override
     public Order findById(Integer integer) {
-        return null;
+        return orderDAO.findById(integer);
     }
 
     @Override
@@ -52,5 +52,10 @@ public class OrderServiceIMPL implements OrderService{
         }
         return false;
 
+    }
+
+    @Override
+    public boolean updateOrderStatus(Integer orderId, Order.OrderStatus newStatus) {
+        return orderDAO.updateOrderStatus(orderId, newStatus);
     }
 }

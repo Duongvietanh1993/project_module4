@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--head-->
+<th:block th:insert="admin/layouts/homeAdmin/head.html"></th:block>
+<style>
+
+    .invoice-details {
+        margin-bottom: 20px;
+    }
+
+    .invoice-details p {
+        margin: 0;
+    }
+
+</style>
+
+<body class="  ">
+<!-- loader Start -->
+<div id="loading">
+    <div id="loading-center">
+    </div>
+</div>
+<!-- loader END -->
+<!-- Wrapper Start -->
+<div class="wrapper">
+    <!--sidebar-->
+    <th:block th:insert="admin/layouts/homeAdmin/sidebar.html"></th:block>
+
+    <!--navbar-->
+    <th:block th:insert="admin/layouts/homeAdmin/navbar.html"></th:block>
+
+    <!--tables-->
+    <div class="content-page">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+
+
+                                <div class="invoice-wrapper rounded border bg-white py-5 px-3 px-md-4 px-lg-5">
+                                    <div class="d-flex justify-content-between">
+                                        <h2 class="text-dark font-weight-medium"
+                                            th:text="'Đơn hàng '+${order.orderId}"></h2>
+                                        <a type="button"
+                                           class="btn btn-outline-primary rounded-pill btn-with-icon"
+                                           th:href="@{/admin/order}">Back</a>
+
+                                    </div>
+
+                                    <div class="row pt-5">
+                                        <div class="col-xl-3 col-lg-4">
+                                            <p class="text-dark mb-2"><strong>Địa Chỉ</strong></p>
+
+                                            <address>
+                                                <br> <strong>Ngày đặt hàng:</strong> <span
+                                                    th:text="${order.orderDate}"></span>
+                                                <br> <strong>Tên khách hàng:</strong> <span
+                                                    th:text="${order.user.userName}"></span>
+                                                <br> <strong>Địa Chỉ Giao Hàng:</strong> <span
+                                                    th:text="${order.user.userAddress}"></span>
+                                                <br> <strong>Số Điện Thoại:</strong> <span
+                                                    th:text="${order.user.userPhone}"></span>
+                                            </address>
+                                        </div>
+
+                                    </div>
+                                    <p class="text-dark mb-2"><strong>Sản Phẩm</strong></p>
+                                    <table class="table table-bordered table-responsive-md table-striped text-center">
+                                        <thead>
+                                        <tr>
+                                            <th>Mã Sản Phẩm</th>
+                                            <th>Tên Sản Phẩm</th>
+                                            <th>Số Lượng</th>
+                                            <th>Giá Tiền</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="item : ${orderDetailList}">
+                                            <td th:text="${item.product.productId}"></td>
+                                            <td th:text="${item.product.productName}"></td>
+                                            <td th:text="${item.quantity}"></td>
+                                            <td th:text="${#numbers.formatDecimal(item.price, 0, 'COMMA', 0, 'POINT') + ' VND'}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="row justify-content-end">
+                                        <div class="col-lg-5 col-xl-4 col-xl-3 ml-sm-auto">
+                                            <ul class="list-unstyled mt-4">
+
+                                                <li class="pb-3 text-dark">Total
+                                                    <span class="d-inline-block float-right"
+                                                          th:text="${#numbers.formatDecimal(totalAmount, 0, 'COMMA', 0, 'POINT') + ' VND'}"></span>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--tables end-->
+</div>
+<!-- Wrapper End-->
+<!--footer-->
+<th:block th:insert="admin/layouts/homeAdmin/footer.html"></th:block>
+
+<!--Script-->
+<th:block th:insert="admin/layouts/homeAdmin/script.html"></th:block>
+
+</body>
+</html>

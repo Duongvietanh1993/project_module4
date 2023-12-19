@@ -5665,7 +5665,7 @@ a.close.disabled {
 
 @media (min-width: 576px) {
     .modal-dialog {
-        max-width: 500px;
+        max-width: 900px;
         margin: 1.75rem auto
     }
 
@@ -6409,7 +6409,7 @@ a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
 }
 
 .rounded-pill {
-    border-radius: 50rem !important
+    border-radius: 10rem !important
 }
 
 .rounded-0 {

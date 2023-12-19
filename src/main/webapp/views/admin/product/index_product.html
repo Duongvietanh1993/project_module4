@@ -55,7 +55,7 @@
                                                  th:src="${item.getImageUrl()}">
                                         </td>
                                         <td th:text="${item.getProductDescription()}"></td>
-                                        <td th:text="${item.getProductPrice()}"></td>
+                                        <td th:text="${#numbers.formatDecimal(item.productPrice, 0, 'COMMA', 0, 'POINT') + ' VND'}"></td>
                                         <td th:text="${item.getProductStock()}"></td>
                                         <td th:text="${item.getCategory().getCategoryName()}"></td>
                                         <td>
@@ -65,7 +65,12 @@
                                         </td>
 
                                         <td class="text-center">
-                                            <a type="button" class="btn btn-primary" th:href="@{/admin/update-product/{id}(id=${item.getProductId()})}">Sửa</a>
+                                            <a type="button"
+                                               class="btn btn-outline-primary rounded-pill btn-with-icon"
+                                               style="padding: 5px 10px"
+                                               th:href="@{/admin/update-product/{id}(id=${item.getProductId()})}">
+                                                &#9881;
+                                            </a>
                                         </td>
                                     </tr>
 

@@ -51,8 +51,29 @@ public class OrderDAOimpl implements OrderDAO {
     }
 
     @Override
-    public Order findById(Integer integer) {
-        return null;
+    public Order findById(Integer id) {
+        Connection connection = null;
+        Order order = new Order();
+        try {
+            connection = ConnectionDatabase.openConnection();
+            CallableStatement callableStatement = connection.prepareCall("{CALL PROC_FIND_ORDER_BY_ID(?)}");
+            callableStatement.setInt(1, id);
+            ResultSet resultSet = callableStatement.executeQuery();
+            while (resultSet.next()) {
+                order.setOrderId(resultSet.getInt("id"));
+                order.setUser(userDAO.findById(resultSet.getInt("user_id")));
+                order.setOrderDate(Date.valueOf(resultSet.getString("order_date")));
+                order.setStatus(Order.OrderStatus.valueOf(resultSet.getString("order_status")));
+                order.setTotal(resultSet.getFloat("total"));
+                order.setAddress(resultSet.getString("address"));
+                order.setPhone(resultSet.getString("phone"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            ConnectionDatabase.closeConnection(connection);
+        }
+        return order;
     }
 
     @Override
@@ -67,7 +88,7 @@ public class OrderDAOimpl implements OrderDAO {
             callableStatement.setFloat(2, order.getTotal());
             callableStatement.setString(3, order.getAddress());
             callableStatement.setString(4, order.getPhone());
-            callableStatement.registerOutParameter(5,Types.INTEGER);
+            callableStatement.registerOutParameter(5, Types.INTEGER);
 
             int check = callableStatement.executeUpdate();
             if (check > 0) {
@@ -80,5 +101,22 @@ public class OrderDAOimpl implements OrderDAO {
             ConnectionDatabase.closeConnection(connection);
         }
         return null;
+    }
+
+    @Override
+    public boolean updateOrderStatus(Integer orderId, Order.OrderStatus newStatus) {
+        Connection connection = null;
+        try {
+            connection = ConnectionDatabase.openConnection();
+            CallableStatement callableStatement = connection.prepareCall("{CALL PROC_UPDATE_STATUS_ORDER(?, ?)}");
+            callableStatement.setInt(1, orderId);
+            callableStatement.setString(2, newStatus.name());
+            int rowsAffected = callableStatement.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            ConnectionDatabase.closeConnection(connection);
+        }
     }
 }

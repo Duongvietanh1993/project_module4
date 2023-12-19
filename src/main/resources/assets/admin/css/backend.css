@@ -5276,7 +5276,7 @@ a.close.disabled {
 
 @media (min-width: 576px) {
     .modal-dialog {
-        max-width: 500px;
+        max-width: 900px;
         margin: 1.75rem auto
     }
 
@@ -5952,7 +5952,7 @@ a.close.disabled {
 }
 
 .rounded-pill {
-    border-radius: 50px !important
+    border-radius: 10px !important
 }
 
 .rounded-0 {

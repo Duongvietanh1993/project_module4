@@ -53,15 +53,16 @@ CREATE TABLE images
     FOREIGN KEY (product_id) REFERENCES product (id)
 );
 
-CREATE TABLE orders (
-                        id           INT PRIMARY KEY AUTO_INCREMENT,
-                        user_id      INT NOT NULL,
-                        FOREIGN KEY (user_id) REFERENCES user (id),
-                        order_date   DATE DEFAULT(CURRENT_DATE),
-                        total        FLOAT,
-                        address      TEXT,
-                        phone        VARCHAR(20),
-                        order_status       ENUM('PENDING', 'CONFIRM', 'COMPLETED', 'CANCELLED') DEFAULT 'PENDING'
+CREATE TABLE orders
+(
+    id           INT PRIMARY KEY AUTO_INCREMENT,
+    user_id      INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user (id),
+    order_date   DATE                                                  DEFAULT (CURRENT_DATE),
+    total        FLOAT,
+    address      TEXT,
+    phone        VARCHAR(20),
+    order_status ENUM ('PENDING', 'CONFIRM', 'COMPLETED', 'CANCELLED') DEFAULT 'PENDING'
 );
 
 CREATE TABLE order_detail
@@ -282,7 +283,6 @@ CREATE PROCEDURE PROC_CREATE_ORDER(
     IN new_address TEXT,
     IN new_phone VARCHAR(20),
     OUT last_id INT
-
 )
 BEGIN
     INSERT INTO orders (user_id, total, address, phone)
@@ -291,11 +291,27 @@ BEGIN
 END;
 //
 
-/*orderDetail*/
 DELIMITER //
-CREATE PROCEDURE PROC_SHOW_ORDER_DETAIL()
+CREATE PROCEDURE PROC_FIND_ORDER_BY_ID(IN new_id INT)
 BEGIN
-    SELECT * FROM order_detail;
+    SELECT * FROM orders WHERE id = new_id;
+END;
+//
+
+DELIMITER //
+CREATE PROCEDURE PROC_UPDATE_STATUS_ORDER(IN new_id INT,
+                                          IN new_order_status ENUM('PENDING', 'CONFIRM', 'COMPLETED', 'CANCELLED'))
+BEGIN
+    UPDATE orders SET order_status = new_order_status WHERE id = new_id;
+END;
+//
+
+/*orderDetail*/
+
+DELIMITER //
+CREATE PROCEDURE PROC_SHOW_ORDER_DETAIL(IN _order INT)
+BEGIN
+    SELECT * FROM order_detail WHERE order_id = _order;
 END;
 //
 
@@ -308,7 +324,7 @@ CREATE PROCEDURE PROC_CREATE_ORDER_DETAIL(
 )
 BEGIN
     INSERT INTO order_detail (order_id, product_id, quanlity, price)
-    VALUES (new_order_id, new_product_id,new_quanlity,new_price);
+    VALUES (new_order_id, new_product_id, new_quanlity, new_price);
 
 END;
 //

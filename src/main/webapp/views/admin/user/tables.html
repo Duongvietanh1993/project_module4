@@ -27,11 +27,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <span class="table-add float-left mt-1 mr-5">
-                                    <button class="btn bg-success" style="padding: 5px 10px">
-                                        <a style="color:white" th:href="@{/admin/create}">Add New</a>
-                                    </button>
-                                </span>
+
                                 <table id="datatable-1" class="table data-table table-striped table-bordered">
                                     <thead>
                                     <tr>
@@ -66,8 +62,11 @@
                                         </td>
 
                                         <td class="text-center">
-                                            <button class="btn btn-primary">Sửa</button>
-                                            <button class="btn btn-danger">Xóa</button>
+                                            <a type="button"
+                                               class="btn btn-outline-warning rounded-pill btn-with-icon"
+                                               style="padding: 5px 10px">
+                                                Block
+                                            </a>
                                         </td>
                                     </tr>
 
