@@ -102,7 +102,7 @@ public class CategoryController {
         if (updated) {
             List<Category> list = categoryService.findAll();
             model.addAttribute("categoryList", list);
-            return "admin/user/tables";
+            return "admin/category/index_category";
         }
         return null;
     }

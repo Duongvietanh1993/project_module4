@@ -5,17 +5,23 @@ import com.ra.model.dto.user.response.UserResponesDTO;
 import com.ra.model.entity.admin.User;
 import com.ra.model.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.File;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/")
 public class LoginOrRegisterController {
+    @Value("${pathUser}")
+    private String pathUser;
     @Autowired
     private HttpSession session;
     @Autowired
@@ -91,5 +97,28 @@ public class LoginOrRegisterController {
         return "redirect:/login-admin?logout=true";
     }
 
+    @GetMapping("/update-user")
+    public String update(Model model) {
+        UserResponesDTO userDTO = (UserResponesDTO) session.getAttribute("user");
+        User user = userService.findById(userDTO.getUserId());
+        model.addAttribute("userLogin", user);
+        return "user/account/account";
+    }
 
+    @PostMapping("/update-user")
+    public String handleUpdate(@RequestParam("imageUser") MultipartFile file,
+                               @ModelAttribute("userLogin") User user) {
+        String fileName = file.getOriginalFilename();
+        File destination = new File(pathUser + fileName);
+        try {
+            if (!fileName.isEmpty()) {
+                file.transferTo(destination);
+                user.setUserImage("http://localhost:8080/upload/user/" + fileName);
+            }
+            userService.saveOrUpdate(user);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return "redirect:/";
+    }
 }

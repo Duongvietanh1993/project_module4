@@ -36,23 +36,6 @@ CREATE TABLE product
     FOREIGN KEY (category_id) REFERENCES category (id)
 );
 
-CREATE TABLE likes
-(
-    id_like    INT PRIMARY KEY AUTO_INCREMENT,
-    user_id    INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES user (id),
-    product_id INT NOT NULL,
-    FOREIGN KEY (product_id) REFERENCES product (id)
-);
-
-CREATE TABLE images
-(
-    id         INT PRIMARY KEY AUTO_INCREMENT,
-    image      VARCHAR(255),
-    product_id INT NOT NULL,
-    FOREIGN KEY (product_id) REFERENCES product (id)
-);
-
 CREATE TABLE orders
 (
     id           INT PRIMARY KEY AUTO_INCREMENT,
@@ -198,7 +181,6 @@ END;
 //
 
 
-
 /*product*/
 
 DELIMITER //
@@ -269,6 +251,13 @@ BEGIN
 END;
 //
 
+DELIMITER //
+CREATE PROCEDURE PROC_SHOW_PRODUCT_BY_CATEGORY(IN new_category_id INT)
+BEGIN
+    SELECT * FROM product WHERE category_id = new_category_id;
+END;
+//
+
 /*order*/
 
 DELIMITER //
@@ -302,7 +291,7 @@ END;
 
 DELIMITER //
 CREATE PROCEDURE PROC_UPDATE_STATUS_ORDER(IN new_id INT,
-                                          IN new_order_status ENUM('PENDING', 'CONFIRM', 'COMPLETED', 'CANCELLED'))
+                                          IN new_order_status ENUM ('PENDING', 'CONFIRM', 'COMPLETED', 'CANCELLED'))
 BEGIN
     UPDATE orders SET order_status = new_order_status WHERE id = new_id;
 END;

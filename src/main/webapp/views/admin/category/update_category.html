@@ -121,7 +121,13 @@
 
                                 <div class="form-container">
                                     <div class="form-fields">
-                                        <h2>Sửa Thông Tin Danh Mục</h2>
+                                        <div style="display: flex; justify-content: space-around; align-items: center">
+                                            <h2>Sửa Thông Tin Danh Mục</h2>
+                                            <a type="button"
+                                               class="btn btn-outline-primary rounded-pill btn-with-icon"
+                                               th:href="@{/admin/category}">Back</a>
+                                        </div>
+
                                         <form th:action="@{/admin/update-category}" method="post" th:object="${category}"
                                               enctype="multipart/form-data" class="needs-validation" novalidate>
                                             <input type="hidden" th:field="*{categoryId}">

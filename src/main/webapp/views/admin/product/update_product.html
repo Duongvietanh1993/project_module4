@@ -90,8 +90,8 @@
 
     #preview-image {
         margin-top: 30px;
-        border: 1px solid rgba(12,37,86,0.51);
-        border-radius:10px;
+        border: 1px solid rgba(12, 37, 86, 0.51);
+        border-radius: 10px;
         box-shadow: 0px 2px 5px #0c2556;
     }
 </style>
@@ -122,7 +122,12 @@
 
                                 <div class="form-container">
                                     <div class="form-fields">
-                                        <h2>Sửa Thông Tin Sản Phẩm</h2>
+                                        <div style="display: flex; justify-content: space-around; align-items: center">
+                                            <h2>Sửa Thông Tin Sản Phẩm</h2>
+                                            <a type="button"
+                                               class="btn btn-outline-primary rounded-pill btn-with-icon"
+                                               th:href="@{/admin/product}">Back</a>
+                                        </div>
                                         <form th:action="@{/admin/update-product}" method="post" th:object="${product}"
                                               enctype="multipart/form-data" class="needs-validation" novalidate>
                                             <input type="hidden" th:field="*{productId}">
@@ -146,13 +151,15 @@
                                                 </div>
                                             </div>
 
-                                            <label  for="image">Hình Minh Họa: </label>
-                                            <div class="custom-file" >
+                                            <label for="image">Hình Minh Họa: </label>
+                                            <div class="custom-file">
                                                 <input type="hidden" th:field="*{imageUrl}">
                                                 <input type="file" class="custom-file-input" id="image"
                                                        name="imageProduct" accept="image/*">
                                                 <label class="custom-file-label" for="image">Choose file...</label>
-                                                <div class="invalid-feedback mt-4" style="margin-top: 3.2rem !important">Thông báo lỗi tùy chỉnh cho tệp không hợp
+                                                <div class="invalid-feedback mt-4"
+                                                     style="margin-top: 3.2rem !important">Thông báo lỗi tùy chỉnh cho
+                                                    tệp không hợp
                                                     lệ
                                                 </div>
                                             </div>
@@ -166,7 +173,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group" >
+                                            <div class="form-group">
                                                 <label for="validationCustom03">Kho Sản Phẩm:</label>
                                                 <input type="number" th:field="*{productStock}" class="form-control"
                                                        id="validationCustom03" required>
@@ -177,8 +184,10 @@
 
                                             <div class="form-group">
                                                 <label>Danh mục:</label>
-                                                <select th:field="*{category.categoryId}" class="custom-select" required>
-                                                    <option th:each="item : ${category}" th:value="${item.categoryId}" th:text="${item.categoryName}"></option>
+                                                <select th:field="*{category.categoryId}" class="custom-select"
+                                                        required>
+                                                    <option th:each="item : ${category}" th:value="${item.categoryId}"
+                                                            th:text="${item.categoryName}"></option>
                                                 </select>
                                                 <div class="invalid-feedback">Hãy chọn danh mục cho sản phẩm!</div>
                                             </div>

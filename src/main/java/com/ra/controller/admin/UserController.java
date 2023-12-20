@@ -3,16 +3,21 @@ package com.ra.controller.admin;
 import com.ra.model.entity.admin.User;
 import com.ra.model.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
 public class UserController {
+
     @Autowired
     private UserService userService;
     @Autowired
@@ -27,8 +32,8 @@ public class UserController {
 
     @RequestMapping("/user/{id}")
     public String updateUserStatus(@PathVariable("id") Integer id,
-                                   @RequestParam("status")  Integer status,
-                                   Model model){
+                                   @RequestParam("status") Integer status,
+                                   Model model) {
         boolean newStatus = (status == 1);
         boolean updated = userService.updateStatus(id, newStatus);
         if (updated) {
@@ -38,4 +43,6 @@ public class UserController {
         }
         return null;
     }
+
+
 }

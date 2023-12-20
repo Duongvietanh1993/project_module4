@@ -121,7 +121,12 @@
 
                                 <div class="form-container">
                                     <div class="form-fields">
+                                        <div style="display: flex; justify-content: space-around; align-items: center">
                                         <h2>Thêm Mới Danh Mục</h2>
+                                        <a type="button"
+                                           class="btn btn-outline-primary rounded-pill btn-with-icon"
+                                           th:href="@{/admin/category}">Back</a>
+                                            </div>
                                         <form th:action="@{/admin/create-category}" method="post" th:object="${category}"
                                               enctype="multipart/form-data" class="needs-validation" novalidate>
                                             <div class="form-group" style="margin-top: 10px">

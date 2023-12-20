@@ -60,7 +60,7 @@
                             <li class="active">
                                 <a class="text-black" th:text="${session.user.userName}"></a>
                                 <ul>
-                                    <li><a href="contact-us.html">Contact Us</a></li>
+                                    <li><a th:href="@{/update-user}">My Account</a></li>
                                     <li><a th:href="@{/logout-user}">Logout</a></li>
                                 </ul>
                             </li>

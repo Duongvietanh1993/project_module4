@@ -122,7 +122,12 @@
 
                                 <div class="form-container">
                                     <div class="form-fields">
+                                        <div style="display: flex; justify-content: space-around; align-items: center">
                                         <h2>Thêm Mới Sản Phẩm</h2>
+                                            <a type="button"
+                                               class="btn btn-outline-primary rounded-pill btn-with-icon"
+                                               th:href="@{/admin/product}">Back</a>
+                                        </div>
                                         <form th:action="@{/admin/create-product}" method="post" th:object="${product}"
                                               enctype="multipart/form-data" class="needs-validation" novalidate>
                                             <div class="form-group" style="margin-top: 10px">

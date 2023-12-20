@@ -35,15 +35,15 @@
                                 <table id="datatable-1" class="table data-table table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th style="width: 150px">Mã Sản Phẩm</th>
-                                        <th>Tên Sản Phẩm</th>
+                                        <th style="width: 50px">STT</th>
+                                        <th style="width: 150px">Tên Sản Phẩm</th>
                                         <th style="width: 150px">Ảnh Sản Phẩm</th>
                                         <th>Thông Tin</th>
                                         <th>Giá Sản Phẩm</th>
                                         <th>Tồn Kho</th>
                                         <th>Danh mục</th>
                                         <th>Trạng Thái</th>
-                                        <th style="width: 200px;" class="text-right"></th>
+                                        <th style="width: 120px;" class="text-right"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -60,8 +60,8 @@
                                         <td th:text="${item.getCategory().getCategoryName()}"></td>
                                         <td>
                                             <span class="label"
-                                                  th:classappend="${!item.isProductStatus() ? 'badge text-green':'badge text-warning'}"
-                                                  th:text="${!item.isProductStatus()?'Mở':'Khóa'}"></span>
+                                                  th:classappend="${item.isProductStatus() ? 'badge text-green':'badge text-warning'}"
+                                                  th:text="${item.isProductStatus()?'Mở':'Khóa'}"></span>
                                         </td>
 
                                         <td class="text-center">
@@ -72,16 +72,16 @@
                                                 &#9881;
                                             </a>
                                             <a type="button"
-                                               class="btn btn-outline-primary rounded-pill btn-with-icon"
+                                               class="btn btn-outline-success rounded-pill btn-with-icon"
                                                style="padding: 5px 10px"
-                                               th:href="@{'/admin/product/'+ ${item.getProductId()}+'?status=0'}">
-                                                Active
+                                               th:href="@{'/admin/product/'+ ${item.getProductId()}+'?status=1'}">
+                                                &#10004;
                                             </a>
                                             <a type="button"
                                                class="btn btn-outline-danger rounded-pill btn-with-icon"
                                                style="padding: 5px 10px"
-                                               th:href="@{'/admin/product/'+ ${item.getProductId()}+'?status=1'}">
-                                                Block
+                                               th:href="@{'/admin/product/'+ ${item.getProductId()}+'?status=0'}">
+                                                &#10006;
                                             </a>
                                         </td>
                                     </tr>
@@ -90,7 +90,7 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th style="width: 100px">Mã Sản Phẩm</th>
+                                        <th style="width: 50px">STT</th>
                                         <th>Tên Sản Phẩm</th>
                                         <th>Ảnh Sản Phẩm</th>
                                         <th>Thông Tin</th>

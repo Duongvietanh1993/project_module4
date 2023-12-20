@@ -35,12 +35,12 @@
                                 <table id="datatable-1" class="table data-table table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th style="width: 150px">Mã Danh Mục</th>
+                                        <th style="width: 50px">STT</th>
                                         <th>Tên Danh Mục</th>
                                         <th style="width: 150px">Ảnh</th>
                                         <th>Ghi Chú</th>
                                         <th>Trạng Thái</th>
-                                        <th style="width: 200px" class="text-right"></th>
+                                        <th style="width: 120px" class="text-right"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -67,16 +67,16 @@
                                             </a>
 
                                             <a type="button"
-                                               class="btn btn-outline-primary rounded-pill btn-with-icon"
+                                               class="btn btn-outline-success rounded-pill btn-with-icon"
                                                style="padding: 5px 10px"
                                                th:href="@{'/admin/category/'+ ${item.getCategoryId()}+'?status=1'}">
-                                                Active
+                                                &#10004;
                                             </a>
                                             <a type="button"
                                                class="btn btn-outline-danger rounded-pill btn-with-icon"
                                                style="padding: 5px 10px"
                                                th:href="@{'/admin/category/'+ ${item.getCategoryId()}+'?status=0'}">
-                                                Block
+                                                &#10006;
                                             </a>
                                         </td>
                                     </tr>
@@ -85,7 +85,7 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>Mã Danh Mục</th>
+                                        <th style="width: 50px">STT</th>
                                         <th>Tên Danh Mục</th>
                                         <th>Ảnh</th>
                                         <th>Ghi Chú</th>

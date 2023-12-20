@@ -5,9 +5,10 @@ import com.ra.model.entity.admin.Order;
 import com.ra.model.entity.admin.Product;
 import com.ra.model.entity.admin.User;
 import com.ra.model.entity.user.CartItem;
+import com.ra.model.service.cart.CartService;
 import com.ra.model.service.order.OrderService;
 import com.ra.model.service.product.ProductService;
-import com.ra.model.service.cart.CartService;
+
 import com.ra.model.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,6 +42,16 @@ public class CartController {
         return "user/cart/cart";
     }
 
+    @GetMapping("/addToCart/{productId}")
+    public String addCart(@PathVariable("productId") Integer id) {
+        CartItem cartItem = new CartItem();
+        Product product = productService.findById(id);
+        cartItem.setQuantity(1);
+        cartItem.setProduct(product);
+        cartService.addToCart(cartItem);
+        return "redirect:/cart";
+    }
+
     @PostMapping("/addCart")
     public String create(@RequestParam("quantity") Integer quantity, @RequestParam("productId") Integer productId) {
         CartItem cartItem = new CartItem();
@@ -64,9 +75,9 @@ public class CartController {
     }
 
     @PostMapping("/checkout")
-    public String handleCheckout(@ModelAttribute("user") UserResponesDTO userResponesDTO) {
+    public String handleCheckout(@ModelAttribute("user") UserResponesDTO userResponesDTO, Model model) {
         Order order = new Order();
-
+        double totalAmount = totalAmount();
         UserResponesDTO userDTO = (UserResponesDTO) session.getAttribute("user");
         User user = userService.findById(userDTO.getUserId());
 
@@ -74,7 +85,8 @@ public class CartController {
         order.setTotal((float) totalAmount());
         order.setAddress(userResponesDTO.getUserAddress());
         order.setPhone(userResponesDTO.getUserPhone());
-
+        model.addAttribute("order", order);
+        model.addAttribute("totalAmount", totalAmount);
         orderService.order(order);
         return "user/checkout/orderThank";
     }
@@ -90,6 +102,48 @@ public class CartController {
         }
 
         return total;
+    }
+
+    @GetMapping("/increase/{id}")
+    public String increment(@PathVariable("id") Integer id) {
+        List<CartItem> cartItems = (List<CartItem>) session.getAttribute("cart");
+
+        for (CartItem cartItem : cartItems) {
+            if (cartItem.getProduct().getProductId() == id) {
+                cartService.update(id, cartItem.getQuantity() + 1);
+                break;
+            }
+        }
+
+        return "redirect:/cart";
+    }
+
+    @GetMapping("/decrease/{id}")
+    public String decrease(@PathVariable("id") Integer id) {
+        List<CartItem> cartItems = (List<CartItem>) session.getAttribute("cart");
+
+        for (CartItem cartItem : cartItems) {
+            if (cartItem.getProduct().getProductId() == id) {
+                cartService.update(id, cartItem.getQuantity() - 1);
+                if (cartItem.getQuantity() == 0) {
+                    cartService.delete(cartItem.getProduct().getProductId());
+                    break;
+                }
+            }
+
+        }
+
+        return "redirect:/cart";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Integer id) {
+        List<CartItem> cartItems = (List<CartItem>) session.getAttribute("cart");
+        for (CartItem cartItem : cartItems) {
+            cartService.delete(cartItem.getProduct().getProductId());
+            break;
+        }
+        return "redirect:/cart";
     }
 
 }

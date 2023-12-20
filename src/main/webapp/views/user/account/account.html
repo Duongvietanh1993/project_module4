@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+
+<!--head-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Riode - Ultimate eCommerce Template</title>
+    <meta name="keywords" content="HTML5 Template"/>
+    <meta name="description" content="Riode - Ultimate eCommerce Template">
+    <meta name="author" content="D-THEMES">
+
+    <link rel="icon" type="image/png" href="images/icons/favicon.png">
+    <script>
+        WebFontConfig = {
+            google: {families: ['Poppins:400,500,600,700']}
+        };
+        (function (d) {
+            var wf = d.createElement('script'), s = d.scripts[0];
+            wf.src = 'js/webfont.js';
+            wf.async = true;
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+    </script>
+    <link rel="stylesheet" type="text/css" href="vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.min.css">
+
+    <link rel="stylesheet" type="text/css" href="vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/sticky-icon/stickyicon.css">
+
+    <link rel="stylesheet" type="text/css" href="css/style.min.css">
+</head>
+
+<body>
+<div class="page-wrapper">
+    <h1 class="d-none">Riode - Responsive eCommerce HTML Template</h1>
+
+    <!--header-->
+    <th:block th:insert="user/layouts/home/header.html"></th:block>
+
+
+    <!-- Trang chủ -->
+
+    <main class="main account">
+        <nav class="breadcrumb-nav">
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li><a href="demo1.html"><i class="d-icon-home"></i></a></li>
+                    <li>Account</li>
+                </ul>
+            </div>
+        </nav>
+        <div class="page-content mt-4 mb-10 pb-6">
+            <div class="container">
+                <h2 class="title title-center mb-10">My Account</h2>
+
+
+                        <div>
+                            <form th:action="@{/update-user}" method="post" class="form" th:object="${userLogin}" enctype="multipart/form-data">
+                                <input type="hidden" th:field="*{userId}">
+                                <input type="hidden" th:field="*{userPassword}">
+                                <label>Họ Và Tên *</label>
+                                <input th:field="*{userName}" type="text" class="form-control mb-0" name="name" required>
+
+                                <label>Email *</label>
+                                <input th:field="*{userEmail}" type="email" class="form-control" name="email" required>
+
+                                <label>Số Điện Thoại </label>
+                                <input th:field="*{userPhone}" type="number" class="form-control mb-0" name="phone" required>
+
+                                <label>Địa Chỉ </label>
+                                <input th:field="*{userAddress}" type="text" class="form-control mb-0" name="address" required>
+
+                                <div class="custom-file" >
+                                    <input type="hidden" th:field="*{userImage}">
+                                    <input type="file"
+                                           class="custom-file-input"
+                                           id="image"
+                                           name="imageUser"
+                                           accept="image/*"
+                                    >
+                                    <label class="custom-file-label" for="image">Choose file...</label>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Cập Nhật Thông Tin</button>
+                            </form>
+
+                        </div>
+                        <div class="form-preview">
+                            <h4 style="margin-top: 10px">Hình Minh Họa</h4>
+                            <img id="preview-image" th:src="${userLogin.userImage}" alt="Preview Image">
+                        </div>
+
+
+            </div>
+        </div>
+    </main>
+
+    <!--footer-->
+    <th:block th:insert="user/layouts/cart/footer.html"></th:block>
+
+</div>
+
+<a id="scroll-top" href="#top" title="Top" role="button" class="scroll-top"><i class="d-icon-arrow-up"></i></a>
+
+
+<!--toggle-->
+<th:block th:insert="user/layouts/home/toggle.html"></th:block>
+<!--script-->
+<th:block th:insert="user/layouts/home/script.html"></th:block>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const inputImage = document.getElementById('image');
+        const previewImage = document.getElementById('preview-image');
+
+        inputImage.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                previewImage.src = e.target.result;
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                // Nếu không có tệp được chọn, hiển thị hình ảnh xem trước từ giá trị mặc định
+                previewImage.src = '<đường_dẫn_đến_hình_ảnh_cũ>';
+            }
+        });
+    });
+</script>
+
+</body>
+
+<!-- Mirrored from d-themes.com/html/riode/demo30.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Dec 2023 03:53:16 GMT -->
+</html>

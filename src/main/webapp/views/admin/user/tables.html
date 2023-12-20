@@ -31,22 +31,25 @@
                                 <table id="datatable-1" class="table data-table table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th style="width: 150px">Mã Người Dùng</th>
-                                        <th>Tên Người Dùng</th>
-                                        <th>Ảnh Người Dùng</th>
+                                        <th style="width: 50px">STT</th>
+                                        <th style="width: 150px">Tên Người Dùng</th>
+                                        <th style="width: 150px">Ảnh Người Dùng</th>
                                         <th>Email</th>
                                         <th>Số Điện Thoại</th>
                                         <th>Địa Chỉ</th>
                                         <th>Trạng Thái</th>
                                         <th>Quyền Hạn</th>
-                                        <th style="width: 150px;" class="text-right"></th>
+                                        <th style="width: 100px;" class="text-right"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr th:each="item: ${listUser}">
                                         <td th:text="${item.getUserId()}"></td>
                                         <td th:text="${item.getUserName()}"></td>
-                                        <td th:text="${item.getUserImage()}"></td>
+                                        <td>
+                                            <img style="max-width: 100px"
+                                                 th:src="${item.userImage}">
+                                        </td>
                                         <td th:text="${item.getUserEmail()}"></td>
                                         <td th:text="${item.getUserPhone()}"></td>
                                         <td th:text="${item.getUserAddress()}"></td>
@@ -66,14 +69,14 @@
                                             <a type="button"
                                                class="btn btn-outline-primary rounded-pill btn-with-icon"
                                                style="padding: 5px 10px"
-                                              th:href="@{'/admin/user/'+ ${item.getUserId()}+'?status=1'}">
-                                                Active
+                                               th:href="@{'/admin/user/'+ ${item.getUserId()}+'?status=1'}">
+                                                &#10004;
                                             </a>
                                             <a type="button"
                                                class="btn btn-outline-danger rounded-pill btn-with-icon"
                                                style="padding: 5px 10px"
                                                th:href="@{'/admin/user/'+ ${item.getUserId()}+'?status=0'}">
-                                                Block
+                                                &#10006;
                                             </a>
                                         </td>
                                     </tr>
@@ -82,7 +85,7 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>Mã Người Dùng</th>
+                                        <th>STT</th>
                                         <th>Tên Người Dùng</th>
                                         <th>Ảnh Người Dùng</th>
                                         <th>Email</th>

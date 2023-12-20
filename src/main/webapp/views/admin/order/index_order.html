@@ -31,7 +31,7 @@
                                 <table id="datatable-1" class="table data-table table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th style="width: 150px">Mã Danh Mục</th>
+                                        <th style="width: 50px">STT</th>
                                         <th>Tên Khách Hàng</th>
                                         <th>Ngày Đặt</th>
                                         <th>Số Điện Thoại</th>
@@ -67,17 +67,17 @@
 
 
                                             <a type="button"
-                                               class="btn btn-outline-primary rounded-pill btn-with-icon"
+                                               class="btn btn-outline-success rounded-pill btn-with-icon"
                                                style="padding: 5px 10px"
                                                th:href="@{'/admin/order/' + ${item.orderId} + '?status=CONFIRM'}">
-                                                &#9745;
+                                                &#10004;
                                             </a>
 
                                             <a type="button"
                                                class="btn btn-outline-danger rounded-pill btn-with-icon"
                                                style="padding: 5px 10px"
                                                th:href="@{'/admin/order/' + ${item.orderId} + '?status=CANCELLED'}">
-                                                &#215;
+                                                &#10006;
                                             </a>
                                             <a><i class="fa-brands fa-meta"></i></a>
                                         </td>
@@ -87,7 +87,7 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th style="width: 150px">Mã Danh Mục</th>
+                                        <th style="width: 50px">STT</th>
                                         <th>Tên Khách Hàng</th>
                                         <th>Ngày Đặt</th>
                                         <th>Số Điện Thoại</th>

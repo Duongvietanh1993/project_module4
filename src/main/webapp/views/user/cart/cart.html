@@ -67,9 +67,9 @@
     <main class="main cart">
         <div class="page-content pt-7 pb-10">
             <div class="step-by pr-4 pl-4">
-                <h3 class="title title-simple title-step active"><a href="cart.html">1. Shopping Cart</a></h3>
-                <h3 class="title title-simple title-step"><a href="checkout.html">2. Checkout</a></h3>
-                <h3 class="title title-simple title-step"><a href="order.html">3. Order Complete</a></h3>
+                <h3 class="title title-simple title-step active"><a th:href="@{/cart}">1. Shopping Cart</a></h3>
+                <h3 class="title title-simple title-step"><a th:href="@{/checkout}">2. Checkout</a></h3>
+                <h3 class="title title-simple title-step"><a th:href="@{/#}">3. Order Complete</a></h3>
             </div>
             <div class="container mt-7 mb-2">
                 <div class="row">
@@ -104,16 +104,16 @@
                                 </td>
                                 <td class="product-quantity">
                                     <div class="input-group">
-                                        <a href="#" class="decrease">-</a>
+                                        <a th:href="@{/decrease/{id}(id=${item.product.productId})}" class="decrease">-</a>
                                         <input th:value="${item.quantity}" class="form-control" type="number">
-                                        <a href="#" class="increase">+</a>
+                                        <a th:href="@{/increase/{id}(id=${item.product.productId})}" class="increase">+</a>
                                     </div>
                                 </td>
                                 <td class="product-price">
                                     <span class="amount" th:text="${#numbers.formatDecimal(((item.quantity)*(item.product.productPrice)), 0, 'COMMA', 0, 'POINT') + ' VND'}"></span>
                                 </td>
                                 <td class="product-close">
-                                    <a href="#" class="product-remove" title="Remove this product">
+                                    <a th:href="@{/delete/{id}(id=${item.product.productId})}" class="product-remove" title="Remove this product">
                                         <i class="fas fa-times" ></i>
                                     </a>
                                 </td>
@@ -168,34 +168,7 @@
 <!--script-->
 <th:block th:insert="user/layouts/home/script.html"></th:block>
 
-<script>
-    // Lấy tất cả các phần tử nút tăng giảm
-    var decreaseButtons = document.querySelectorAll('.input-group .decrease');
-    var increaseButtons = document.querySelectorAll('.input-group .increase');
 
-    // Xử lý sự kiện khi nhấp vào nút giảm
-    decreaseButtons.forEach(function(button) {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            var input = this.parentNode.querySelector('input[type="number"]');
-            var currentValue = parseInt(input.value);
-
-            if (currentValue > 0) {
-                input.value = currentValue - 1;
-            }
-        });
-    });
-
-    // Xử lý sự kiện khi nhấp vào nút tăng
-    increaseButtons.forEach(function(button) {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            var input = this.parentNode.querySelector('input[type="number"]');
-            var currentValue = parseInt(input.value);
-            input.value = currentValue + 1;
-        });
-    });
-</script>
 </body>
 
 <!-- Mirrored from d-themes.com/html/riode/demo30.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Dec 2023 03:53:16 GMT -->

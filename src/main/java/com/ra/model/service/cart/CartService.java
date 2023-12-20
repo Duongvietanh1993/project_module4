@@ -4,6 +4,7 @@ import com.ra.model.entity.admin.Product;
 import com.ra.model.entity.user.CartItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class CartService {
         httpSession.setAttribute("cart", cartItems);
     }
 
-    public void update(Integer quantity, Integer productId) {
+    public void update( Integer productId,Integer quantity) {
         List<CartItem> cartItems = getCartItems();
 
         for (CartItem item : cartItems) {
@@ -51,9 +52,7 @@ public class CartService {
 
     public void delete(Integer id) {
         List<CartItem> cartItems = getCartItems();
-
         cartItems.removeIf(item -> item.getProduct().getProductId() == id);
-
         httpSession.setAttribute("cart", cartItems);
     }
 
@@ -65,5 +64,6 @@ public class CartService {
         }
         return null;
     }
+
 
 }

@@ -111,8 +111,8 @@ public class OrderDAOimpl implements OrderDAO {
             CallableStatement callableStatement = connection.prepareCall("{CALL PROC_UPDATE_STATUS_ORDER(?, ?)}");
             callableStatement.setInt(1, orderId);
             callableStatement.setString(2, newStatus.name());
-            int rowsAffected = callableStatement.executeUpdate();
-            return rowsAffected > 0;
+            int check = callableStatement.executeUpdate();
+            return check > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
