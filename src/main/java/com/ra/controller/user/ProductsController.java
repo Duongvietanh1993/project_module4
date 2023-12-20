@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.Collections;
@@ -35,5 +36,12 @@ public class ProductsController {
         model.addAttribute("productAll", productList);
         return "user/products/productAll";
     }
-
+    @GetMapping("/product-search")
+    public String searchProduct(@RequestParam("keyword") String keyword, Model model) {
+        List<Product> productList = productService.searchByName(keyword).stream()
+                .filter(Product::isProductStatus)
+                .collect(Collectors.toList());
+        model.addAttribute("productAll", productList);
+        return "user/products/productAll";
+    }
 }

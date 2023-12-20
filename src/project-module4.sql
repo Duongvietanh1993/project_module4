@@ -258,6 +258,14 @@ BEGIN
 END;
 //
 
+DELIMITER //
+CREATE PROCEDURE PROC_SEARCH_PRODUCT_BY_NAME(IN new_name VARCHAR(100))
+BEGIN
+    SELECT * FROM product WHERE name LIKE CONCAT('%', new_name, '%');
+END;
+//
+
+
 /*order*/
 
 DELIMITER //

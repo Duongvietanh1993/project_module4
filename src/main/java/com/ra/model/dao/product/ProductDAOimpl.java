@@ -160,4 +160,33 @@ public class ProductDAOimpl implements ProductDAO{
         }
         return false;
     }
+
+    @Override
+    public List<Product> searchByName(String name) {
+        Connection connection = null;
+        List<Product> products = new ArrayList<>();
+        try {
+            connection = ConnectionDatabase.openConnection();
+            CallableStatement callableStatement = connection.prepareCall("{CALL PROC_SEARCH_PRODUCT_BY_NAME(?)}");
+            callableStatement.setString(1, name);
+            ResultSet resultSet = callableStatement.executeQuery();
+            while (resultSet.next()) {
+                Product product = new Product();
+                product.setProductId(resultSet.getInt("id"));
+                product.setProductName(resultSet.getString("name"));
+                product.setImageUrl(resultSet.getString("url_image"));
+                product.setProductDescription(resultSet.getString("description"));
+                product.setProductPrice(resultSet.getFloat("price"));
+                product.setProductStock(resultSet.getInt("stock"));
+                product.setProductStatus(resultSet.getBoolean("status"));
+                product.setCategory(categoryDAO.findById(resultSet.getInt("category_id")));
+                products.add(product);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            ConnectionDatabase.closeConnection(connection);
+        }
+        return products;
+    }
 }

@@ -32,7 +32,7 @@ public class CartController {
     @Autowired
     private OrderService orderService;
 
-
+    private int cartItemCount=0;
     @RequestMapping("/cart")
     public String index(Model model) {
         List<CartItem> cartItems = cartService.getCartItems();
@@ -88,6 +88,7 @@ public class CartController {
         model.addAttribute("order", order);
         model.addAttribute("totalAmount", totalAmount);
         orderService.order(order);
+        session.removeAttribute("cart");
         return "user/checkout/orderThank";
     }
 

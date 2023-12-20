@@ -8,4 +8,5 @@ import java.util.List;
 public interface ProductService extends IGenericService<Product,Integer> {
     List<Product> findAllByCategoryId(int categoryId);
     boolean updateStatus(Integer id, boolean newStatus);
+    List<Product> searchByName(String name);
 }

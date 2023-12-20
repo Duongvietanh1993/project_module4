@@ -4,34 +4,104 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
 
 <!--head-->
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Riode - Ultimate eCommerce Template</title>
-    <meta name="keywords" content="HTML5 Template"/>
-    <meta name="description" content="Riode - Ultimate eCommerce Template">
-    <meta name="author" content="D-THEMES">
+<th:block th:insert="user/layouts/home/head.html"></th:block>
+<style>
+    .form {
+        flex: 1;
+        margin-right: 20px; /* Khoảng cách giữa form và hình ảnh */
+    }
 
-    <link rel="icon" type="image/png" href="images/icons/favicon.png">
-    <script>
-        WebFontConfig = {
-            google: {families: ['Poppins:400,500,600,700']}
-        };
-        (function (d) {
-            var wf = d.createElement('script'), s = d.scripts[0];
-            wf.src = 'js/webfont.js';
-            wf.async = true;
-            s.parentNode.insertBefore(wf, s);
-        })(document);
-    </script>
-    <link rel="stylesheet" type="text/css" href="vendor/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.min.css">
+    .form label {
+        display: block!important;
+        margin-bottom: 5px!important;
+    }
 
-    <link rel="stylesheet" type="text/css" href="vendor/magnific-popup/magnific-popup.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/sticky-icon/stickyicon.css">
+    .form input[type="text"],
+    .form input[type="email"],
+    .form input[type="number"],
+    .form textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
 
-    <link rel="stylesheet" type="text/css" href="css/style.min.css">
-</head>
+    .form .custom-file {
+        margin-bottom: 10px;
+    }
+
+    .form button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .form-preview {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #preview-image {
+        max-width: 60%;
+        height: auto;
+        border-radius: 50%;
+        border: 1px solid grey;
+    }
+    .custom-file {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .custom-file-input {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: calc(1.5em + 0.75rem + 2px);
+        margin-top: 0.5rem;
+        opacity: 0;
+    }
+
+    .custom-file-label {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1;
+        padding: 0.375rem 0.75rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .custom-file-label::after {
+        content: "Choose file";
+    }
+
+    .custom-file-input:focus ~ .custom-file-label {
+        border-color: #80bdff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+    .custom-file-input:disabled ~ .custom-file-label {
+        background-color: #e9ecef;
+    }
+
+    .custom-file-input:lang(en) ~ .custom-file-label::after {
+        content: "Browse";
+    }
+
+</style>
 
 <body>
 <div class="page-wrapper">
@@ -57,7 +127,7 @@
                 <h2 class="title title-center mb-10">My Account</h2>
 
 
-                        <div>
+                        <div style="display: flex;justify-content: center;align-items: center">
                             <form th:action="@{/update-user}" method="post" class="form" th:object="${userLogin}" enctype="multipart/form-data">
                                 <input type="hidden" th:field="*{userId}">
                                 <input type="hidden" th:field="*{userPassword}">
@@ -73,6 +143,7 @@
                                 <label>Địa Chỉ </label>
                                 <input th:field="*{userAddress}" type="text" class="form-control mb-0" name="address" required>
 
+                                <label class="mt-2">Hình Đại Diện </label>
                                 <div class="custom-file" >
                                     <input type="hidden" th:field="*{userImage}">
                                     <input type="file"
@@ -86,12 +157,11 @@
 
                                 <button type="submit" class="btn btn-primary">Cập Nhật Thông Tin</button>
                             </form>
+                            <div class="form-preview">
+                                <img id="preview-image" th:src="${userLogin.userImage}" alt="Preview Image">
+                            </div>
+                        </div>
 
-                        </div>
-                        <div class="form-preview">
-                            <h4 style="margin-top: 10px">Hình Minh Họa</h4>
-                            <img id="preview-image" th:src="${userLogin.userImage}" alt="Preview Image">
-                        </div>
 
 
             </div>
@@ -99,7 +169,7 @@
     </main>
 
     <!--footer-->
-    <th:block th:insert="user/layouts/cart/footer.html"></th:block>
+    <th:block th:insert="user/layouts/home/footer.html"></th:block>
 
 </div>
 

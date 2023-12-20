@@ -34,4 +34,9 @@ public class ProductServiceIMPL implements ProductService{
     public boolean updateStatus(Integer id, boolean newStatus) {
         return productDAO.updateStatus(id, newStatus);
     }
+
+    @Override
+    public List<Product> searchByName(String name) {
+        return productDAO.searchByName(name);
+    }
 }

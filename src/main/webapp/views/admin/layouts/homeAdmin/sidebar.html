@@ -1,18 +1,9 @@
 <div class="iq-sidebar  sidebar-default  ">
-    <div class="iq-sidebar-logo d-flex align-items-end justify-content-between">
-        <a th:href="@{/admin}" class="header-logo">
-            <img th:src="@{/images/logo.png}" class="img-fluid rounded-normal light-logo" alt="logo">
-            <img th:src="@{/images/logo-dark.png}" class="img-fluid rounded-normal d-none sidebar-light-img"
-                 alt="logo">
-            <span>Datum</span>
+
+        <a th:href="@{/admin}" class="header-logo p-2">
+            <img th:src="@{/images/logoAdmin.png}" class="img-fluid rounded-normal light-logo" alt="logo">
         </a>
-        <div class="side-menu-bt-sidebar-1">
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-light wrapper-menu" width="30" fill="none"
-                 viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-        </div>
-    </div>
+
     <div class="data-scrollbar" data-scroll="1">
         <nav class="iq-sidebar-menu">
             <ul id="iq-sidebar-toggle" class="side-menu">
@@ -26,7 +17,6 @@
                             </svg>
                         </i>
                         <span class="ml-2">Dashboard</span>
-                        <p class="mb-0 w-10 badge badge-pill badge-primary">6</p>
                     </a>
                 </li>
                 <li class="px-3 pt-3 pb-2">
@@ -56,29 +46,8 @@
                         </i><span class="ml-2">Blank Page</span>
                     </a>
                 </li>
-                <li class=" sidebar-layout">
-                    <a th:href="@{/admin}" class="svg-icon">
-                        <i class="">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
-                                 stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"/>
-                            </svg>
-                        </i><span class="ml-2">Faq</span>
-                    </a>
-                </li>
 
-                <li class=" sidebar-layout">
-                    <a th:href="@{/admin}" class="svg-icon">
-                        <i class="">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
-                                 stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                        </i><span class="ml-2">Timeline</span>
-                    </a>
-                </li>
+
                 <li class="px-3 pt-3 pb-2">
                     <span class="text-uppercase small font-weight-bold">Components</span>
                 </li>

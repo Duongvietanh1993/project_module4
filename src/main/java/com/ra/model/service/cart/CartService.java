@@ -14,13 +14,12 @@ import java.util.List;
 public class CartService {
     @Autowired
     private HttpSession httpSession;
-    List<CartItem> cartItems = new ArrayList<>();
+    private List<CartItem> cartItems = new ArrayList<>();
+    private int cartItemCount;
 
     public List<CartItem> getCartItems() {
-        //kiểm tra trong sesion có không thì lấy và gán vào cartItem không có thì không
         cartItems = httpSession.getAttribute("cart") != null ? (List<CartItem>) httpSession.getAttribute("cart") : new ArrayList<>();
-
-
+        cartItemCount = cartItems.size();
         return cartItems;
     }
 
@@ -28,32 +27,34 @@ public class CartService {
         CartItem oldItem = findCartItemById(item.getProduct());
         if (oldItem != null){
             oldItem.setQuantity(oldItem.getQuantity()+item.getQuantity());
-        }else {
-            //Đẩy vào cart
+        } else {
+            // Đẩy vào cart
             cartItems.add(item);
+            cartItemCount++;
         }
-        //lưu vào session
+
+        // Lưu vào session
         httpSession.setAttribute("cart", cartItems);
+        httpSession.setAttribute("cartItemCount", cartItemCount);
     }
 
-    public void update( Integer productId,Integer quantity) {
+    public void update(Integer productId, Integer quantity) {
         List<CartItem> cartItems = getCartItems();
-
         for (CartItem item : cartItems) {
             if (item.getProduct().getProductId() == productId) {
                 item.setQuantity(quantity);
                 break;
             }
         }
-
         httpSession.setAttribute("cart", cartItems);
     }
-
 
     public void delete(Integer id) {
         List<CartItem> cartItems = getCartItems();
         cartItems.removeIf(item -> item.getProduct().getProductId() == id);
+        cartItemCount--;
         httpSession.setAttribute("cart", cartItems);
+        httpSession.setAttribute("cartItemCount", cartItemCount);
     }
 
     public CartItem findCartItemById(Product product) {
@@ -65,5 +66,8 @@ public class CartService {
         return null;
     }
 
-
+    public void removeCartItem() {
+        httpSession.removeAttribute("cart");
+        httpSession.removeAttribute("cartItemCount");
+    }
 }
